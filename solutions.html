@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solutions — Corporate & Healthcare Transportation | Brisbon Transportation Group LLC</title>
+<meta name="description" content="Brisbon Transportation Group LLC offers dedicated corporate partner programs and healthcare transportation solutions for RTP companies, hospital systems, and care coordinators across North Carolina.">
+<meta name="keywords" content="corporate transportation program Raleigh NC, healthcare transportation Durham, NEMT provider NC, corporate shuttle RTP, hospital transportation partner, Net-30 billing transportation">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black: #0d0d0d;
+  --off-black: #111010;
+  --deep: #1e1e1e;
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+  --gold-dark: #7A5C1E;
+  --gold-pale: #FBF5E6;
+  --gold-ultra: #F5EFE0;
+  --white: #FFFFFF;
+  --cream: #ddd8ca;
+  --muted: #7a7268;
+  --rule: #D4C9B0;
+  --rule-dark: rgba(255,255,255,0.07);
+  --text: #111010;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background-color: #ddd8ca;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E"),
+    linear-gradient(160deg, #ebe5d8 0%, #d9d2c2 40%, #cfc8b8 100%);
+  color: var(--text); line-height: 1.6; overflow-x: hidden;
+}
+
+/* ── MOBILE STICKY CTA ── */
+.mobile-cta-bar {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+  background: var(--black);
+  border-top: 1px solid rgba(201,168,76,0.3);
+  padding: 0.8rem 1rem;
+  gap: 0.6rem;
+}
+@media(max-width:768px){ .mobile-cta-bar { display: flex; } }
+.mobile-cta-bar a {
+  flex: 1; text-align: center; padding: 0.7rem 0.5rem;
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; font-weight: 500; border-radius: 2px;
+}
+.mobile-cta-bar .mcall { background: var(--gold); color: var(--black); }
+.mobile-cta-bar .mquote { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+
+/* ── HEADER ── */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,10,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule-dark);
+  padding: 0 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+  transition: all 0.3s ease;
+}
+.logo-wrap { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+.logo-wrap img { height: 40px; width: auto; }
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 1.15rem; letter-spacing: 0.05em;
+  color: var(--white); line-height: 1.1;
+}
+.logo-text span { display: block; font-size: 0.6rem; font-family: var(--font-mono); letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; }
+
+nav { display: flex; align-items: center; gap: 0; }
+.nav-link {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5); text-decoration: none;
+  padding: 0 1.1rem; height: 72px; display: flex; align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease; white-space: nowrap;
+}
+.nav-link:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
+.nav-link.active { color: var(--gold); border-bottom-color: var(--gold); }
+.nav-dropdown { position: relative; }
+.nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: all; transform: translateY(0); }
+.dropdown-menu {
+  position: absolute; top: 100%; left: 0;
+  background: var(--off-black);
+  border: 1px solid var(--rule-dark);
+  border-top: 2px solid var(--gold);
+  min-width: 220px; padding: 0.5rem 0;
+  opacity: 0; pointer-events: none; transform: translateY(-8px);
+  transition: all 0.2s ease;
+}
+.dropdown-menu a {
+  display: block; padding: 0.65rem 1.2rem;
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); text-decoration: none;
+  transition: all 0.15s ease; border-left: 2px solid transparent;
+}
+.dropdown-menu a:hover { color: var(--gold-light); border-left-color: var(--gold); background: rgba(201,168,76,0.07); padding-left: 1.5rem; }
+
+.btn-quote-nav {
+  background: transparent; color: var(--gold);
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+  padding: 0.65rem 1.4rem; text-decoration: none; margin-left: 1rem;
+  border: 1px solid var(--gold-dark); border-radius: 2px;
+  transition: all 0.22s ease; white-space: nowrap;
+}
+.btn-quote-nav:hover { background: var(--gold); color: var(--white); border-color: var(--gold); }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+.hamburger span { width: 22px; height: 1.5px; background: var(--white); transition: all 0.3s; }
+@media(max-width:900px){
+  nav .nav-link, nav .nav-dropdown { display: none; }
+  .btn-quote-nav { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* ── PAGE HERO ── */
+.page-hero {
+  background: var(--black);
+  padding: 9rem 5% 5rem;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid #252525;
+}
+.page-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+.page-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(201,168,76,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.page-hero-inner {
+  max-width: 1200px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.page-hero-label {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.page-hero-label::before {
+  content: ''; display: block; width: 24px; height: 1px; background: var(--gold);
+}
+.page-hero h1 {
+  font-family: var(--font-display); font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 300; color: var(--white); line-height: 1.05; margin-bottom: 1.5rem;
+}
+.page-hero h1 em { font-style: italic; color: var(--gold-light); }
+.page-hero-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.45); max-width: 620px;
+  line-height: 1.8; font-weight: 300;
+}
+.page-hero-tabs {
+  display: flex; gap: 0; margin-top: 3rem;
+  border-top: 1px solid #252525;
+}
+.page-hero-tab {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); padding: 1rem 1.8rem;
+  text-decoration: none; border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+.page-hero-tab:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
+.page-hero-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ── SECTION UTILS ── */
+.section { padding: 6rem 5%; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold-dark); margin-bottom: 0.8rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.section-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold-dark); }
+.section-title {
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300; line-height: 1.1; margin-bottom: 1rem;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-sub {
+  font-size: 0.9rem; color: var(--muted); max-width: 600px;
+  line-height: 1.8; font-weight: 300;
+}
+.gold-rule { width: 48px; height: 2px; background: var(--gold); margin: 1.5rem 0; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); color: var(--black);
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+  padding: 0.9rem 1.8rem; text-decoration: none;
+  border: none; cursor: pointer; border-radius: 2px;
+  transition: all 0.22s ease; box-shadow: 0 3px 12px rgba(201,168,76,0.25);
+}
+.btn-primary:hover { background: var(--gold-light); box-shadow: 0 4px 18px rgba(201,168,76,0.35); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent; color: var(--gold);
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+  padding: 0.9rem 1.8rem; text-decoration: none;
+  border: 1px solid var(--gold-dark); border-radius: 2px;
+  transition: all 0.22s ease;
+}
+.btn-outline:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+
+/* ── CORPORATE SECTION ── */
+.corporate-section { background: transparent; }
+.corporate-split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem;
+}
+@media(max-width:768px){ .corporate-split { grid-template-columns: 1fr; gap: 3rem; } }
+.corp-features { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+.corp-feature {
+  display: grid; grid-template-columns: 36px 1fr; gap: 1rem;
+  align-items: start; padding: 1.2rem; border: 1px solid var(--rule);
+  transition: all 0.2s ease;
+}
+.corp-feature:hover { border-color: var(--gold-dark); background: var(--gold-ultra); }
+.corp-feat-icon { font-size: 1.1rem; padding-top: 0.1rem; }
+.corp-feat-title { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.3rem; }
+.corp-feat-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+.corp-cta-panel {
+  background: var(--black); padding: 3rem;
+  position: relative; overflow: hidden;
+}
+.corp-cta-panel::after {
+  content: 'B'; position: absolute; right: -20px; bottom: -40px;
+  font-family: var(--font-display); font-size: 14rem; color: rgba(201,168,76,0.06);
+  line-height: 1; font-weight: 300; pointer-events: none;
+}
+.corp-cta-label {
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.corp-cta-panel h3 {
+  font-family: var(--font-display); font-size: 2rem; color: var(--white);
+  font-weight: 300; line-height: 1.15; margin-bottom: 1.2rem;
+}
+.corp-cta-panel h3 em { font-style: italic; color: var(--gold-light); }
+.corp-cta-panel p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 2rem; font-weight: 300; }
+.corp-perks { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem; }
+.corp-perk {
+  display: flex; gap: 0.7rem; align-items: center;
+  font-size: 0.8rem; color: rgba(255,255,255,0.6);
+}
+.corp-perk::before { content: '✓'; color: var(--gold); font-size: 0.75rem; flex-shrink: 0; }
+
+/* ── DIVIDER BAND ── */
+.section-divider {
+  background: var(--black);
+  padding: 3rem 5%;
+  border-top: 1px solid #252525;
+  border-bottom: 1px solid #252525;
+}
+.section-divider-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+}
+.divider-stat { text-align: center; }
+.divider-stat-val {
+  font-family: var(--font-display); font-size: 2.4rem; color: var(--gold-light);
+  font-weight: 300; line-height: 1;
+}
+.divider-stat-label {
+  font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); margin-top: 0.3rem; line-height: 1.4;
+}
+.divider-rule { width: 1px; height: 48px; background: #252525; }
+@media(max-width:600px){ .divider-rule { display: none; } }
+
+/* ── MEDICAL SECTION ── */
+.medical-section { background: transparent; }
+.medical-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; margin-top: 3rem; align-items: start; }
+@media(max-width:768px){ .medical-grid { grid-template-columns: 1fr; } }
+.medical-card {
+  background: var(--white); padding: 2.5rem; border: 1px solid var(--rule);
+  border-top: 3px solid var(--gold-dark);
+}
+.medical-card h3 {
+  font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.8rem; font-weight: 400;
+}
+.medical-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.5rem; font-weight: 300; }
+.compliance-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.compliance-item {
+  display: flex; gap: 0.8rem; align-items: center;
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); padding: 0.6rem; background: var(--cream);
+}
+.compliance-item::before { content: '▸'; color: var(--gold); }
+.sc-link {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold-dark); display: inline-flex; align-items: center; gap: 0.5rem;
+  text-decoration: none; transition: color 0.2s ease;
+}
+.sc-link:hover { color: var(--gold); }
+.sc-arrow { transition: transform 0.2s ease; }
+.sc-link:hover .sc-arrow { transform: translateX(4px); }
+
+/* ── SOLUTIONS CTA STRIP ── */
+.solutions-cta-strip {
+  background: var(--black);
+  padding: 5rem 5%;
+  position: relative; overflow: hidden;
+  text-align: center;
+}
+.solutions-cta-strip::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+  background-size: 80px 80px; pointer-events: none;
+}
+.solutions-cta-strip-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+.solutions-cta-strip .section-label { justify-content: center; color: var(--gold); }
+.solutions-cta-strip .section-label::before { background: var(--gold); }
+.solutions-cta-strip h2 {
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--white); font-weight: 300; line-height: 1.1; margin-bottom: 1rem;
+}
+.solutions-cta-strip h2 em { font-style: italic; color: var(--gold-light); }
+.solutions-cta-strip p { font-size: 0.9rem; color: rgba(255,255,255,0.4); line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
+.cta-btn-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--off-black);
+  border-top: 1px solid #252525;
+  padding: 3.5rem 5% 2rem;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;
+}
+.footer-brand { font-family: var(--font-display); font-size: 1.1rem; color: var(--white); }
+.footer-brand span { display: block; font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-top: 0.2rem; }
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+.footer-links a { font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.15s ease; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-family: var(--font-mono); font-size: 0.52rem; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; }
+</style>
+</head>
+<body>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta-bar">
+  <a href="tel:+19190000000" class="mcall">📞 Call Now</a>
+  <a href="#quote" class="mquote">Get a Quote</a>
+</div>
+
+<!-- HEADER -->
+<header id="site-header">
+  <a href="brisbon-website.html" class="logo-wrap">
+    <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773180329/BTG_1_mnzs4n.png" alt="Brisbon Transportation Group">
+  </a>
+  <nav>
+    <a class="nav-link" href="brisbon-website.html">Home</a>
+    <a class="nav-link" href="brisbon-vehicle-finder.html">Fleet</a>
+    <a class="nav-link active" href="solutions.html">Solutions</a>
+    <div class="nav-dropdown">
+      <a class="nav-link" href="#">Industries ▾</a>
+      <div class="dropdown-menu">
+        <a href="#">Healthcare & Hospitals</a>
+        <a href="#">Corporate & RTP</a>
+        <a href="#">Universities & Schools</a>
+        <a href="#">Weddings & Events</a>
+        <a href="#">Sports & Concerts</a>
+        <a href="#">Conferences</a>
+      </div>
+    </div>
+    <div class="nav-dropdown">
+      <a class="nav-link" href="#">Locations ▾</a>
+      <div class="dropdown-menu">
+        <a href="#">Raleigh, NC</a>
+        <a href="#">Durham, NC</a>
+        <a href="#">Chapel Hill, NC</a>
+        <a href="#">Research Triangle Park</a>
+        <a href="#">Cary · Apex · Pinehurst</a>
+      </div>
+    </div>
+    <a class="nav-link" href="#">About</a>
+    <a href="#quote" class="btn-quote-nav">Get a Quote →</a>
+  </nav>
+  <div class="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-label">Solutions</div>
+    <h1>Transportation Programs<br><em>Built for Organizations</em></h1>
+    <p class="page-hero-sub">From corporate partner accounts to healthcare transportation networks — Brisbon operates with the infrastructure large organizations require. Not just a vehicle and a phone number.</p>
+    <div class="page-hero-tabs">
+      <a href="#corporate" class="page-hero-tab active">Corporate Partner Program</a>
+      <a href="#healthcare" class="page-hero-tab">Healthcare Transportation</a>
+    </div>
+  </div>
+</section>
+
+<!-- CORPORATE SECTION -->
+<section class="section corporate-section" id="corporate">
+  <div class="section-inner">
+    <div class="corporate-split">
+      <div>
+        <div class="section-label">Corporate Partner Program</div>
+        <h2 class="section-title">Transportation<br><em>Built for Business</em></h2>
+        <div class="gold-rule"></div>
+        <p class="section-sub">RTP companies, healthcare systems, and university departments trust Brisbon because we operate with the infrastructure large organizations require — not just a vehicle and a phone number.</p>
+
+        <div class="corp-features">
+          <div class="corp-feature">
+            <div class="corp-feat-icon">📋</div>
+            <div>
+              <div class="corp-feat-title">Net-30 Corporate Billing</div>
+              <p class="corp-feat-desc">Monthly invoicing, consolidated billing, and purchase order support for procurement departments.</p>
+            </div>
+          </div>
+          <div class="corp-feature">
+            <div class="corp-feat-icon">👤</div>
+            <div>
+              <div class="corp-feat-title">Dedicated Account Manager</div>
+              <p class="corp-feat-desc">A single point of contact who knows your routes, preferences, and scheduling needs.</p>
+            </div>
+          </div>
+          <div class="corp-feature">
+            <div class="corp-feat-icon">📄</div>
+            <div>
+              <div class="corp-feat-title">Vendor Credential Package</div>
+              <p class="corp-feat-desc">Downloadable compliance documentation — DOT, insurance, background check policy — ready for your vendor approval process.</p>
+            </div>
+          </div>
+          <div class="corp-feature">
+            <div class="corp-feat-icon">🔄</div>
+            <div>
+              <div class="corp-feat-title">Volume & Contract Pricing</div>
+              <p class="corp-feat-desc">Tiered rates for recurring routes. The more you move, the more you save — with priority fleet access.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="corp-cta-panel">
+        <div class="corp-cta-label">Start a Corporate Partnership</div>
+        <h3>Let's Build a <em>Transportation Program</em></h3>
+        <p>Tell us about your organization's transportation needs and we'll design a program around your schedule, budget, and compliance requirements.</p>
+        <div class="corp-perks">
+          <div class="corp-perk">Custom route planning at no charge</div>
+          <div class="corp-perk">Priority fleet scheduling for contract clients</div>
+          <div class="corp-perk">24/7 dispatch for contract accounts</div>
+          <div class="corp-perk">Quarterly account reviews & reporting</div>
+          <div class="corp-perk">Approval-ready vendor documentation</div>
+        </div>
+        <a href="#quote" class="btn-primary">Inquire About Corporate Program →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS DIVIDER -->
+<div class="section-divider">
+  <div class="section-divider-inner">
+    <div class="divider-stat">
+      <div class="divider-stat-val">Net-30</div>
+      <div class="divider-stat-label">Corporate Billing<br>Available</div>
+    </div>
+    <div class="divider-rule"></div>
+    <div class="divider-stat">
+      <div class="divider-stat-val">24/7</div>
+      <div class="divider-stat-label">Dispatch Access for<br>Contract Accounts</div>
+    </div>
+    <div class="divider-rule"></div>
+    <div class="divider-stat">
+      <div class="divider-stat-val">$5M+</div>
+      <div class="divider-stat-label">Commercial Insurance<br>Coverage</div>
+    </div>
+    <div class="divider-rule"></div>
+    <div class="divider-stat">
+      <div class="divider-stat-val">100%</div>
+      <div class="divider-stat-label">Background Checked<br>Drivers</div>
+    </div>
+    <div class="divider-rule"></div>
+    <div class="divider-stat">
+      <div class="divider-stat-val">USDOT</div>
+      <div class="divider-stat-label">Licensed &<br>Certified Operator</div>
+    </div>
+  </div>
+</div>
+
+<!-- HEALTHCARE SECTION -->
+<section class="section medical-section" id="healthcare">
+  <div class="section-inner">
+    <div class="section-label">Healthcare Transportation</div>
+    <h2 class="section-title">NEMT & Medical Transport<br><em>Partners Trust</em></h2>
+    <p class="section-sub">For hospital systems, dialysis centers, and Medicaid transportation coordinators — Brisbon operates with the compliance infrastructure healthcare requires.</p>
+
+    <div class="medical-grid">
+      <div>
+        <div class="medical-card">
+          <h3>Non-Emergency Medical Transportation</h3>
+          <p>We provide reliable, compassionate transportation for patients who need rides to medical appointments, dialysis sessions, discharge pickups, and recurring treatment visits. Our drivers are trained in passenger assistance and sensitivity protocols.</p>
+          <div class="compliance-list">
+            <div class="compliance-item">Medicaid Transportation Enrolled</div>
+            <div class="compliance-item">HIPAA-Aware Staff & Protocols</div>
+            <div class="compliance-item">Driver Passenger Assistance Training</div>
+            <div class="compliance-item">ADA-Accessible Vehicles Available</div>
+            <div class="compliance-item">Hospital Partnership Agreements Accepted</div>
+            <div class="compliance-item">UNC Health · Duke Health · WakeMed Network</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1.2rem;">
+        <div class="medical-card">
+          <h3>ADA Accessible Fleet</h3>
+          <p>Wheelchair lifts, securement systems, and trained operators for passengers with mobility needs. Available across all service types — not just NEMT.</p>
+          <a href="#" class="sc-link" style="margin-top:0.5rem;">View ADA Fleet Options <span class="sc-arrow">→</span></a>
+        </div>
+        <div class="medical-card">
+          <h3>Healthcare Coordinator Inquiry</h3>
+          <p>Are you a discharge planner, social worker, or care coordinator? Contact our healthcare partnerships team directly for a dedicated intake consultation.</p>
+          <a href="#quote" class="btn-primary" style="margin-top:0.5rem;font-size:0.6rem;padding:0.75rem 1.2rem;">Partner With Us →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA STRIP -->
+<section class="solutions-cta-strip" id="quote">
+  <div class="solutions-cta-strip-inner">
+    <div class="section-label">Ready to Get Started</div>
+    <h2>One Call Sets Up<br><em>Your Entire Program</em></h2>
+    <p>Whether you need a corporate contract, a healthcare partnership, or a recurring route program — our team will design it around your organization's specific needs within 48 hours.</p>
+    <div class="cta-btn-row">
+      <a href="tel:+19190000000" class="btn-primary">Call Our Solutions Team →</a>
+      <a href="brisbon-website.html#quote" class="btn-outline">Submit an Inquiry</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="brisbon-website.html" style="display:flex;align-items:center;">
+      <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773180329/BTG_1_mnzs4n.png" alt="Brisbon Transportation Group" style="height:32px;width:auto;">
+    </a>
+    <div class="footer-links">
+      <a href="brisbon-website.html">Home</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="#">Services</a>
+      <a href="#">Fleet</a>
+      <a href="#">About</a>
+      <a href="brisbon-vehicle-finder.html">Vehicle Finder</a>
+    </div>
+    <div class="footer-copy">© 2026 Brisbon Transportation Group LLC. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+// Highlight active tab on scroll
+const sections = document.querySelectorAll('#corporate, #healthcare');
+const tabs = document.querySelectorAll('.page-hero-tab');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      tabs.forEach(t => t.classList.remove('active'));
+      const match = document.querySelector(`.page-hero-tab[href="#${e.target.id}"]`);
+      if (match) match.classList.add('active');
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(s => observer.observe(s));
+
+// Scroll header state
+window.addEventListener('scroll', () => {
+  document.getElementById('site-header').style.borderBottomColor = window.scrollY > 50 ? 'rgba(201,168,76,0.15)' : '';
+});
+</script>
+</body>
+</html>

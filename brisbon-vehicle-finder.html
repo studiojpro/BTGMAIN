@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brisbon Transportation Group — Vehicle Finder</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9A84C;--gold2:#E8C96A;--gold3:#7A5C1E;--gold-pale:#FBF5E6;
+  --ink:#111010;--ink2:#0d0d0d;--mist:#E8E2D6;--border:#D4C9B0;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Outfit',sans-serif;
+  color:var(--ink);
+  min-height:100vh;
+  overflow-x:hidden;
+  background-color:#ddd8ca;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E"),
+    linear-gradient(160deg, #ebe5d8 0%, #d9d2c2 40%, #cfc8b8 100%);
+}
+
+/* ── MOBILE STICKY CTA ── */
+.mobile-cta-bar {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+  background: var(--ink2);
+  border-top: 1px solid rgba(201,168,76,0.3);
+  padding: 0.8rem 1rem;
+  gap: 0.6rem;
+}
+@media(max-width:768px){ .mobile-cta-bar { display: flex; } }
+.mobile-cta-bar a {
+  flex: 1; text-align: center; padding: 0.7rem 0.5rem;
+  font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; font-weight: 500; border-radius: 2px;
+}
+.mobile-cta-bar .mcall { background: var(--gold); color: var(--ink2); }
+.mobile-cta-bar .mquote { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+
+/* HEADER */
+header {
+  background: rgba(10,10,10,0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 0 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+  position: sticky; top: 0; z-index: 200;
+  transition: border-color 0.3s ease;
+}
+.h-logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+.h-logo img { height: 40px; width: auto; }
+.logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem; letter-spacing: 0.05em;
+  color: #ffffff; line-height: 1.1;
+}
+.logo-text span {
+  display: block; font-size: 0.6rem;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase;
+}
+.h-nav { display: flex; align-items: center; gap: 0; }
+.h-nav-link {
+  font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5); text-decoration: none;
+  padding: 0 1.1rem; height: 72px; display: flex; align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease; white-space: nowrap;
+}
+.h-nav-link:hover { color: var(--gold2); border-bottom-color: var(--gold); }
+.h-nav-link.active { color: var(--gold); border-bottom-color: var(--gold); }
+.h-nav-dropdown { position: relative; }
+.h-nav-dropdown:hover .h-dropdown-menu { opacity: 1; pointer-events: all; transform: translateY(0); }
+.h-dropdown-menu {
+  position: absolute; top: 100%; left: 0;
+  background: var(--ink);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-top: 2px solid var(--gold);
+  min-width: 220px; padding: 0.5rem 0;
+  opacity: 0; pointer-events: none; transform: translateY(-8px);
+  transition: all 0.2s ease;
+}
+.h-dropdown-menu a {
+  display: block; padding: 0.65rem 1.2rem;
+  font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); text-decoration: none;
+  transition: all 0.15s ease; border-left: 2px solid transparent;
+}
+.h-dropdown-menu a:hover { color: var(--gold2); border-left-color: var(--gold); background: rgba(201,168,76,0.07); padding-left: 1.5rem; }
+.btn-quote-nav {
+  background: transparent; color: var(--gold);
+  font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+  padding: 0.65rem 1.4rem; text-decoration: none; margin-left: 1rem;
+  border: 1px solid var(--gold3); border-radius: 2px;
+  transition: all 0.22s ease; white-space: nowrap;
+}
+.btn-quote-nav:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+.h-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+.h-hamburger span { width: 22px; height: 1.5px; background: #fff; transition: all 0.3s; }
+@media(max-width:900px){
+  .h-nav .h-nav-link, .h-nav .h-nav-dropdown { display: none; }
+  .btn-quote-nav { display: none; }
+  .h-hamburger { display: flex; }
+  .h-cta { display: none; }
+}
+
+/* ═══════════════════════════════════════
+   PAGE LAYOUT — sticky sidebar, single page scroll
+   ═══════════════════════════════════════ */
+.page-layout{
+  display:flex;
+  flex-direction:row;
+  align-items:stretch;
+  min-height:calc(100vh - 72px);
+}
+
+/* LEFT SIDEBAR — stretches to full height of the taller column */
+.sidebar{
+  width:420px;
+  flex-shrink:0;
+  background:var(--ink);
+  border-right:2px solid var(--gold3);
+  position:relative;
+  align-self:stretch;
+}
+.sidebar::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 100%, rgba(201,168,76,.08) 0%, transparent 70%);
+  pointer-events:none;
+  z-index:0;
+}
+.sidebar > *{position:relative;z-index:1}
+
+/* WIZARD panel inside sidebar — no independent scroll */
+.wizard{
+  background:transparent;
+  border-bottom:none;
+}
+
+.finder-panel{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  padding:0;
+  position:relative;
+  z-index:1;
+}
+.finder-divider{background:#1e1e1e;height:1px;width:100%}
+
+/* Sidebar sections */
+.finder-left{
+  padding:24px 28px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.finder-right{
+  padding:20px 28px 24px;
+  display:flex;
+  flex-direction:column;
+}
+
+/* RIGHT MAIN — natural page flow */
+.main-content{
+  flex:1;
+  min-width:0;
+  align-self:stretch;
+}
+.finder-section-label{
+  font-size:.48rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:14px;
+}
+
+.pax-num-row{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+.pax-num{font-family:'Cormorant Garamond',serif;font-size:5.5rem;font-weight:300;color:#fff;line-height:1}
+.pax-unit{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:#777;font-style:italic;align-self:flex-end;padding-bottom:.35rem}
+.pax-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.88rem;color:#888;margin-bottom:18px;min-height:1.2em}
+.pax-sub strong{color:var(--gold);font-style:normal;font-family:'Outfit',sans-serif;font-size:.62rem}
+
+.track-wrap{position:relative;height:6px}
+.track-bg{position:absolute;inset:0;border-radius:3px;background:#1e1e1e}
+.track-fill{position:absolute;top:0;left:0;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--gold3),var(--gold),var(--gold2));box-shadow:0 0 10px rgba(201,168,76,.35);transition:width .06s}
+input#paxRange{position:absolute;inset:0;width:100%;height:6px;-webkit-appearance:none;background:transparent;outline:none;cursor:pointer;z-index:3;margin:0}
+input#paxRange::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;margin-top:-11px;background:radial-gradient(circle at 38% 35%,#ffe97a,var(--gold) 55%,var(--gold3));border-radius:50%;border:3px solid var(--ink);box-shadow:0 0 0 2px var(--gold),0 4px 16px rgba(201,168,76,.5);cursor:grab;transition:transform .12s}
+input#paxRange:active::-webkit-slider-thumb{cursor:grabbing;transform:scale(1.12)}
+input#paxRange::-moz-range-thumb{width:28px;height:28px;background:var(--gold);border-radius:50%;border:3px solid var(--ink);cursor:grab}
+.tick-row{display:flex;justify-content:space-between;margin-top:10px}
+.tick{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
+.tick:hover .tdot{transform:scale(1.6);background:var(--gold2)!important}
+.tdot{width:6px;height:6px;border-radius:50%;background:#252525;border:1.5px solid #2e2e2e;transition:all .18s}
+.tick.past .tdot{background:var(--gold3);border-color:var(--gold3)}
+.tick.active .tdot{background:var(--gold2);border-color:var(--gold2);transform:scale(1.7);box-shadow:0 0 8px rgba(232,201,106,.7)}
+.tnum{font-size:.46rem;font-weight:500;color:#666;transition:color .18s}
+.tick.past .tnum{color:var(--gold3)}
+.tick.active .tnum{color:var(--gold2);font-weight:700}
+
+/* TYPE GRID */
+.type-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.type-card{border:1px solid #252525;border-radius:4px;padding:14px 10px 11px;text-align:center;cursor:pointer;transition:all .22s;background:rgba(255,255,255,.02);position:relative}
+.type-card:hover:not(.grey){border-color:var(--gold3);background:rgba(201,168,76,.07)}
+.type-card.sel{border-color:var(--gold);background:rgba(201,168,76,.13);box-shadow:0 0 0 1px var(--gold),0 4px 18px rgba(201,168,76,.18)}
+.type-card.grey{opacity:.18;cursor:not-allowed;pointer-events:none}
+.tc-icon{font-size:1.6rem;margin-bottom:6px;display:block}
+.tc-name{font-size:.46rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#888;transition:color .18s}
+.type-card.sel .tc-name{color:var(--gold2)}
+.tc-cnt{font-family:'Cormorant Garamond',serif;font-size:.9rem;color:#666;margin-top:4px;transition:color .18s}
+.type-card.sel .tc-cnt{color:var(--gold)}
+.tc-check{position:absolute;top:6px;right:6px;width:14px;height:14px;border-radius:50%;border:1.5px solid #2a2a2a;transition:all .2s;display:flex;align-items:center;justify-content:center;font-size:.44rem;color:transparent}
+.type-card.sel .tc-check{background:var(--gold);border-color:var(--gold);color:#fff}
+.type-all{border-style:dashed;border-color:#282828}
+.type-all.sel{border-style:solid}
+
+/* LTL Shipping checkbox */
+.ltl-toggle{
+  display:flex;align-items:flex-start;gap:10px;
+  margin-top:18px;
+  padding:12px 14px;
+  border:1px solid #252525;
+  border-radius:4px;
+  background:rgba(255,255,255,.02);
+  cursor:pointer;
+  transition:border-color .2s, background .2s;
+}
+.ltl-toggle:hover{border-color:var(--gold3);background:rgba(201,168,76,.05)}
+.ltl-toggle.active{border-color:var(--gold3);background:rgba(201,168,76,.07)}
+.ltl-checkbox{
+  flex-shrink:0;
+  width:16px;height:16px;
+  margin-top:1px;
+  border:1.5px solid #3a3a3a;
+  border-radius:3px;
+  background:#0a0a0a;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .18s;
+  font-size:.55rem;color:transparent;
+}
+.ltl-toggle.active .ltl-checkbox{
+  background:var(--gold3);
+  border-color:var(--gold);
+  color:#fff;
+}
+.ltl-label{
+  font-size:.72rem;font-weight:500;
+  letter-spacing:.06em;line-height:1.5;
+  color:#bbb;
+  transition:color .2s;
+  user-select:none;
+}
+.ltl-toggle.active .ltl-label{color:var(--gold2)}
+.ltl-logo{
+  height:28px;width:auto;flex-shrink:0;
+  object-fit:contain;
+  filter:drop-shadow(0 1px 3px rgba(0,0,0,.4));
+  opacity:.75;
+  transition:opacity .2s;
+}
+.ltl-toggle.active .ltl-logo{opacity:1}
+
+/* Slider disabled state */
+.slider-wrap{transition:opacity .2s}
+.slider-wrap.disabled{opacity:.28;pointer-events:none}
+
+/* ── PAX MODE TOGGLE ── */
+.pax-mode-toggle{
+  display:flex;
+  gap:0;
+  border:1px solid #252525;
+  border-radius:4px;
+  overflow:hidden;
+  margin-bottom:18px;
+}
+.pax-mode-btn{
+  flex:1;
+  padding:8px 6px;
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  font-family:'DM Mono',monospace;
+  font-size:.5rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:#444;
+  transition:all .2s ease;
+  position:relative;
+}
+.pax-mode-btn:first-child{ border-right:1px solid #252525; }
+.pax-mode-btn.active{ background:rgba(201,168,76,.1); color:var(--gold2); }
+.pax-mode-btn.active::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold3),var(--gold));
+}
+.pax-mode-btn:hover:not(.active){ background:rgba(255,255,255,.03); color:#777; }
+
+/* ── GROUP SIZE CARDS ── */
+.group-size-wrap{
+  display:none;
+  flex-direction:column;
+  gap:8px;
+  margin-bottom:4px;
+}
+.group-size-wrap.visible{ display:flex; }
+
+.group-card{
+  display:flex;align-items:center;gap:14px;
+  padding:13px 14px;
+  border:1px solid #222;border-radius:4px;
+  background:rgba(255,255,255,.02);
+  cursor:pointer;
+  transition:all .22s ease;
+  position:relative;overflow:hidden;
+}
+.group-card:hover{ border-color:rgba(201,168,76,.35); background:rgba(201,168,76,.06); }
+.group-card.sel{
+  border-color:var(--gold);background:rgba(201,168,76,.12);
+  box-shadow:0 0 0 1px rgba(201,168,76,.2),0 4px 16px rgba(201,168,76,.1);
+}
+.group-card.sel::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.7;
+}
+.gc-icon{ font-size:1.5rem;flex-shrink:0;line-height:1;opacity:.5;transition:opacity .22s,transform .22s; }
+.group-card.sel .gc-icon{ opacity:1;transform:scale(1.08); }
+.gc-text{ flex:1; }
+.gc-label{
+  font-family:'Outfit',sans-serif;font-size:.76rem;font-weight:600;
+  letter-spacing:.03em;color:#888;transition:color .22s;margin-bottom:2px;
+}
+.group-card.sel .gc-label{ color:#fff; }
+.gc-range{
+  font-family:'DM Mono',monospace;font-size:.52rem;
+  letter-spacing:.1em;color:#3a3a3a;transition:color .22s;
+}
+.group-card.sel .gc-range{ color:var(--gold); }
+.gc-check{
+  width:16px;height:16px;border-radius:50%;border:1.5px solid #2a2a2a;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.5rem;color:transparent;flex-shrink:0;transition:all .2s;
+}
+.group-card.sel .gc-check{ background:var(--gold);border-color:var(--gold);color:#fff; }
+
+.group-size-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:.82rem;color:#888;margin-top:2px;margin-bottom:14px;min-height:1.2em;
+}
+.group-size-sub strong{ color:var(--gold);font-style:normal;font-family:'Outfit',sans-serif;font-size:.6rem; }
+
+/* RESULTS */
+.results-section{
+  padding:28px 36px;
+  background:transparent;
+}
+.results-section > *{position:relative;z-index:1}
+.results-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px;flex-wrap:wrap;gap:10px}
+.results-topbar h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.5rem;letter-spacing:.04em}
+.results-meta{display:flex;align-items:center;gap:10px}
+.r-count{font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:#aaa}
+.btn-reset-all{padding:6px 14px;background:transparent;border:1px solid var(--gold3);color:var(--gold3);font-family:'Outfit',sans-serif;font-size:.52rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s}
+.btn-reset-all:hover{background:var(--gold3);color:#fff}
+
+/* DIVISION BLOCK */
+.division-block{margin-bottom:44px}
+.division-header{
+  display:flex;align-items:center;gap:18px;
+  margin-bottom:20px;padding:16px 22px;
+  background:#0d0d0d;
+  border:1px solid #1e1e1e;
+  border-radius:4px;
+  box-shadow:0 2px 12px rgba(0,0,0,.18);
+}
+.division-header-info{flex:1}
+.division-logo{height:40px;width:auto;object-fit:contain;object-position:left center;flex-shrink:0;filter:drop-shadow(0 1px 4px rgba(0,0,0,.4))}
+.division-logo-ph{height:40px;display:flex;align-items:center}
+.division-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2)}
+.division-count{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#888;margin-top:4px}
+.division-website{
+  flex-shrink:0;
+  padding:7px 16px;
+  border:1px solid var(--gold3);
+  color:var(--gold);
+  background:transparent;
+  font-family:'Outfit',sans-serif;
+  font-size:.46rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;
+  border-radius:2px;
+  transition:all .2s;
+  white-space:nowrap;
+  cursor:pointer;
+}
+.division-website:hover{background:var(--gold);color:#fff;border-color:var(--gold);box-shadow:0 3px 12px rgba(201,168,76,.3)}
+
+/* ══════════════════════════════════════════
+   CATEGORY LANE — horizontal row per type
+   ══════════════════════════════════════════ */
+.cat-lane{
+  margin-bottom:28px;
+}
+.cat-lane-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--border);
+}
+.cat-lane-icon{font-size:1.1rem;line-height:1}
+.cat-lane-label{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;font-weight:500;
+  letter-spacing:.08em;
+  color:var(--ink);
+}
+.cat-lane-count{
+  font-size:.46rem;letter-spacing:.14em;text-transform:uppercase;
+  color:#d4d4d4;margin-left:auto;
+}
+
+/* Horizontal scroll row of cards */
+.cat-lane-cards{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  gap:18px;
+  align-items:flex-start;
+}
+
+/* ══════════════════════════════════
+   MODEL CARD — 3 per row
+   ══════════════════════════════════ */
+.model-card{
+  width:calc(33.333% - 12px);
+  min-width:260px;
+  height:380px;
+  flex-shrink:0;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:6px;
+  overflow:hidden;
+  cursor:pointer;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  transition:all .22s;
+  box-shadow:0 4px 16px rgba(0,0,0,.13), 0 1px 3px rgba(0,0,0,.08);
+}
+.model-card:hover{
+  border-color:var(--gold3);
+  box-shadow:0 12px 32px rgba(0,0,0,.2), 0 2px 6px rgba(0,0,0,.1);
+  transform:translateY(-4px);
+}
+.model-card.sel{
+  border-color:var(--gold);
+  box-shadow:0 0 0 2px var(--gold), 0 8px 28px rgba(201,168,76,.25);
+}
+.model-card.sel::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--gold3),var(--gold),var(--gold2));
+  z-index:2;
+  border-radius:6px 6px 0 0;
+}
+
+/* ── PHOTO AREA: upper 2/3 (260px) ── */
+.mc-photo{
+  width:100%;
+  height:260px;
+  flex-shrink:0;
+  position:relative;
+  overflow:hidden;
+  background:#111;
+  cursor:pointer;
+}
+.mc-photo img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+  transition:transform .45s ease;
+}
+.model-card:hover .mc-photo img{transform:scale(1.07)}
+
+.mc-photo-ph{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:8px;
+  background:#f5f2ed;
+}
+.mc-photo-ph-icon{font-size:3.5rem;opacity:.2}
+.mc-photo-ph-text{
+  font-size:.5rem;letter-spacing:.12em;
+  text-transform:uppercase;color:#ccc;
+  text-align:center;padding:0 10px;
+}
+
+/* Unit count badge — top-left corner */
+.mc-count-badge{
+  position:absolute;top:10px;left:10px;
+  background:rgba(0,0,0,.75);
+  color:var(--gold2);
+  font-family:'Outfit',sans-serif;
+  font-size:.6rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:5px 11px;border-radius:2px;
+  backdrop-filter:blur(4px);
+  z-index:2;
+  pointer-events:none;
+}
+
+/* Selected check badge — top-right */
+.mc-sel-badge{
+  position:absolute;top:9px;right:9px;
+  width:28px;height:28px;border-radius:50%;
+  background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;color:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.5);
+  z-index:2;
+  opacity:0;transition:opacity .2s;
+}
+.model-card.sel .mc-sel-badge{opacity:1}
+
+/* Gradient scrim + pax label at photo bottom */
+.mc-photo-footer{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(0,0,0,.72));
+  padding:26px 10px 8px;
+  pointer-events:none;
+  z-index:2;
+}
+.mc-pax-label{
+  font-size:.64rem;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.85);
+  font-weight:600;
+}
+
+/* ── INFO AREA: lower 1/3 ── */
+.mc-info{
+  flex:1;
+  padding:12px 14px 11px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:0;
+  overflow:hidden;
+}
+.mc-make-model{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;font-weight:500;
+  color:var(--ink);
+  line-height:1.15;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.mc-category{
+  font-size:.58rem;color:#aaa;
+  letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:4px;
+}
+.mc-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:4px;
+  margin-top:6px;
+}
+.mc-feats{
+  display:flex;gap:3px;
+  font-size:.9rem;opacity:.6;
+  flex:1;overflow:hidden;
+}
+.mc-btn{
+  padding:6px 14px;
+  background:transparent;
+  border:1px solid var(--border);
+  color:#888;
+  font-family:'Outfit',sans-serif;
+  font-size:.58rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  cursor:pointer;border-radius:2px;
+  transition:all .18s;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.model-card:hover .mc-btn,
+.model-card.sel .mc-btn{
+  background:var(--gold);border-color:var(--gold);color:#fff;
+}
+
+/* Unit selector inside Showcase */
+.sc-unit-selector{
+  padding:10px 22px;
+  border-top:1px solid #111;
+  background:#050505;
+  flex-shrink:0;
+}
+.sc-unit-selector-label{
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:#585858;margin-bottom:10px;
+}
+.sc-unit-pills{
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.sc-unit-pill{
+  padding:7px 16px;
+  background:#0d0d0d;
+  border:1px solid #222;
+  color:#888;
+  font-family:'Outfit',sans-serif;
+  font-size:.64rem;font-weight:600;
+  letter-spacing:.1em;
+  cursor:pointer;border-radius:2px;
+  transition:all .18s;
+}
+.sc-unit-pill:hover{border-color:var(--gold3);color:var(--gold)}
+.sc-unit-pill.active{
+  background:rgba(201,168,76,.1);
+  border-color:var(--gold);
+  color:var(--gold2);
+}
+.sc-unit-pill.disabled{
+  opacity:.28;
+  cursor:not-allowed;
+  pointer-events:none;
+  border-color:#1a1a1a;
+  color:#666;
+}
+
+
+/* ════════════════════════════════
+   SHOWCASE — cinematic side-by-side
+   ════════════════════════════════ */
+.showcase{
+  background:#000;
+  border:1px solid #222;
+  border-radius:6px;
+  margin-bottom:28px;
+  overflow:hidden;
+  display:none;
+  box-shadow:0 8px 40px rgba(0,0,0,.4);
+}
+.showcase.on{display:flex;flex-direction:column;animation:riseIn .35s cubic-bezier(.16,1,.3,1)}
+@keyframes riseIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* Top label bar */
+.sc-topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 26px;
+  border-bottom:1px solid #1a1a1a;
+  background:#050505;
+  flex-shrink:0;
+}
+.sc-topbar-left{display:flex;align-items:center;gap:10px}
+.sc-label-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(201,168,76,.8)}
+.sc-label-text{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.sc-x{background:none;border:1px solid #2a2a2a;color:#666;width:28px;height:28px;border-radius:50%;font-size:.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s}
+.sc-x:hover{color:#fff;border-color:#666;background:#1a1a1a}
+
+/* Main body: photo left + panel right, side by side */
+.sc-body{
+  display:flex;
+  flex-direction:row;
+  height:560px;
+}
+
+/* Hero image — left column, fills full height of body */
+.sc-hero{
+  position:relative;
+  flex:0 0 52%;
+  background:#0a0a0a;
+  overflow:hidden;
+}
+.sc-hero img.sc-hero-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+  transition:transform .6s ease;
+}
+.showcase:hover .sc-hero img.sc-hero-img{transform:scale(1.025)}
+.sc-hero-ph{
+  position:relative;
+  z-index:2;
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:12px;
+}
+.sc-hero-ph-icon{font-size:5rem;opacity:.12}
+.sc-hero-ph-text{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:#333}
+/* Gradient overlay */
+.sc-hero-overlay{
+  position:absolute;inset:0;
+  z-index:1;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 30%),
+    linear-gradient(to right, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 60%);
+  pointer-events:none;
+}
+/* Division logo watermark */
+.sc-hero-div-logo{
+  position:absolute;
+  top:18px;
+  left:22px;
+  height:38px;
+  width:auto;
+  max-width:160px;
+  object-fit:contain;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.8));
+  opacity:.9;
+  z-index:3;
+}
+.sc-hero-div-logo-ph{
+  position:absolute;
+  top:18px;
+  left:22px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:.7rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.2);
+  z-index:3;
+}
+
+/* Right panel — no scroll, fills height, distributes sections */
+.sc-panel{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  border-left:1px solid #111;
+  overflow:hidden;
+  height:100%;
+}
+
+/* Info panel: flex column, sections space evenly */
+.sc-info-panel{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  padding:16px 22px 12px;
+  gap:10px;
+  min-height:0;
+  justify-content:space-between;
+}
+
+/* Division badge */
+.sc-division-badge{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding-bottom:10px;
+  border-bottom:1px solid #1a1a1a;
+  flex-shrink:0;
+}
+.sc-div-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;letter-spacing:.04em;color:var(--gold2);line-height:1}
+.sc-div-name.no-logo{color:var(--gold2)}
+
+/* Vehicle title */
+.sc-name{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:#fff;line-height:1.05;margin-bottom:3px;letter-spacing:.02em}
+.sc-sub{font-size:.66rem;color:#888;letter-spacing:.06em}
+
+/* Stats grid */
+.sc-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#111;border:1px solid #111;border-radius:3px;overflow:hidden;flex-shrink:0}
+.sc-stat{background:#0a0a0a;padding:10px 14px}
+.sc-stat .lbl{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#888;margin-bottom:4px}
+.sc-stat .val{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold2);line-height:1}
+.sc-stat .val-sm{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold2);line-height:1}
+
+/* Amenities */
+.sc-amenities-title{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:#888;margin-bottom:6px}
+.sc-feats{display:flex;flex-wrap:wrap;gap:5px}
+.sc-feat{
+  background:rgba(201,168,76,.07);
+  border:1px solid rgba(201,168,76,.18);
+  color:var(--gold2);
+  font-size:.56rem;
+  font-weight:500;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:4px 10px;
+  border-radius:2px;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+.sc-no-feat{font-size:.62rem;color:#555;font-style:italic}
+
+/* CTA bar */
+.sc-cta{
+  background:#050505;
+  padding:10px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border-top:1px solid #111;
+  flex-shrink:0;
+}
+.sc-cta p{font-size:.62rem;color:#5c5c5c;letter-spacing:.12em;text-transform:uppercase}
+.btn-book{
+  padding:9px 22px;
+  background:linear-gradient(135deg,var(--gold3),var(--gold),var(--gold2));
+  border:none;color:#fff;
+  font-family:'Outfit',sans-serif;
+  font-size:.64rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  cursor:pointer;border-radius:2px;
+  transition:all .22s;
+  white-space:nowrap;
+  box-shadow:0 3px 12px rgba(201,168,76,.28);
+}
+.btn-book:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,.42)}
+
+.no-res{text-align:center;padding:70px 20px;color:#bbb}
+.no-res .nri{font-size:3rem;margin-bottom:10px}
+.no-res h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;margin-bottom:5px;color:#888}
+.no-res p{font-size:.62rem;letter-spacing:.04em}
+
+footer{background:var(--ink);border-top:1px solid #1a1a1a;padding:18px 48px;text-align:center;color:#333;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase}
+
+/* ── AMENITIES PANEL ── */
+.amenities-panel{
+  padding:20px 28px 26px;
+  border-top:1px solid #1e1e1e;
+  position:relative;
+}
+.amenities-panel-label{
+  font-size:.48rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:14px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.amenities-legend{
+  display:flex;align-items:center;gap:6px;
+  font-size:.42rem;letter-spacing:.1em;color:#444;font-weight:400;
+}
+.amenities-legend-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 5px rgba(201,168,76,.5);
+  flex-shrink:0;
+}
+.amenities-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+}
+.amenity-box{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 10px;
+  border-radius:3px;
+  border:1px solid #1c1c1c;
+  background:rgba(255,255,255,.015);
+  cursor:default;
+  transition:all .22s ease;
+  position:relative;
+  overflow:hidden;
+}
+/* inactive state */
+.amenity-box .am-icon{
+  font-size:.95rem;
+  flex-shrink:0;
+  opacity:.22;
+  transition:opacity .22s,transform .22s;
+  line-height:1;
+}
+.amenity-box .am-name{
+  font-size:.48rem;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:#383838;
+  line-height:1.3;
+  transition:color .22s;
+}
+/* active / highlighted state */
+.amenity-box.active{
+  border-color:rgba(201,168,76,.45);
+  background:rgba(201,168,76,.09);
+  box-shadow:0 0 0 1px rgba(201,168,76,.2), inset 0 0 16px rgba(201,168,76,.04);
+}
+.amenity-box.active .am-icon{
+  opacity:1;
+  transform:scale(1.1);
+}
+.amenity-box.active .am-name{
+  color:var(--gold2);
+}
+/* subtle shimmer bar on active */
+.amenity-box.active::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity:.6;
+}
+/* no-vehicle state — dim everything */
+.amenities-panel.no-vehicle .amenity-box{
+  opacity:.35;
+  pointer-events:none;
+}
+.amenities-hint{
+  font-size:.52rem;
+  font-style:italic;
+  color:#333;
+  letter-spacing:.06em;
+  text-align:center;
+  margin-top:12px;
+  min-height:1em;
+  transition:opacity .3s;
+}
+.amenities-hint.hidden{opacity:0}
+
+@media(max-width:900px){
+  .sc-body{flex-direction:column}
+  .sc-hero{flex:none;min-height:260px;height:260px}
+  .sc-hero-ph{min-height:260px}
+  .sc-panel{max-height:none;border-left:none;border-top:1px solid #111}
+}
+@media(max-width:800px){
+  .page-layout{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:relative;top:0;border-right:none;border-bottom:2px solid var(--gold3)}
+  .wizard{overflow:visible}
+  .finder-panel{height:auto}
+  .finder-right{flex:none;overflow:visible}
+  .finder-left{padding:22px 20px 18px}
+  .finder-right{padding:18px 20px 22px}
+  .results-section{padding:22px 16px}
+  .cat-lane-cards{gap:12px}
+  .model-card{width:100%;min-width:0;height:340px}
+  .mc-photo{height:230px}
+}
+</style>
+</head>
+<body>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta-bar">
+  <a href="tel:+19190000000" class="mcall">📞 Call Now</a>
+  <a href="brisbon-website.html#quote" class="mquote">Get a Quote</a>
+</div>
+
+<header id="site-header">
+  <a href="brisbon-website.html" class="h-logo">
+    <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773180329/BTG_1_mnzs4n.png" alt="Brisbon Transportation Group">
+  </a>
+  <nav class="h-nav">
+    <a class="h-nav-link" href="brisbon-website.html">Home</a>
+    <a class="h-nav-link active" href="brisbon-vehicle-finder.html">Fleet</a>
+    <a class="h-nav-link" href="solutions.html">Solutions</a>
+    <div class="h-nav-dropdown">
+      <a class="h-nav-link" href="#">Industries ▾</a>
+      <div class="h-dropdown-menu">
+        <a href="#">Healthcare & Hospitals</a>
+        <a href="#">Corporate & RTP</a>
+        <a href="#">Universities & Schools</a>
+        <a href="#">Weddings & Events</a>
+        <a href="#">Sports & Concerts</a>
+        <a href="#">Conferences</a>
+      </div>
+    </div>
+    <div class="h-nav-dropdown">
+      <a class="h-nav-link" href="#">Locations ▾</a>
+      <div class="h-dropdown-menu">
+        <a href="#">Raleigh, NC</a>
+        <a href="#">Durham, NC</a>
+        <a href="#">Chapel Hill, NC</a>
+        <a href="#">Research Triangle Park</a>
+        <a href="#">Cary · Apex · Pinehurst</a>
+      </div>
+    </div>
+    <a class="h-nav-link" href="#">About</a>
+    <a href="brisbon-website.html#quote" class="btn-quote-nav">Get a Quote →</a>
+  </nav>
+  <div class="h-hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<div class="page-layout">
+
+  <!-- LEFT SIDEBAR: passenger + vehicle type controls -->
+  <div class="sidebar">
+    <div class="wizard">
+      <div class="finder-panel">
+
+        <!-- Passenger selection -->
+        <div class="finder-left">
+          <div class="finder-section-label">How Many Passengers?</div>
+
+          <!-- Mode toggle -->
+          <div class="pax-mode-toggle" id="paxModeToggle">
+            <button class="pax-mode-btn active" id="btnModeSlider" onclick="setPaxMode('slider')">Exact Count</button>
+            <button class="pax-mode-btn" id="btnModeGroup" onclick="setPaxMode('group')">Group Size</button>
+          </div>
+
+          <!-- SLIDER MODE -->
+          <div class="slider-wrap" id="sliderWrap">
+            <div class="pax-num-row">
+              <div class="pax-num" id="paxNum">1</div>
+              <div class="pax-unit">passenger</div>
+            </div>
+            <div class="pax-sub" id="paxSub">&nbsp;</div>
+            <div style="position:relative;padding:0 4px">
+              <div class="track-wrap">
+                <div class="track-bg"></div>
+                <div class="track-fill" id="trackFill"></div>
+                <input type="range" id="paxRange" min="0" step="1" value="0">
+              </div>
+              <div class="tick-row" id="tickRow"></div>
+            </div>
+          </div>
+
+          <!-- GROUP SIZE MODE -->
+          <div class="group-size-wrap" id="groupSizeWrap">
+            <div class="group-card" id="gc-small" onclick="selectGroup('small')">
+              <span class="gc-icon">🚗</span>
+              <div class="gc-text">
+                <div class="gc-label">Small Group</div>
+                <div class="gc-range">Up to 7 passengers</div>
+              </div>
+              <div class="gc-check">✓</div>
+            </div>
+            <div class="group-card" id="gc-medium" onclick="selectGroup('medium')">
+              <span class="gc-icon">🚐</span>
+              <div class="gc-text">
+                <div class="gc-label">Medium Group</div>
+                <div class="gc-range">Up to 24 passengers</div>
+              </div>
+              <div class="gc-check">✓</div>
+            </div>
+            <div class="group-card" id="gc-large" onclick="selectGroup('large')">
+              <span class="gc-icon">🚌</span>
+              <div class="gc-text">
+                <div class="gc-label">Large Group</div>
+                <div class="gc-range">Up to 56 passengers</div>
+              </div>
+              <div class="gc-check">✓</div>
+            </div>
+            <div class="group-size-sub" id="groupSizeSub">&nbsp;</div>
+          </div>
+
+          <!-- LTL divider + toggle -->
+          <div style="height:1px;background:#1e1e1e;margin:16px 0 14px"></div>
+          <div class="ltl-toggle" id="ltlToggle" onclick="toggleLTL()">
+            <div class="ltl-checkbox" id="ltlCheckbox">✓</div>
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876772/Agility_hkwx39.png" alt="Agility Transport" class="ltl-logo">
+            <div class="ltl-label" id="ltlLabel">Select box for LTL Shipping with Agility Transport</div>
+          </div>
+        </div>
+
+        <div class="finder-divider"></div>
+
+        <!-- Vehicle type -->
+        <div class="finder-right">
+          <div class="finder-section-label">Vehicle Type</div>
+          <div class="type-grid" id="typeGrid"></div>
+        </div>
+
+        <div class="finder-divider"></div>
+
+        <!-- Amenities display -->
+        <div class="amenities-panel no-vehicle" id="amenitiesPanel">
+          <div class="amenities-panel-label">
+            Amenities
+            <div class="amenities-legend">
+              <div class="amenities-legend-dot"></div>
+              Included on selected vehicle
+            </div>
+          </div>
+          <div class="amenities-grid" id="amenitiesGrid"></div>
+          <div class="amenities-hint" id="amenitiesHint">Select a vehicle to see its amenities</div>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- /.sidebar -->
+
+  <!-- RIGHT: scrollable results -->
+  <div class="main-content">
+    <!-- RESULTS -->
+    <div class="results-section" id="resultsSection">
+  <div class="results-topbar">
+    <h2>Available Vehicles</h2>
+    <div class="results-meta">
+      <div class="r-count" id="rCount"></div>
+      <button class="btn-reset-all" onclick="resetAll()">↺ Reset</button>
+    </div>
+  </div>
+
+  <!-- SHOWCASE (redesigned) -->
+  <div class="showcase" id="showcase">
+    <div class="sc-topbar">
+      <div class="sc-topbar-left">
+        <div class="sc-label-dot"></div>
+        <span class="sc-label-text">Vehicle Showcase</span>
+      </div>
+      <button class="sc-x" onclick="closeShowcase()">✕</button>
+    </div>
+
+    <!-- Body: hero left + panel right -->
+    <div class="sc-body">
+      <!-- Hero image — left, full height -->
+      <div class="sc-hero" id="scHero">
+        <div class="sc-hero-ph" id="scHeroPh">
+          <div class="sc-hero-ph-icon" id="scHeroIcon">🚗</div>
+          <div class="sc-hero-ph-text">No photo on file</div>
+        </div>
+        <div class="sc-hero-overlay"></div>
+        <div id="scHeroDivLogo" style="position:absolute;inset:0;pointer-events:none;z-index:3"></div>
+      </div>
+
+      <!-- Right panel: all info + CTA + unit selector -->
+      <div class="sc-panel">
+        <div class="sc-info-panel">
+          <div class="sc-division-badge" id="scDivBadge"></div>
+          <div>
+            <div class="sc-name" id="scName"></div>
+            <div class="sc-sub" id="scSub"></div>
+          </div>
+          <div class="sc-stats-grid" id="scGrid"></div>
+          <div>
+            <div class="sc-amenities-title">Included Amenities</div>
+            <div class="sc-feats" id="scFeats"></div>
+          </div>
+        </div>
+
+        <div class="sc-cta">
+          <p>Ready to reserve this vehicle?</p>
+          <button class="btn-book" onclick="bookInquiry()">Request a Quote →</button>
+        </div>
+
+        <!-- Unit selector for multi-unit models -->
+        <div class="sc-unit-selector" id="scUnitSelector" style="display:none">
+          <div class="sc-unit-selector-label">Select a specific unit</div>
+          <div class="sc-unit-pills" id="scUnitPills"></div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /.showcase -->
+
+  <div id="vehicleOut"></div>
+</div><!-- /.results-section -->
+  </div><!-- /.main-content -->
+</div><!-- /.page-layout -->
+
+<footer>&copy; 2025 Brisbon Transportation Group &nbsp;·&nbsp; All Rights Reserved</footer>
+
+<script>
+// ── DATA ─────────────────────────────────────────────
+const VEHICLES = [
+  {unit:701,year:2019,make:"Ford",model:"Box Truck",passengers:0,category:"Box Truck",company:"Agility Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772136413/701_Ford_Box_Truck_pmhw3p.png",features:["LIFTGATE","GPS TRACKING"],cargo:true},
+  {unit:502,year:2015,make:"Ford",model:"Federal E-450",passengers:24,category:"Minibus",company:"Triangle Corporate Coach",photo:null,features:[]},
+  {unit:503,year:2019,make:"Freightliner",model:"M2 Minicoach",passengers:41,category:"Minicoach",company:"Triangle Corporate Coach",photo:null,features:[]},
+  {unit:504,year:2019,make:"Freightliner",model:"M2 Super Coach",passengers:48,category:"Super Coach",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051962/509_Supercoach_ooyuzb.png",features:[]},
+  {unit:505,year:2019,make:"Freightliner",model:"Gretch Minicoach",passengers:37,category:"Minicoach",company:"Triangle Corporate Coach",photo:null,features:[]},
+  {unit:506,year:2020,make:"Freightliner",model:"M2 Minicoach",passengers:39,category:"Minicoach",company:"Triangle Corporate Coach",photo:null,features:[]},
+  {unit:507,year:2020,make:"Freightliner",model:"M2 Motorcoach",passengers:50,category:"Motorcoach",company:"Triangle Corporate Coach",photo:null,features:[]},
+  {unit:509,year:2019,make:"Freightliner",model:"M2 Super Coach",passengers:40,category:"Super Coach",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051962/509_Supercoach_ooyuzb.png",features:["IN CABIN SCREENS"]},
+  {unit:511,year:2023,make:"Freightliner",model:"Grech Minibus",passengers:27,category:"Minibus",company:"Triangle Corporate Coach",photo:null,features:["IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","SMART TV"]},
+  {unit:512,year:2024,make:"Freightliner",model:"Grech Minibus",passengers:27,category:"Minibus",company:"Triangle Corporate Coach",photo:null,features:["IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","SMART TV"]},
+  {unit:601,year:2018,make:"VanHool",model:"TX45",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:null,features:["WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","TABLE","ADJUSTABLE FOOTREST","RESTROOM"]},
+  {unit:603,year:2017,make:"Van Hool",model:"CX-45",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772738597/603_CX45_jmavtx.png",features:["WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM"]},
+  {unit:604,year:2012,make:"Van Hool",model:"T2145",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:null,features:["WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM"]},
+  {unit:605,year:2015,make:"Van Hool",model:"TX45",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772214948/605_VsnHool_TX45_fs89vz.png",features:["WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","TABLE","ADJUSTABLE FOOTREST","RESTROOM"]},
+  {unit:606,year:2025,make:"Van Hool",model:"CX-45",passengers:56,category:"Motorcoach ADA",company:"Triangle Bus Charters",photo:null,features:["WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM","ADA LIFT","ADA RAMP"]},
+  {unit:607,year:2025,make:"Van Hool",model:"CX-45",passengers:56,category:"Motorcoach ADA",company:"Triangle Bus Charters",photo:null,features:["WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM","ADA LIFT","ADA RAMP"]},
+  {unit:107,year:2019,make:"BMW",model:"760i",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1771525368/107_BMW_760i_wlhqak.png",features:["PREMIUM AUDIO","LEATHER SEATS"]},
+  {unit:108,year:2020,make:"Mercedes",model:"S540",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1771525368/108_MERC_S540_mlxd0b.png",features:["PREMIUM AUDIO","LEATHER SEATS"]},
+  {unit:109,year:2019,make:"Lincoln",model:"Continental",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772736868/109_LINCOLN_CONT_pnd7so.png",features:[]},
+  {unit:112,year:2022,make:"Tesla",model:"Model S",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772140054/TESLA_S_vcrjm0.png",features:[]},
+  {unit:114,year:2024,make:"Mercedes",model:"E450",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772046363/MERC_E450_oqlat4.png",features:[]},
+  {unit:115,year:2025,make:"Mercedes",model:"E450",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772046363/MERC_E450_oqlat4.png",features:[]},
+  {unit:110,year:2022,make:"Lincoln",model:"Aviator",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051982/110_LINC_AVIATOR_yygtor.png",features:[]},
+  {unit:111,year:2022,make:"Lincoln",model:"Aviator",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051982/110_LINC_AVIATOR_yygtor.png",features:[]},
+  {unit:113,year:2022,make:"Lincoln",model:"Aviator",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:null,features:[]},
+  {unit:204,year:2019,make:"Chevrolet",model:"Suburban",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051990/207_CHEVY_SUB_cbyazv.png",features:[]},
+  {unit:205,year:2020,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772214420/205_CADILLAC_ESCALADE_x5it8s.png",features:[]},
+  {unit:206,year:2023,make:"Chevrolet",model:"Suburban",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:null,features:[]},
+  {unit:207,year:2023,make:"Chevrolet",model:"Suburban",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051990/207_CHEVY_SUB_cbyazv.png",features:[]},
+  {unit:208,year:2024,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:null,features:[]},
+  {unit:209,year:2024,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:null,features:[]},
+  {unit:303,year:2020,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772219858/308_Sprinter_yetpr2.png",features:[]},
+  {unit:304,year:2019,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:[]},
+  {unit:308,year:2022,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:[]},
+  {unit:309,year:2023,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:[]},
+  {unit:311,year:2024,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:[]},
+  {unit:312,year:2024,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:[]},
+  {unit:313,year:2024,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:["IN CABIN SCREENS","ADJUSTABLE SEATS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING"]},
+  {unit:314,year:2024,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:["IN CABIN SCREENS","ADJUSTABLE SEATS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","LEATHER SEATS"]},
+  {unit:203,year:2019,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Pinehurst Chauffeured Transportation",photo:null,features:[]},
+  {unit:210,year:2024,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Pinehurst Chauffeured Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772214410/210_CADILLAC_ESCALADE_ltoitz.png",features:[]},
+  {unit:310,year:2019,make:"Ford",model:"Transit Van",passengers:12,category:"Sprinter Van",company:"Pinehurst Chauffeured Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772146574/310_Pinehurst_wno5ja.png",features:[]},
+  {unit:105,year:2023,make:"GMC",model:"Acadia",passengers:6,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772038218/105_Lot3_gq3fz1.png",features:["ADA LIFT"]},
+  {unit:405,year:2017,make:"Dodge",model:"Caravan",passengers:2,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772736911/407_ADAEXP_obkusv.png",features:["ADA RAMP"]},
+  {unit:406,year:2019,make:"Dodge",model:"Caravan",passengers:2,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["ADA RAMP"]},
+  {unit:407,year:2019,make:"Dodge",model:"Caravan",passengers:2,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["ADA RAMP"]},
+  {unit:408,year:2019,make:"Ford",model:"Transit 150",passengers:3,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["ADA LIFT"]},
+  {unit:409,year:2019,make:"Ford",model:"Transit 350",passengers:3,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772038218/410_Lot1_jux1ua.png",features:["ADA LIFT"]},
+  {unit:410,year:2019,make:"Ford",model:"Transit 350",passengers:3,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772038218/410_Lot1_jux1ua.png",features:["ADA LIFT"]},
+  {unit:411,year:2026,make:"Ford",model:"E-450",passengers:12,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772041842/411_Lot4_ClinicRain_aauqmv.png",features:["ADA LIFT"]},
+  {unit:412,year:2026,make:"Ford",model:"E-450",passengers:12,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["ADA LIFT"]},
+  {unit:413,year:2024,make:"Ford",model:"E-450",passengers:12,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["ADA LIFT"]},
+  {unit:414,year:2024,make:"Ford",model:"E-450",passengers:12,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["ADA LIFT"]},
+  {unit:415,year:2024,make:"Ford",model:"E-450",passengers:12,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["ADA LIFT","SMART TV"]},
+  {unit:416,year:2024,make:"Ford",model:"E-450",passengers:12,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772038217/411_Lot1_Rehab_iqttme.png",features:["ADA LIFT","SMART TV"]}
+];
+
+const DIVISIONS = [
+  {name:"Agility Transportation",        logo:"https://res.cloudinary.com/datqt0gei/image/upload/v1771876772/Agility_hkwx39.png",         url:"https://agilitytransportusa.com/"},
+  {name:"Triangle Bus Charters",         logo:"https://res.cloudinary.com/datqt0gei/image/upload/v1771876763/Triangle_Bus_Charters_annyrt.png", url:"https://www.trianglebuscharters.com/"},
+  {name:"Triangle Corporate Coach",      logo:"https://res.cloudinary.com/datqt0gei/image/upload/v1771876764/Triangle_Corporate_Coach_yjkepl.png", url:"https://trianglecorporatecoach.com/"},
+  {name:"Pinehurst Chauffeured Transportation", logo:"https://res.cloudinary.com/datqt0gei/image/upload/v1771876763/Pinehurst_pej2c0.png", url:"https://www.pinehurstchauffeured.com/"},
+  {name:"Wisdom Care Transportation",    logo:"https://res.cloudinary.com/datqt0gei/image/upload/v1771876765/Wisdom_Care_Transportation_nbmstg.png", url:"https://www.wisdomcaretrans.com/"},
+];
+
+const TICKS = [1,3,5,6,7,8,12,18,24,27,37,39,40,41,48,50,56];
+const CATS  = ['Sedan','SUV','Sprinter Van','Minibus','Minicoach','Super Coach','Motorcoach','Motorcoach ADA','ADA Vehicle','Box Truck'];
+const CAT_ICON  = {Sedan:'🚗',SUV:'🚙','Sprinter Van':'🚐',Minibus:'🚌',Minicoach:'🚌','Super Coach':'🚌',Motorcoach:'🚎','Motorcoach ADA':'♿🚎','ADA Vehicle':'♿','Box Truck':'🚛'};
+const CAT_LABEL = {Sedan:'Luxury Sedan',SUV:'SUV','Sprinter Van':'Sprinter Van',Minibus:'Minibus',Minicoach:'Minicoach','Super Coach':'Super Coach',Motorcoach:'Motorcoach','Motorcoach ADA':'Motorcoach ADA','ADA Vehicle':'ADA Accessible','Box Truck':'Box Truck'};
+const FEAT_ICON = {WIFI:'📶','IN CABIN SCREENS':'📺','ADJUSTABLE SEATS':'💺','POWER OUTLETS':'🔌','INDIVIDUAL CLIMATE CONTROL':'❄️','WOOD FLOORING':'🪵','PREMIUM AUDIO':'🔊',TABLE:'🪑','LEATHER SEATS':'🛋️','SMART TV':'📡','ADJUSTABLE FOOTREST':'🦶',RESTROOM:'🚻','ADA LIFT':'♿','ADA RAMP':'♿',LIFTGATE:'🔼','GPS TRACKING':'📍'};
+
+// All amenity names in display order (2 columns top-to-bottom)
+const ALL_AMENITIES = [
+  'WIFI','IN CABIN SCREENS','SMART TV','PREMIUM AUDIO',
+  'POWER OUTLETS','INDIVIDUAL CLIMATE CONTROL','ADJUSTABLE SEATS','ADJUSTABLE FOOTREST',
+  'LEATHER SEATS','WOOD FLOORING','TABLE','RESTROOM',
+  'ADA LIFT','ADA RAMP','LIFTGATE','GPS TRACKING'
+];
+
+// Friendly short display names for tight grid boxes
+const FEAT_LABEL = {
+  'WIFI':'Wi-Fi',
+  'IN CABIN SCREENS':'Cabin Screens',
+  'SMART TV':'Smart TV',
+  'PREMIUM AUDIO':'Premium Audio',
+  'POWER OUTLETS':'Power Outlets',
+  'INDIVIDUAL CLIMATE CONTROL':'Climate Ctrl',
+  'ADJUSTABLE SEATS':'Adj. Seats',
+  'ADJUSTABLE FOOTREST':'Footrest',
+  'LEATHER SEATS':'Leather Seats',
+  'WOOD FLOORING':'Wood Floor',
+  'TABLE':'Table',
+  'RESTROOM':'Restroom',
+  'ADA LIFT':'ADA Lift',
+  'ADA RAMP':'ADA Ramp',
+  'LIFTGATE':'Liftgate',
+  'GPS TRACKING':'GPS Tracking'
+};
+
+// Build the static amenities grid once on load
+function buildAmenitiesGrid(){
+  const grid = document.getElementById('amenitiesGrid');
+  grid.innerHTML = ALL_AMENITIES.map(key => `
+    <div class="amenity-box" id="am-${key.replace(/\s+/g,'-')}">
+      <span class="am-icon">${FEAT_ICON[key]||'·'}</span>
+      <span class="am-name">${FEAT_LABEL[key]||key}</span>
+    </div>
+  `).join('');
+}
+
+// Update which boxes are highlighted based on selected vehicle's features
+function updateAmenities(vehicle){
+  const panel = document.getElementById('amenitiesPanel');
+  const hint  = document.getElementById('amenitiesHint');
+  const activeFeatures = vehicle ? new Set(vehicle.features) : new Set();
+
+  ALL_AMENITIES.forEach(key => {
+    const box = document.getElementById('am-'+key.replace(/\s+/g,'-'));
+    if(!box) return;
+    if(activeFeatures.has(key)){
+      box.classList.add('active');
+    } else {
+      box.classList.remove('active');
+    }
+  });
+
+  if(vehicle){
+    panel.classList.remove('no-vehicle');
+    const count = vehicle.features.length;
+    hint.textContent = count > 0
+      ? `${count} amenit${count===1?'y':'ies'} included`
+      : 'No premium amenities on this vehicle';
+    hint.classList.remove('hidden');
+  } else {
+    panel.classList.add('no-vehicle');
+    hint.textContent = 'Select a vehicle to see its amenities';
+    hint.classList.remove('hidden');
+  }
+}
+const BAGGAGE = {
+  'Sedan':       'Up to 3 Bags',
+  'SUV':         'Up to 5 Bags',
+  'Sprinter Van':'Up to 14 Bags',
+  'Motorcoach':  'Up to 100 Bags',
+};
+const CAT_ORDER = ['Sedan','SUV','Sprinter Van','Minibus','Minicoach','Super Coach','Motorcoach','Motorcoach ADA','ADA Vehicle','Box Truck'];
+
+// Photo overrides removed — photos come directly from vehicle data
+
+let selIdx=0, selCat='all', selVehicle=null, isLTL=false;
+let paxMode = 'slider'; // 'slider' | 'group'
+let selGroup = null;    // 'small' | 'medium' | 'large'
+
+// Map each group to the highest TICK index within that range
+const GROUP_TICK = {
+  small:  TICKS.lastIndexOf(7)  !== -1 ? TICKS.lastIndexOf(7)  : TICKS.reduce((best,v,i)=>v<=7  ?i:best, 0),
+  medium: TICKS.lastIndexOf(24) !== -1 ? TICKS.lastIndexOf(24) : TICKS.reduce((best,v,i)=>v<=24 ?i:best, 0),
+  large:  TICKS.lastIndexOf(56) !== -1 ? TICKS.lastIndexOf(56) : TICKS.reduce((best,v,i)=>v<=56 ?i:best, TICKS.length-1),
+};
+
+// Group display metadata
+const GROUP_META = {
+  small:  { label:'Small Group',  range:'Up to 7 passengers',  max:7  },
+  medium: { label:'Medium Group', range:'Up to 24 passengers', max:24 },
+  large:  { label:'Large Group',  range:'Up to 56 passengers', max:56 },
+};
+
+function setPaxMode(mode){
+  paxMode = mode;
+  // Toggle buttons
+  document.getElementById('btnModeSlider').classList.toggle('active', mode==='slider');
+  document.getElementById('btnModeGroup').classList.toggle('active',  mode==='group');
+  // Show/hide panels
+  const sw = document.getElementById('sliderWrap');
+  const gw = document.getElementById('groupSizeWrap');
+  if(mode==='slider'){
+    sw.style.display='block';
+    gw.classList.remove('visible');
+    // Reset group selection
+    selGroup=null;
+    document.querySelectorAll('.group-card').forEach(c=>c.classList.remove('sel'));
+  } else {
+    sw.style.display='none';
+    gw.classList.add('visible');
+    // If a group was previously selected, reapply; else default to small
+    if(selGroup) selectGroup(selGroup, true);
+    else selectGroup('small', true);
+  }
+}
+
+function selectGroup(size, silent){
+  if(isLTL) return;
+  selGroup = size;
+  // Highlight the chosen card
+  document.querySelectorAll('.group-card').forEach(c=>c.classList.remove('sel'));
+  const card = document.getElementById('gc-'+size);
+  if(card) card.classList.add('sel');
+  // Drive the slider to the right tick index
+  const idx = GROUP_TICK[size];
+  paxRange.value = idx;
+  updateSlider(idx);
+  // Update the group sub-text with available count
+  if(!silent){
+    const cnt = filtered().length;
+    const sub = document.getElementById('groupSizeSub');
+    if(sub) sub.innerHTML = cnt
+      ? `<strong>${cnt}</strong> vehicle${cnt!==1?'s':''} fit for ${GROUP_META[size].label.toLowerCase()}`
+      : `No vehicles available for ${GROUP_META[size].label.toLowerCase()}`;
+  }
+}
+
+// ── LTL TOGGLE ────────────────────────────────────────
+function toggleLTL(){
+  isLTL = !isLTL;
+  const toggle = document.getElementById('ltlToggle');
+  const label  = document.getElementById('ltlLabel');
+  const wrap   = document.getElementById('sliderWrap');
+  const modeToggle = document.getElementById('paxModeToggle');
+  const groupWrap  = document.getElementById('groupSizeWrap');
+
+  if(isLTL){
+    toggle.classList.add('active');
+    label.textContent = 'Unselect box for Passenger Transport';
+    wrap.classList.add('disabled');
+    if(modeToggle) modeToggle.style.opacity='.25';
+    if(modeToggle) modeToggle.style.pointerEvents='none';
+    if(groupWrap)  groupWrap.style.opacity='.25';
+    if(groupWrap)  groupWrap.style.pointerEvents='none';
+    selCat = 'Box Truck';
+    selVehicle = null;
+    document.getElementById('showcase').classList.remove('on');
+  } else {
+    toggle.classList.remove('active');
+    label.textContent = 'Select box for LTL Shipping with Agility Transport';
+    wrap.classList.remove('disabled');
+    if(modeToggle) modeToggle.style.opacity='';
+    if(modeToggle) modeToggle.style.pointerEvents='';
+    if(groupWrap)  groupWrap.style.opacity='';
+    if(groupWrap)  groupWrap.style.pointerEvents='';
+    selIdx = 0;
+    paxRange.value = 0;
+    updateSlider(0);
+    selCat = 'all';
+    selVehicle = null;
+    document.getElementById('showcase').classList.remove('on');
+  }
+  buildTypeGrid();
+  render();
+}
+
+// ── SLIDER ────────────────────────────────────────────
+const paxRange = document.getElementById('paxRange');
+paxRange.max = TICKS.length - 1;
+const tickRow = document.getElementById('tickRow');
+TICKS.forEach((pax,i)=>{
+  const t = document.createElement('div');
+  t.className = 'tick'+(i===0?' active':'');
+  t.dataset.idx = i;
+  t.innerHTML = `<div class="tdot"></div><div class="tnum">${pax}</div>`;
+  t.addEventListener('click',()=>{
+    paxRange.value=i;
+    updateSlider(i);
+    if(selVehicle && document.getElementById('showcase').classList.contains('on')){
+      const currentPax = TICKS[selIdx];
+      const allUnits = VEHICLES.filter(u=>u.company===selVehicle.company&&u.make===selVehicle.make&&u.model===selVehicle.model);
+      const anyFits = allUnits.some(u=>u.cargo || u.passengers >= currentPax);
+      if(!anyFits){
+        selVehicle = null;
+        document.getElementById('showcase').classList.remove('on');
+        render();
+      } else {
+        selectV(selVehicle);
+      }
+    }
+  });
+  tickRow.appendChild(t);
+});
+paxRange.addEventListener('input',()=>updateSlider(parseInt(paxRange.value)));
+paxRange.addEventListener('change',()=>{
+  if(selVehicle && document.getElementById('showcase').classList.contains('on')){
+    const currentPax = TICKS[selIdx];
+    const allUnits = VEHICLES.filter(u=>u.company===selVehicle.company&&u.make===selVehicle.make&&u.model===selVehicle.model);
+    const anyFits = allUnits.some(u=>u.cargo || u.passengers >= currentPax);
+    if(!anyFits){
+      selVehicle = null;
+      document.getElementById('showcase').classList.remove('on');
+      render();
+    } else {
+      selectV(selVehicle);
+    }
+  }
+});
+
+function updateSlider(idx){
+  selIdx=idx;
+  const pax=TICKS[idx];
+  document.getElementById('paxNum').textContent=pax;
+  const unitEl = document.querySelector('.pax-unit');
+  if(unitEl) unitEl.textContent = pax===1?'passenger':'passengers';
+  document.getElementById('trackFill').style.width=(idx/(TICKS.length-1)*100)+'%';
+  document.querySelectorAll('.tick').forEach(t=>{
+    const ti=parseInt(t.dataset.idx);
+    t.classList.toggle('past',ti<idx);
+    t.classList.toggle('active',ti===idx);
+  });
+  const cnt = filtered().length;
+  document.getElementById('paxSub').innerHTML = cnt
+    ? `<strong>${cnt}</strong> unit${cnt!==1?'s':''} available for ${pax} passenger${pax!==1?'s':''}`
+    : `No vehicles found for ${pax} passenger${pax!==1?'s':''}`;
+  buildTypeGrid();
+  render();
+}
+
+// ── TYPE GRID ─────────────────────────────────────────
+function buildTypeGrid(){
+  const pax=TICKS[selIdx];
+  const grid=document.getElementById('typeGrid');
+  grid.innerHTML='';
+
+  if(isLTL){
+    // LTL mode: only show Box Truck, always selected
+    const cnt=VEHICLES.filter(v=>v.cargo).length;
+    grid.appendChild(mkTypeCard(CAT_ICON['Box Truck'],'Box Truck',cnt,'Box Truck',true,false));
+    return;
+  }
+
+  // Normal mode: show All Types + all cats except Box Truck
+  const allCnt=filtered().length;
+  grid.appendChild(mkTypeCard('🚘','All Types',allCnt,'all',selCat==='all'));
+  CATS.filter(cat=>cat!=='Box Truck').forEach(cat=>{
+    const cnt=VEHICLES.filter(v=>passesFilter(v,pax,cat)).length;
+    grid.appendChild(mkTypeCard(CAT_ICON[cat],cat,cnt,cat,selCat===cat,cnt===0));
+  });
+}
+function passesFilter(v,pax,cat){
+  if(v.cargo) return false; // Box Truck hidden in normal passenger mode
+  return v.passengers>=pax && (cat==='all'||v.category===cat);
+}
+function mkTypeCard(icon,name,cnt,val,isSel,isGrey){
+  const d=document.createElement('div');
+  d.className='type-card'+(val==='all'?' type-all':'')+(isSel?' sel':'')+(isGrey?' grey':'');
+  d.innerHTML=`<div class="tc-check">✓</div><span class="tc-icon">${icon}</span><div class="tc-name">${name}</div><div class="tc-cnt">${cnt} unit${cnt!==1?'s':''}</div>`;
+  if(!isGrey) d.addEventListener('click',()=>{
+    if(isLTL) return; // locked in LTL mode
+    selCat=val;
+    selVehicle=null;
+    document.getElementById('showcase').classList.remove('on');
+    buildTypeGrid(); render();
+  });
+  return d;
+}
+
+// ── FILTER ────────────────────────────────────────────
+function filtered(){
+  if(isLTL) return VEHICLES.filter(v=>v.cargo);
+  const pax=TICKS[selIdx];
+  return VEHICLES.filter(v=>{
+    if(v.cargo) return false; // hide Box Truck in passenger mode
+    return v.passengers>=pax && (selCat==='all'||v.category===selCat);
+  });
+}
+
+// Helper: get division by company name
+function getDivision(name){
+  return DIVISIONS.find(d=>d.name===name)||{name,logo:null};
+}
+
+// ── RENDER ────────────────────────────────────────────
+function render(){
+  const vlist=filtered();
+  document.getElementById('rCount').textContent=vlist.length+' unit'+(vlist.length!==1?'s':'')+' available';
+  const out=document.getElementById('vehicleOut');
+  if(!vlist.length){
+    out.innerHTML=`<div class="no-res"><div class="nri">🔍</div><h3>No vehicles match</h3><p>Try adjusting your passenger count or vehicle type.</p></div>`;
+    return;
+  }
+
+  let html='';
+  DIVISIONS.forEach(div=>{
+    const divVehicles=vlist.filter(v=>v.company===div.name);
+    if(!divVehicles.length) return;
+
+    const logoHtml=div.logo
+      ? `<img class="division-logo" src="${div.logo}" alt="${div.name}">`
+      : `<div class="division-logo-ph"></div>`;
+
+    html+=`<div class="division-block">
+      <div class="division-header">
+        ${logoHtml}
+        <div class="division-header-info">
+          <div class="division-name">${div.name}</div>
+          <div class="division-count">${divVehicles.length} unit${divVehicles.length!==1?'s':''} available</div>
+        </div>
+        ${div.url ? `<a class="division-website" href="${div.url}" target="_blank" rel="noopener">Visit Website ↗</a>` : ''}
+      </div>`;
+
+    // For each category that has vehicles in this division
+    CAT_ORDER.forEach(cat=>{
+      const catVehicles=divVehicles.filter(v=>v.category===cat);
+      if(!catVehicles.length) return;
+
+      // Group by make+model — each group = one card
+      const modelMap={};
+      catVehicles.forEach(v=>{
+        const key=v.make+'|'+v.model;
+        if(!modelMap[key]) modelMap[key]={make:v.make,model:v.model,category:v.category,units:[]};
+        modelMap[key].units.push(v);
+      });
+
+      const totalUnits=catVehicles.length;
+      html+=`<div class="cat-lane">
+        <div class="cat-lane-header">
+          <span class="cat-lane-icon">${CAT_ICON[cat]||''}</span>
+          <span class="cat-lane-label">${cat}</span>
+          <span class="cat-lane-count">${totalUnits} unit${totalUnits!==1?'s':''}</span>
+        </div>
+        <div class="cat-lane-cards">`;
+
+      Object.values(modelMap).forEach(mg=>{
+        // Is any unit in this model group currently selected?
+        const isSel = selVehicle && mg.units.some(u=>u.unit===selVehicle.unit);
+
+        // Use photo from first unit that has one
+        const photoUnit = mg.units.find(u=>u.photo) || mg.units[0];
+        const photo = photoUnit.photo;
+
+        // Passenger range
+        const nonCargo = mg.units.filter(u=>!u.cargo);
+        const maxPax = mg.units[0].cargo ? 0 : Math.max(...nonCargo.map(u=>u.passengers));
+        const minPax = mg.units[0].cargo ? 0 : Math.min(...nonCargo.map(u=>u.passengers));
+        const paxLabel = mg.units[0].cargo ? 'Cargo' : (minPax===maxPax ? `Up to ${maxPax}` : `${minPax}–${maxPax} pax`);
+
+        // Shared features across all units in this model
+        const allFeats = mg.units.map(u=>u.features);
+        const sharedFeats = allFeats.length ? allFeats.reduce((acc,f)=>acc.filter(x=>f.includes(x))) : [];
+        const featIcons = sharedFeats.slice(0,4).map(f=>FEAT_ICON[f]||'').filter(Boolean).join('');
+
+        // Year range
+        const years = mg.units.map(u=>u.year);
+        const minYr = Math.min(...years), maxYr = Math.max(...years);
+        const yearLabel = minYr===maxYr ? String(minYr) : `${minYr}–${maxYr}`;
+
+        const photoHtml = photo
+          ? `<img src="${photo}" alt="${mg.make} ${mg.model}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+          : `<div class="mc-photo-ph"><div class="mc-photo-ph-icon">${CAT_ICON[mg.category]||'🚗'}</div></div>`;
+
+        // For photo modal: use first unit number
+        const firstUnitNum = mg.units[0].unit;
+        // Encoded model key for onclick
+        const mgJson = JSON.stringify({make:mg.make,model:mg.model,company:div.name,category:mg.category}).replace(/"/g,'&quot;');
+
+        html+=`<div class="model-card${isSel?' sel':''}" onclick="selectModel(${mgJson})">
+          <div class="mc-photo">
+            ${photoHtml}
+            <div class="mc-count-badge">${mg.units.length} unit${mg.units.length!==1?'s':''}</div>
+            <div class="mc-sel-badge">✓</div>
+            <div class="mc-photo-footer">
+              <div class="mc-pax-label">${paxLabel}</div>
+            </div>
+          </div>
+          <div class="mc-info">
+            <div>
+              <div class="mc-category">${yearLabel}</div>
+              <div class="mc-make-model">${mg.make} ${mg.model}</div>
+            </div>
+            <div class="mc-bottom">
+              <span class="mc-feats">${featIcons}</span>
+              <button class="mc-btn" onclick="event.stopPropagation();selectModel(${mgJson})">${isSel?'✓ Selected':'View'}</button>
+            </div>
+          </div>
+        </div>`;
+      });
+
+      html+=`</div></div>`; // close cat-lane-cards + cat-lane
+    });
+
+    html+=`</div>`; // close division-block
+  });
+
+  out.innerHTML=html;
+}
+
+// Select a whole model group — picks the first/currently-active unit and opens showcase
+// Also populates unit pills for switching
+function selectModel(mgInfo){
+  // Find the model group units
+  const divVehicles = VEHICLES.filter(v=>v.company===mgInfo.company && v.make===mgInfo.make && v.model===mgInfo.model);
+  if(!divVehicles.length) return;
+
+  // If currently selected unit is in this group, keep it; else pick first
+  const keepCurrent = selVehicle && divVehicles.some(u=>u.unit===selVehicle.unit);
+  const targetV = keepCurrent ? divVehicles.find(u=>u.unit===selVehicle.unit) : divVehicles[0];
+  selectV(targetV, divVehicles);
+}
+
+// ── SHOWCASE ──────────────────────────────────────────
+function selectV(v, modelUnits){
+  selVehicle=v;
+  const photo=v.photo;
+  const div=getDivision(v.company);
+
+  // Hero image
+  const hero=document.getElementById('scHero');
+  const ph=document.getElementById('scHeroPh');
+  const existImg=hero.querySelector('img.sc-hero-img');
+  if(existImg) existImg.remove();
+
+  if(photo){
+    ph.style.display='none';
+    const img=document.createElement('img');
+    img.className='sc-hero-img';
+    img.src=photo;
+    img.alt=v.make+' '+v.model;
+    img.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;';
+    hero.insertBefore(img, hero.querySelector('.sc-hero-overlay'));
+  } else {
+    ph.style.display='flex';
+    document.getElementById('scHeroIcon').textContent=CAT_ICON[v.category]||'🚗';
+  }
+
+  // Division logo on hero
+  const divLogoEl=document.getElementById('scHeroDivLogo');
+  if(div.logo){
+    divLogoEl.innerHTML=`<img class="sc-hero-div-logo" src="${div.logo}" alt="${div.name}">`;
+  } else {
+    divLogoEl.innerHTML=`<span class="sc-hero-div-logo-ph">${div.name}</span>`;
+  }
+
+  // Division badge in info panel
+  const badge=document.getElementById('scDivBadge');
+  badge.innerHTML=`<span class="sc-div-name">${div.name}</span>`;
+
+  document.getElementById('scName').textContent=v.year+' '+v.make+' '+v.model;
+  document.getElementById('scSub').textContent='Unit #'+v.unit+(v.cargo?' · Cargo Vehicle':' · '+v.category+' · Up to '+v.passengers+' passengers');
+
+  const baggageLabel = BAGGAGE[v.category] || null;
+  document.getElementById('scGrid').innerHTML=`
+    <div class="sc-stat"><div class="lbl">Unit #</div><div class="val">${v.unit}</div></div>
+    <div class="sc-stat"><div class="lbl">Year</div><div class="val">${v.year}</div></div>
+    <div class="sc-stat"><div class="lbl">Vehicle Type</div><div class="val-sm">${v.category}</div></div>
+    <div class="sc-stat"><div class="lbl">${v.cargo?'Capacity':'Passengers'}</div><div class="val">${v.cargo?'Cargo':'Up to '+v.passengers}</div></div>
+    ${baggageLabel?`<div class="sc-stat"><div class="lbl">Baggage</div><div class="val-sm">${baggageLabel}</div></div>`:''}
+  `;
+
+  document.getElementById('scFeats').innerHTML=v.features.length
+    ? v.features.map(f=>`<span class="sc-feat">${FEAT_ICON[f]||''} ${f}</span>`).join('')
+    : `<span class="sc-no-feat">Standard configuration — no premium amenities listed</span>`;
+
+  // Unit selector pills — resolve modelUnits if not passed
+  const units = modelUnits || VEHICLES.filter(u=>u.company===v.company&&u.make===v.make&&u.model===v.model);
+  const selectorEl = document.getElementById('scUnitSelector');
+  const pillsEl = document.getElementById('scUnitPills');
+  const currentPax = TICKS[selIdx];
+  if(units.length > 1){
+    selectorEl.style.display='block';
+    pillsEl.innerHTML = units.map(u=>{
+      const tooSmall = !u.cargo && u.passengers < currentPax;
+      const uJson = JSON.stringify({unit:u.unit,year:u.year,make:u.make,model:u.model,passengers:u.passengers,category:u.category,company:u.company,features:u.features,cargo:u.cargo||false,photo:u.photo||null}).replace(/"/g,'&quot;');
+      const classes = ['sc-unit-pill', u.unit===v.unit?'active':'', tooSmall?'disabled':''].filter(Boolean).join(' ');
+      return `<button class="${classes}"${tooSmall?'':` onclick="selectV(${uJson})"`} title="${tooSmall?'Insufficient capacity for '+currentPax+' passengers':'Unit #'+u.unit}">
+        Unit #${u.unit} · ${u.year}${tooSmall?' ✕':''}
+      </button>`;
+    }).join('');
+  } else {
+    selectorEl.style.display='none';
+    pillsEl.innerHTML='';
+  }
+
+  // Update sidebar amenities panel
+  updateAmenities(v);
+
+  document.getElementById('showcase').classList.add('on');
+  window.scrollTo({top:80, behavior:'smooth'});
+  render();
+}
+
+function closeShowcase(){ selVehicle=null; document.getElementById('showcase').classList.remove('on'); updateAmenities(null); render(); }
+
+function bookInquiry(){
+  if(!selVehicle) return;
+  alert('Thank you for your interest!\n\nVehicle: '+selVehicle.year+' '+selVehicle.make+' '+selVehicle.model+'\nUnit #'+selVehicle.unit+'\n\nPlease contact Brisbon Transportation Group to complete your reservation.');
+}
+
+function resetAll(){
+  isLTL=false;
+  selIdx=0; selCat='all'; selVehicle=null;
+  paxRange.value=0;
+  // Reset LTL UI
+  document.getElementById('ltlToggle').classList.remove('active');
+  document.getElementById('ltlLabel').textContent='Select box for LTL Shipping with Agility Transport';
+  document.getElementById('sliderWrap').classList.remove('disabled');
+  // Reset mode toggle opacity in case LTL had dimmed it
+  const mt = document.getElementById('paxModeToggle');
+  const gw = document.getElementById('groupSizeWrap');
+  if(mt){ mt.style.opacity=''; mt.style.pointerEvents=''; }
+  if(gw){ gw.style.opacity=''; gw.style.pointerEvents=''; }
+  // Reset to slider mode
+  paxMode='slider'; selGroup=null;
+  setPaxMode('slider');
+  updateSlider(0);
+  document.getElementById('showcase').classList.remove('on');
+  updateAmenities(null);
+  render();
+}
+
+// Keyboard handler
+document.addEventListener('keydown',e=>{ if(e.key==='Escape' && selVehicle) closeShowcase(); });
+
+// INIT
+buildAmenitiesGrid();
+updateAmenities(null);
+updateSlider(0);
+render();
+</script>
+</body>
+</html>
