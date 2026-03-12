@@ -85,19 +85,43 @@ body {
 .mobile-cta-bar .mcall { background: var(--gold); color: var(--black); }
 .mobile-cta-bar .mquote { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
 
+/* ── LOGO BADGE (fixed upper-left, above header) ── */
+.logo-badge {
+  position: fixed; top: 0; left: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.92);
+  border-right: 1px solid rgba(201,168,76,0.35);
+  border-bottom: 1px solid rgba(201,168,76,0.35);
+  padding: 10px 18px 10px 16px;
+  display: flex; align-items: center; justify-content: center;
+  backdrop-filter: blur(10px);
+  border-radius: 0 0 4px 0;
+  box-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+  transition: opacity 0.3s ease;
+}
+.logo-badge img {
+  height: 116px; width: auto;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+}
+@media(max-width: 768px) {
+  .logo-badge img { height: 80px; }
+  .logo-badge { padding: 8px 14px 8px 12px; }
+}
+
 /* ── HEADER ── */
 header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   background: rgba(10,10,10,0.96);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--rule-dark);
-  padding: 0 5%;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 72px;
+  padding: 0 5% 0 210px;
+  display: flex; align-items: center; justify-content: flex-end;
+  height: 80px;
   transition: all 0.3s ease;
 }
 .logo-wrap { display: flex; align-items: center; gap: 0.8rem; }
-.logo-wrap img { height: 40px; width: auto; }
+.logo-wrap img { height: 58px; width: auto; }
 .logo-text {
   font-family: var(--font-display);
   font-size: 1.15rem; letter-spacing: 0.05em;
@@ -109,7 +133,7 @@ nav { display: flex; align-items: center; gap: 0; }
 .nav-link {
   font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
   color: rgba(255,255,255,0.5); text-decoration: none;
-  padding: 0 1.1rem; height: 72px; display: flex; align-items: center;
+  padding: 0 1.1rem; height: 80px; display: flex; align-items: center;
   border-bottom: 2px solid transparent;
   transition: all 0.2s ease; white-space: nowrap;
 }
@@ -887,11 +911,13 @@ header.scrolled { background: rgba(10,10,10,0.99); box-shadow: 0 1px 20px rgba(0
   <a href="#quote" class="mquote">Get a Quote</a>
 </div>
 
+<!-- LOGO BADGE -->
+<div class="logo-badge">
+  <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773180329/BTG_1_mnzs4n.png" alt="Brisbon Transportation Group">
+</div>
+
 <!-- HEADER -->
 <header id="site-header">
-  <div class="logo-wrap">
-    <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773180329/BTG_1_mnzs4n.png" alt="Brisbon Transportation Group">
-  </div>
   <nav>
     <a class="nav-link active" href="index.html">Home</a>
     <a class="nav-link" href="brisbon-vehicle-finder.html">Fleet</a>
@@ -908,14 +934,17 @@ header.scrolled { background: rgba(10,10,10,0.99); box-shadow: 0 1px 20px rgba(0
 <!-- HERO -->
 <section class="hero">
 
-  <!-- Layer 1: Background photo (swap src for video tag when ready) -->
+  <!-- Layer 1: Background video -->
   <div class="hero-media">
-    <img 
-      src="https://res.cloudinary.com/datqt0gei/image/upload/v1772738597/603_CX45_jmavtx.png" 
-      alt="Brisbon Transportation Group motorcoach fleet"
-      loading="eager"
-      fetchpriority="high"
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      preload="auto"
     >
+      <source src="https://res.cloudinary.com/datqt0gei/video/upload/v1773347164/BTG_FLEET_HC_hjd020.mp4" type="video/mp4">
+    </video>
   </div>
 
   <!-- Layer 2: Primary veil -->
