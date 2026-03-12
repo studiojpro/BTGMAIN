@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brisbon Transportation Group LLC | Premium Transportation Services — Raleigh, Durham, Chapel Hill, NC</title>
+<meta name="description" content="North Carolina's full-service transportation company. Motorcoach, corporate shuttle, NEMT, ADA, event, freight LTL. Serving Raleigh, Durham, Chapel Hill & RTP. Get a quote in minutes.">
+<meta name="keywords" content="transportation company Raleigh NC, corporate shuttle Durham, NEMT provider NC, motorcoach rental Triangle, ADA transportation Chapel Hill, charter bus Raleigh">
+
+<!-- Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://brisbontransportation.com",
+  "name": "Brisbon Transportation Group LLC",
+  "description": "Full-service transportation company serving Raleigh, Durham, Chapel Hill and the greater Triangle area of North Carolina.",
+  "url": "https://brisbontransportation.com",
+  "telephone": "+1-919-000-0000",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Raleigh",
+    "addressRegion": "NC",
+    "addressCountry": "US"
+  },
+  "areaServed": ["Raleigh", "Durham", "Chapel Hill", "Research Triangle Park", "Cary", "Apex", "Pinehurst"],
+  "serviceType": ["Motorcoach Transportation", "Corporate Shuttle", "NEMT", "ADA Transportation", "Event Transportation", "Freight LTL"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Transportation Services"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black: #0d0d0d;
+  --off-black: #111010;
+  --deep: #1e1e1e;
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+  --gold-dark: #7A5C1E;
+  --gold-pale: #FBF5E6;
+  --gold-ultra: #F5EFE0;
+  --white: #FFFFFF;
+  --cream: #ddd8ca;
+  --muted: #7a7268;
+  --rule: #D4C9B0;
+  --rule-dark: rgba(255,255,255,0.07);
+  --text: #111010;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background-color: #ddd8ca;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E"),
+    linear-gradient(160deg, #ebe5d8 0%, #d9d2c2 40%, #cfc8b8 100%);
+  color: var(--text); line-height: 1.6; overflow-x: hidden;
+}
+
+/* ── MOBILE STICKY CTA ── */
+.mobile-cta-bar {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
+  background: var(--black);
+  border-top: 1px solid rgba(201,168,76,0.3);
+  padding: 0.8rem 1rem;
+  gap: 0.6rem;
+}
+@media(max-width:768px){ .mobile-cta-bar { display: flex; } }
+.mobile-cta-bar a {
+  flex: 1; text-align: center; padding: 0.7rem 0.5rem;
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+  text-decoration: none; font-weight: 500; border-radius: 2px;
+}
+.mobile-cta-bar .mcall { background: var(--gold); color: var(--black); }
+.mobile-cta-bar .mquote { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+
+/* ── HEADER ── */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,10,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule-dark);
+  padding: 0 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+  transition: all 0.3s ease;
+}
+.logo-wrap { display: flex; align-items: center; gap: 0.8rem; }
+.logo-wrap img { height: 40px; width: auto; }
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 1.15rem; letter-spacing: 0.05em;
+  color: var(--white); line-height: 1.1;
+}
+.logo-text span { display: block; font-size: 0.6rem; font-family: var(--font-mono); letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; }
+
+nav { display: flex; align-items: center; gap: 0; }
+.nav-link {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5); text-decoration: none;
+  padding: 0 1.1rem; height: 72px; display: flex; align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease; white-space: nowrap;
+}
+.nav-link:hover { color: var(--gold-light); border-bottom-color: var(--gold); }
+.nav-dropdown { position: relative; }
+.nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: all; transform: translateY(0); }
+.dropdown-menu {
+  position: absolute; top: 100%; left: 0;
+  background: var(--off-black);
+  border: 1px solid var(--rule-dark);
+  border-top: 2px solid var(--gold);
+  min-width: 220px; padding: 0.5rem 0;
+  opacity: 0; pointer-events: none; transform: translateY(-8px);
+  transition: all 0.2s ease;
+}
+.dropdown-menu a {
+  display: block; padding: 0.65rem 1.2rem;
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); text-decoration: none;
+  transition: all 0.15s ease; border-left: 2px solid transparent;
+}
+.dropdown-menu a:hover { color: var(--gold-light); border-left-color: var(--gold); background: rgba(201,168,76,0.07); padding-left: 1.5rem; }
+
+.btn-quote-nav {
+  background: transparent; color: var(--gold);
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+  padding: 0.65rem 1.4rem; text-decoration: none; margin-left: 1rem;
+  border: 1px solid var(--gold-dark); border-radius: 2px;
+  transition: all 0.22s ease; white-space: nowrap;
+}
+.btn-quote-nav:hover { background: var(--gold); color: var(--white); border-color: var(--gold); }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+.hamburger span { width: 22px; height: 1.5px; background: var(--white); transition: all 0.3s; }
+@media(max-width:900px){
+  nav .nav-link, nav .nav-dropdown { display: none; }
+  .btn-quote-nav { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--black);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 5% 7rem;
+}
+
+/* Layer 1 — background photo/video placeholder */
+.hero-media {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-media img,
+.hero-media video {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 40%;
+  display: block;
+}
+
+/* Layer 2 — primary dark veil for overall contrast */
+.hero-veil {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(
+    160deg,
+    rgba(5,5,5,0.45) 0%,
+    rgba(10,10,10,0.30) 40%,
+    rgba(10,10,10,0.20) 100%
+  );
+}
+
+/* Layer 3 — bottom gradient anchors text in darkness */
+.hero-ground {
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.72) 0%,
+    rgba(0,0,0,0.30) 30%,
+    transparent 60%
+  );
+}
+
+/* Layer 4 — subtle gold grid texture */
+.hero-grid {
+  position: absolute; inset: 0; z-index: 3;
+  background-image: 
+    linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Layer 5 — gold accent glow */
+.hero-bg {
+  position: absolute; inset: 0; z-index: 4;
+  background: 
+    radial-gradient(ellipse 60% 50% at 75% 35%, rgba(201,168,76,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 40% at 15% 75%, rgba(201,168,76,0.05) 0%, transparent 50%);
+}
+
+/* All text content sits above all layers */
+.hero-content {
+  position: relative; z-index: 10;
+  display: flex; flex-direction: column;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.8rem;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+}
+.hero-badge::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  color: var(--white); line-height: 1.0; font-weight: 300;
+  max-width: 900px; margin-bottom: 1.8rem;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.9);
+}
+.hero h1 em { font-style: italic; color: var(--gold-light); }
+.hero h1 strong { font-weight: 500; }
+
+.hero-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.75);
+  max-width: 520px; line-height: 1.8; margin-bottom: 3rem;
+  font-weight: 300;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.9);
+}
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--gold); color: var(--black);
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+  padding: 1rem 2rem; text-decoration: none;
+  transition: all 0.25s ease; display: inline-flex; align-items: center; gap: 0.6rem;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-secondary {
+  background: rgba(0,0,0,0.4); color: rgba(255,255,255,0.85);
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 1rem 2rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.3);
+  transition: all 0.25s ease; display: inline-flex; align-items: center; gap: 0.6rem;
+  backdrop-filter: blur(6px);
+}
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); background: rgba(0,0,0,0.5); }
+.btn-fleet {
+  background: transparent; color: var(--gold);
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+  padding: 1rem 2rem; text-decoration: none; border: 1px solid var(--gold);
+  transition: all 0.25s ease; display: inline-flex; align-items: center; gap: 0.6rem;
+  backdrop-filter: blur(6px);
+}
+.btn-fleet:hover { background: var(--gold); color: var(--black); transform: translateY(-1px); }
+
+.hero-stats {
+  position: absolute; right: 5%; bottom: 7rem; z-index: 10;
+  display: flex; flex-direction: column; gap: 1.5rem;
+  text-align: right;
+}
+.hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 2.4rem; color: var(--white); font-weight: 300; line-height: 1;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+}
+.hero-stat-label {
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); margin-top: 0.2rem;
+}
+@media(max-width:768px){ .hero-stats { display: none; } .hero { padding-bottom: 5rem; } }
+
+/* ── SERVICE SELECTOR (Homepage) ── */
+.service-selector {
+  background: transparent;
+  border-bottom: 1px solid var(--rule);
+  padding: 0;
+}
+.selector-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(7, 1fr);
+}
+@media(max-width:900px){ .selector-inner { grid-template-columns: repeat(4,1fr); } }
+@media(max-width:500px){ .selector-inner { grid-template-columns: repeat(2,1fr); } }
+.service-tab {
+  padding: 1.4rem 0.8rem; text-align: center;
+  border-right: 1px solid var(--rule); border-bottom: 3px solid transparent;
+  cursor: pointer; transition: all 0.2s ease;
+  text-decoration: none; display: block;
+}
+.service-tab:last-child { border-right: none; }
+.service-tab:hover, .service-tab.active {
+  border-bottom-color: var(--gold); background: var(--gold-ultra);
+}
+.service-tab-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+.service-tab-label {
+  font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); line-height: 1.4;
+}
+.service-tab:hover .service-tab-label, .service-tab.active .service-tab-label { color: var(--gold); }
+
+/* ── QUOTE FORM STRIP ── */
+.quote-strip {
+  background: var(--off-black);
+  padding: 3rem 5%;
+  border-top: 1px solid var(--rule-dark);
+}
+.quote-strip-inner { max-width: 1100px; margin: 0 auto; }
+.quote-strip-label {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.5rem;
+}
+.quote-strip h2 {
+  font-family: var(--font-display); font-size: 1.8rem; color: var(--white);
+  font-weight: 300; margin-bottom: 1.5rem;
+}
+.quote-strip h2 em { font-style: italic; color: var(--gold-light); }
+.quote-form { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr auto; gap: 0.8rem; align-items: end; }
+@media(max-width:800px){ .quote-form { grid-template-columns: 1fr 1fr; } }
+@media(max-width:500px){ .quote-form { grid-template-columns: 1fr; } }
+
+.form-group label {
+  display: block; font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-bottom: 0.5rem;
+}
+.form-group select, .form-group input {
+  width: 100%; background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1); color: var(--white);
+  padding: 0.8rem 1rem; font-family: var(--font-body); font-size: 0.85rem;
+  appearance: none; outline: none;
+  transition: border-color 0.2s ease;
+}
+.form-group select:focus, .form-group input:focus { border-color: var(--gold); }
+.form-group select option { background: var(--off-black); }
+.btn-quote-submit {
+  background: var(--gold); color: var(--white);
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+  padding: 0.85rem 1.8rem; border: none; cursor: pointer; border-radius: 2px;
+  transition: all 0.22s ease; white-space: nowrap; box-shadow: 0 3px 12px rgba(201,168,76,0.3);
+}
+.btn-quote-submit:hover { background: var(--gold-light); box-shadow: 0 4px 16px rgba(201,168,76,0.4); }
+.quote-note {
+  margin-top: 0.8rem; font-family: var(--font-mono); font-size: 0.55rem;
+  letter-spacing: 0.08em; color: rgba(255,255,255,0.25);
+}
+.quote-note span { color: var(--gold); }
+
+/* ── SECTION CONTAINERS ── */
+.section { padding: 6rem 5%; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.6rem;
+}
+.section-title {
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300; line-height: 1.1; margin-bottom: 1rem;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-sub { color: var(--muted); max-width: 560px; font-size: 0.92rem; line-height: 1.8; font-weight: 300; }
+
+/* ── SERVICES GRID ── */
+.services-section { background: var(--black); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  background: transparent; margin-top: 3rem;
+}
+@media(max-width:768px){ .services-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:450px){ .services-grid { grid-template-columns: 1fr; } }
+.service-card {
+  background: var(--white);
+  position: relative; overflow: visible;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  transition: all 0.3s ease; display: flex; flex-direction: column; text-decoration: none; color: var(--text);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+.service-card::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+  transform: scaleX(0); transition: transform 0.3s ease;
+  border-radius: 0 0 4px 4px; z-index: 2;
+}
+.service-card:hover { box-shadow: 0 0 0 1px var(--gold), 0 10px 32px rgba(201,168,76,0.18); transform: translateY(-3px); }
+.service-card:hover::before { transform: scaleX(1); }
+.service-card:hover .sc-arrow { transform: translateX(4px); }
+
+/* ── CARD HEADER: full-bleed photo + logo badge bottom-left ── */
+.sc-header {
+  position: relative; height: 145px; overflow: visible; flex-shrink: 0;
+}
+/* Photo fills entire header */
+.sc-header-photo {
+  position: absolute; inset: 0; overflow: hidden;
+  background: #e8e4dc;
+}
+.sc-header-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  object-position: center center;
+  transition: transform 0.55s ease; opacity: 1;
+}
+.service-card:hover .sc-header-photo img { transform: scale(1.06); }
+
+/* Logo badge: card-colored pill anchored bottom-left, overlaps the divider */
+.sc-header-logo {
+  position: absolute; bottom: -18px; left: 1.2rem;
+  z-index: 4;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 6px 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.sc-header-logo img {
+  height: 28px; width: auto; max-width: 120px;
+  object-fit: contain; display: block;
+}
+.service-card:hover .sc-header-logo {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+/* ── CARD BODY ── */
+.sc-body {
+  padding: 2.2rem 1.5rem 1.4rem;
+  display: flex; flex-direction: column; flex: 1;
+}
+.sc-name {
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
+  margin-bottom: 0.55rem; line-height: 1.25; color: #111;
+  letter-spacing: -0.01em;
+}
+.sc-desc {
+  font-size: 0.83rem; color: #3d3d3d; line-height: 1.78;
+  margin-bottom: 1.2rem; font-weight: 400; flex: 1;
+}
+.sc-link {
+  font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold-dark); display: flex; align-items: center; gap: 0.5rem;
+  margin-top: auto;
+}
+.service-card:hover .sc-link { color: var(--gold); }
+.sc-arrow { transition: transform 0.2s ease; }
+
+/* Legacy stubs — keep so nothing else breaks */
+.sc-num { display: none; }
+.sc-logo-header { display: none; }
+.sc-logo { display: none; }
+.sc-logo-bg { display: none; }
+.sc-logo--invert { display: none; }
+
+/* ── TRUST BAR ── */
+.trust-bar {
+  background: var(--off-black);
+  padding: 2.5rem 5%;
+  border-top: 1px solid #252525;
+  border-bottom: 1px solid #252525;
+}
+.trust-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; align-items: center;
+  text-align: center;
+}
+@media(max-width:768px){ .trust-inner { grid-template-columns: repeat(3,1fr); gap: 1.5rem; } }
+@media(max-width:400px){ .trust-inner { grid-template-columns: 1fr 1fr; } }
+.trust-item-val {
+  font-family: var(--font-display); font-size: 1.6rem; color: var(--gold-light); font-weight: 300; line-height: 1;
+}
+.trust-item-label {
+  font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3); margin-top: 0.3rem; line-height: 1.4;
+}
+
+/* ── CORPORATE SECTION ── */
+.corporate-section { background: var(--white); }
+.corporate-split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem;
+}
+@media(max-width:768px){ .corporate-split { grid-template-columns: 1fr; gap: 3rem; } }
+.corp-features { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+.corp-feature {
+  display: grid; grid-template-columns: 36px 1fr; gap: 1rem;
+  align-items: start; padding: 1.2rem; border: 1px solid var(--rule);
+  transition: all 0.2s ease;
+}
+.corp-feature:hover { border-color: var(--gold-dark); background: var(--gold-ultra); }
+.corp-feat-icon { font-size: 1.1rem; padding-top: 0.1rem; }
+.corp-feat-title { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.3rem; }
+.corp-feat-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+.corp-cta-panel {
+  background: var(--black); padding: 3rem;
+  position: relative; overflow: hidden;
+}
+.corp-cta-panel::after {
+  content: 'B'; position: absolute; right: -20px; bottom: -40px;
+  font-family: var(--font-display); font-size: 14rem; color: rgba(201,168,76,0.06);
+  line-height: 1; font-weight: 300; pointer-events: none;
+}
+.corp-cta-label {
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.corp-cta-panel h3 {
+  font-family: var(--font-display); font-size: 2rem; color: var(--white);
+  font-weight: 300; line-height: 1.15; margin-bottom: 1.2rem;
+}
+.corp-cta-panel h3 em { font-style: italic; color: var(--gold-light); }
+.corp-cta-panel p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.8; margin-bottom: 2rem; font-weight: 300; }
+.corp-perks { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem; }
+.corp-perk {
+  display: flex; gap: 0.7rem; align-items: center;
+  font-size: 0.8rem; color: rgba(255,255,255,0.6);
+}
+.corp-perk::before { content: '✓'; color: var(--gold); font-size: 0.75rem; flex-shrink: 0; }
+
+/* ── MEDICAL SECTION ── */
+.medical-section { background: var(--gold-pale); }
+.medical-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; margin-top: 3rem; align-items: start; }
+@media(max-width:768px){ .medical-grid { grid-template-columns: 1fr; } }
+.medical-card {
+  background: var(--white); padding: 2.5rem; border: 1px solid var(--rule);
+  border-top: 3px solid var(--gold-dark);
+}
+.medical-card h3 {
+  font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.8rem; font-weight: 400;
+}
+.medical-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.5rem; font-weight: 300; }
+.compliance-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.compliance-item {
+  display: flex; gap: 0.8rem; align-items: center;
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); padding: 0.6rem; background: var(--cream);
+}
+.compliance-item::before { content: '▸'; color: var(--gold); }
+
+/* ── TESTIMONIALS ── */
+.testimonials-section { background: var(--black); padding: 6rem 5%; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+@media(max-width:900px){ .testimonials-grid { grid-template-columns: 1fr; } }
+.testimonial-card {
+  background: rgba(255,255,255,0.02); border: 1px solid #252525;
+  padding: 2rem; position: relative;
+}
+.testimonial-card::before {
+  content: '"'; position: absolute; top: 1rem; right: 1.5rem;
+  font-family: var(--font-display); font-size: 4rem; color: var(--gold); opacity: 0.15; line-height: 1;
+}
+.test-stars { color: var(--gold); font-size: 0.7rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+.test-text { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300; font-style: italic; }
+.test-author { display: flex; gap: 0.8rem; align-items: center; }
+.test-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 0.9rem; color: var(--black); font-weight: 400; flex-shrink: 0;
+}
+.test-name { font-size: 0.8rem; font-weight: 600; color: var(--white); }
+.test-role { font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-top: 0.15rem; }
+
+/* ── SITEMAP ── */
+.sitemap-section { background: transparent; padding: 6rem 5%; }
+.sitemap-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-top: 3rem; }
+@media(max-width:900px){ .sitemap-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:500px){ .sitemap-grid { grid-template-columns: 1fr; } }
+.sitemap-col {}
+.sitemap-col-header {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); padding-bottom: 0.8rem; border-bottom: 1px solid var(--rule);
+  margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.sitemap-links { display: flex; flex-direction: column; gap: 0.4rem; }
+.sitemap-link {
+  font-size: 0.8rem; color: var(--muted); text-decoration: none; display: flex; gap: 0.5rem;
+  padding: 0.3rem 0; transition: color 0.15s ease; align-items: center; line-height: 1.3;
+}
+.sitemap-link::before { content: '→'; color: var(--rule); font-size: 0.7rem; flex-shrink: 0; transition: color 0.15s ease; }
+.sitemap-link:hover { color: var(--gold); }
+.sitemap-link:hover::before { color: var(--gold); }
+.sitemap-link.priority { color: var(--text); font-weight: 500; }
+.sitemap-link.priority::before { color: var(--gold); }
+.sitemap-sub { margin-left: 1rem; font-size: 0.75rem; }
+.sitemap-sub::before { content: '↳'; color: var(--rule); }
+
+/* ── SERVICE AREAS CAROUSEL ── */
+.areas-carousel-section {
+  background: transparent;
+  padding: 5rem 0;
+  overflow: hidden;
+}
+.areas-carousel-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 5%;
+}
+.areas-carousel-inner .section-label { color: var(--gold-dark); }
+.areas-carousel-inner .section-title { color: var(--text); margin-bottom: 0.5rem; }
+.areas-carousel-inner .section-sub { color: var(--muted); margin-bottom: 2.5rem; }
+.areas-track-outer {
+  position: relative; overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+.areas-track {
+  display: flex; gap: 1rem;
+  animation: areaScroll 47s linear infinite;
+  width: max-content;
+}
+.areas-track:hover { animation-play-state: paused; }
+@keyframes areaScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.area-pill {
+  display: flex; flex-direction: column;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid var(--rule);
+  padding: 1.2rem 1.8rem;
+  white-space: nowrap; flex-shrink: 0;
+  min-width: 200px;
+  border-radius: 2px;
+  backdrop-filter: blur(4px);
+}
+.area-pill-name {
+  font-family: var(--font-display); font-size: 1rem; font-weight: 600;
+  color: var(--text); margin-bottom: 0.35rem; letter-spacing: -0.01em;
+}
+.area-pill-services {
+  font-family: var(--font-mono); font-size: 0.5rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold-dark); line-height: 1.6;
+}
+.area-pill-dot {
+  display: inline-block; width: 4px; height: 4px;
+  background: var(--gold-dark); border-radius: 50%;
+  margin-right: 0.6rem; vertical-align: middle; opacity: 0.7;
+}
+
+/* ── CTA FOOTER ── */
+.cta-footer {
+  background: var(--black); padding: 6rem 5%;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-footer::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 60px; background: linear-gradient(to bottom, var(--gold), transparent);
+}
+.cta-footer h2 {
+  font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.8rem);
+  color: var(--white); font-weight: 300; margin-bottom: 1rem; margin-top: 1rem;
+}
+.cta-footer h2 em { font-style: italic; color: var(--gold-light); }
+.cta-footer p { font-size: 0.9rem; color: rgba(255,255,255,0.35); max-width: 460px; margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.8; }
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ── FOOTER ── */
+footer {
+  background: #050505;
+  border-top: 1px solid var(--rule-dark);
+  padding: 3rem 5% 2rem;
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--rule-dark); }
+@media(max-width:768px){ .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; } }
+.footer-brand-tagline { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-top: 0.8rem; font-weight: 300; line-height: 1.7; max-width: 220px; }
+.footer-col-title {
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1rem;
+}
+.footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.15s ease; }
+.footer-links a:hover { color: var(--gold); }
+.footer-contact { font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.8; }
+.footer-contact a { color: var(--gold); text-decoration: none; }
+.footer-bottom {
+  padding-top: 1.5rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: gap;
+  font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.2);
+}
+.dot-number { color: var(--gold); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-badge { animation: fadeUp 0.6s ease both; }
+.hero h1 { animation: fadeUp 0.7s 0.1s ease both; }
+.hero-sub { animation: fadeUp 0.7s 0.2s ease both; }
+.hero-actions { animation: fadeUp 0.7s 0.3s ease both; }
+
+/* ── DIVIDER ── */
+.gold-rule { width: 40px; height: 1px; background: var(--gold); margin: 1.5rem 0; }
+
+/* scrolled header */
+header.scrolled { background: rgba(10,10,10,0.99); box-shadow: 0 1px 20px rgba(0,0,0,0.5); }
+
+/* ── MISSION PILLARS ── */
+.mission-section { background: transparent; }
+.mission-pillars {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  border: 1px solid var(--rule);
+}
+@media(max-width:768px){ .mission-pillars { grid-template-columns: 1fr; } }
+
+.mission-pillar {
+  padding: 3rem 2.5rem; border-right: 1px solid var(--rule);
+  text-decoration: none; color: var(--text); display: flex; flex-direction: column;
+  position: relative; overflow: hidden; transition: background 0.3s ease;
+}
+.mission-pillar:last-child { border-right: none; }
+@media(max-width:768px){
+  .mission-pillar { border-right: none; border-bottom: 1px solid var(--rule); }
+  .mission-pillar:last-child { border-bottom: none; }
+}
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.mission-pillar:hover { background: var(--gold-ultra); }
+.mission-pillar::before {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.35s ease;
+}
+.mission-pillar:hover::before { transform: scaleX(1); }
+.mission-pillar:hover .mp-cta { color: var(--gold); }
+.mission-pillar:hover .mp-cta span { transform: translateX(4px); }
+
+.mission-pillar-center {
+  background: var(--black);
+}
+.mission-pillar-center .mp-number { color: rgba(255,255,255,0.2); }
+.mission-pillar-center .mp-word { color: var(--white); }
+.mission-pillar-center .mp-desc { color: rgba(255,255,255,0.45); }
+.mission-pillar-center .mp-cta { color: var(--gold); }
+.mission-pillar-center::before { background: var(--gold-light); }
+.mission-pillar-center:hover { background: #1a1a1a; }
+
+.mp-number {
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.2em;
+  color: var(--gold); opacity: 0.7; margin-bottom: 1.5rem;
+}
+.mp-word {
+  font-family: var(--font-display); font-size: 2.2rem; font-weight: 300;
+  line-height: 1; margin-bottom: 1.2rem; letter-spacing: 0.02em;
+}
+.mp-desc {
+  font-size: 0.82rem; color: var(--muted); line-height: 1.8; font-weight: 300;
+  flex: 1; margin-bottom: 2rem;
+}
+.mp-cta {
+  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--muted); display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s ease;
+}
+.mp-cta span { display: inline-block; transition: transform 0.2s ease; }
+
+/* ── BRAND CAROUSEL ── */
+.brand-carousel-wrap {
+  background: var(--white);
+  padding: 2.2rem 0 2.6rem;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+.carousel-label-row {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 0 5%; margin-bottom: 1.8rem;
+}
+.carousel-label {
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted); white-space: nowrap;
+}
+.carousel-rule { flex: 1; height: 1px; background: var(--rule); }
+
+.carousel-track-outer {
+  overflow: hidden; position: relative;
+}
+.carousel-track-outer::before,
+.carousel-track-outer::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none;
+}
+.carousel-track-outer::before { left: 0; background: linear-gradient(to right, var(--white), transparent); }
+.carousel-track-outer::after  { right: 0; background: linear-gradient(to left, var(--white), transparent); }
+
+.carousel-track {
+  display: flex; align-items: center; gap: 0;
+  width: max-content;
+  animation: carouselScroll 28s linear infinite;
+}
+.carousel-track:hover { animation-play-state: paused; }
+
+@keyframes carouselScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.carousel-item {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 3rem;
+  border-right: 1px solid var(--rule);
+  height: 80px; flex-shrink: 0;
+}
+.carousel-item:last-child { border-right: none; }
+.carousel-item img {
+  height: 51px; width: auto; max-width: 196px;
+  object-fit: contain;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.carousel-item:hover img {
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+/* ── CLIENT LOGO CAROUSEL ── */
+.client-carousel-wrap {
+  background: var(--black);
+  padding: 2.4rem 0 2.8rem;
+  border-top: 1px solid #1e1e1e;
+  overflow: hidden;
+}
+.client-carousel-label-row {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 0 5%; margin-bottom: 1.8rem;
+}
+.client-carousel-label {
+  font-family: var(--font-mono); font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25); white-space: nowrap;
+}
+.client-carousel-rule { flex: 1; height: 1px; background: #252525; }
+
+.client-carousel-track-outer {
+  overflow: hidden; position: relative;
+}
+.client-carousel-track-outer::before,
+.client-carousel-track-outer::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none;
+}
+.client-carousel-track-outer::before { left: 0; background: linear-gradient(to right, var(--black), transparent); }
+.client-carousel-track-outer::after  { right: 0; background: linear-gradient(to left, var(--black), transparent); }
+
+.client-carousel-track {
+  display: flex; align-items: center; gap: 0;
+  width: max-content;
+  animation: clientCarouselScroll 36s linear infinite;
+}
+
+@keyframes clientCarouselScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.client-carousel-item {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 3.5rem;
+  border-right: 1px solid #1e1e1e;
+  height: 80px; flex-shrink: 0;
+}
+.client-carousel-item:last-child { border-right: none; }
+.client-carousel-item img {
+  height: 40px; width: auto; max-width: 180px;
+  object-fit: contain;
+  opacity: 0.55;
+}
+</style>
+</head>
+<body>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta-bar">
+  <a href="tel:+19190000000" class="mcall">📞 Call Now</a>
+  <a href="#quote" class="mquote">Get a Quote</a>
+</div>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="logo-wrap">
+    <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773180329/BTG_1_mnzs4n.png" alt="Brisbon Transportation Group">
+  </div>
+  <nav>
+    <a class="nav-link active" href="index.html">Home</a>
+    <a class="nav-link" href="brisbon-vehicle-finder.html">Fleet</a>
+    <a class="nav-link" href="#services">Services</a>
+    <a class="nav-link" href="solutions.html">Solutions</a>
+    <a class="nav-link" href="#">About</a>
+    <a href="#quote" class="btn-quote-nav">Get a Quote →</a>
+  </nav>
+  <div class="hamburger" onclick="this.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+  <!-- Layer 1: Background photo (swap src for video tag when ready) -->
+  <div class="hero-media">
+    <img 
+      src="https://res.cloudinary.com/datqt0gei/image/upload/v1772738597/603_CX45_jmavtx.png" 
+      alt="Brisbon Transportation Group motorcoach fleet"
+      loading="eager"
+      fetchpriority="high"
+    >
+  </div>
+
+  <!-- Layer 2: Primary veil -->
+  <div class="hero-veil"></div>
+
+  <!-- Layer 3: Bottom ground shadow anchoring text -->
+  <div class="hero-ground"></div>
+
+  <!-- Layer 4: Grid texture -->
+  <div class="hero-grid"></div>
+
+  <!-- Layer 5: Gold accent glow -->
+  <div class="hero-bg"></div>
+
+  <!-- Layer 6: All readable content -->
+  <div class="hero-content">
+    <div class="hero-badge">North Carolina's Full-Service Transportation Group</div>
+
+    <h1>Move People.<br><em>Move Business.</em><br><strong>Move Confidently.</strong></h1>
+
+    <p class="hero-sub">Motorcoach, corporate shuttle, NEMT, ADA, events & freight — serving Raleigh, Durham, Chapel Hill and the entire Triangle. One company. Every need.</p>
+
+    <div class="hero-actions">
+      <a href="#quote" class="btn-primary">Request a Quote <span class="sc-arrow">→</span></a>
+      <a href="brisbon-vehicle-finder.html" class="btn-fleet">View Our Fleet <span class="sc-arrow">→</span></a>
+      <a href="#services" class="btn-secondary">View Services</a>
+    </div>
+  </div>
+
+  <!-- Stats float independently at z-index 10 -->
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-num">6</div>
+      <div class="hero-stat-label">Service Lines</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">24/7</div>
+      <div class="hero-stat-label">Availability</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">DOT</div>
+      <div class="hero-stat-label">Certified & Insured</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- BRAND CAROUSEL -->
+<div class="brand-carousel-wrap">
+  <div class="carousel-label-row">
+    <span class="carousel-label">The BTG Family of Companies</span>
+    <div class="carousel-rule"></div>
+  </div>
+  <div class="carousel-track-outer">
+    <div class="carousel-track" id="carouselTrack">
+      <!-- Set 1 -->
+      <div class="carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876764/Triangle_Corporate_Coach_yjkepl.png" alt="Triangle Corporate Coach" loading="lazy"></div>
+      <div class="carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876763/Triangle_Bus_Charters_annyrt.png" alt="Triangle Bus Charters" loading="lazy"></div>
+      <div class="carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876765/Wisdom_Care_Transportation_nbmstg.png" alt="Wisdom Care Transportation" loading="lazy"></div>
+      <div class="carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876763/Pinehurst_pej2c0.png" alt="Pinehurst Chauffeured Transportation" loading="lazy"></div>
+      <div class="carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876772/Agility_hkwx39.png" alt="Agility Transportation" loading="lazy"></div>
+      <div class="carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773082166/Brisbon_Automotive_Logo_HR_Wht_ihnvof.png" alt="Brisbon Automotive" loading="lazy"></div>
+      <!-- Set 2 — seamless duplicate -->
+      <div class="carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876764/Triangle_Corporate_Coach_yjkepl.png" alt="Triangle Corporate Coach" loading="lazy"></div>
+      <div class="carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876763/Triangle_Bus_Charters_annyrt.png" alt="Triangle Bus Charters" loading="lazy"></div>
+      <div class="carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876765/Wisdom_Care_Transportation_nbmstg.png" alt="Wisdom Care Transportation" loading="lazy"></div>
+      <div class="carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876763/Pinehurst_pej2c0.png" alt="Pinehurst Chauffeured Transportation" loading="lazy"></div>
+      <div class="carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876772/Agility_hkwx39.png" alt="Agility Transportation" loading="lazy"></div>
+      <div class="carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773082166/Brisbon_Automotive_Logo_HR_Wht_ihnvof.png" alt="Brisbon Automotive" loading="lazy"></div>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE FORM -->
+<div class="quote-strip" id="quote">
+  <div class="quote-strip-inner">
+    <div class="quote-strip-label">Instant Quote Request</div>
+    <h2>Tell Us About Your <em>Transportation Need</em></h2>
+    <div class="quote-form">
+      <div class="form-group">
+        <label>Service Type</label>
+        <select>
+          <option>Select a service…</option>
+          <option>Motorcoach Charter</option>
+          <option>Corporate Shuttle</option>
+          <option>NEMT / Medical</option>
+          <option>ADA Transportation</option>
+          <option>Event / Wedding</option>
+          <option>Airport Transfer</option>
+          <option>Freight LTL</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Passengers / Load</label>
+        <input type="text" placeholder="e.g. 45 passengers">
+      </div>
+      <div class="form-group">
+        <label>Trip Date</label>
+        <input type="text" placeholder="MM / DD / YYYY">
+      </div>
+      <div class="form-group">
+        <label>Phone or Email</label>
+        <input type="text" placeholder="Best way to reach you">
+      </div>
+      <button class="btn-quote-submit">Get My Quote →</button>
+    </div>
+    <p class="quote-note">Response within <span>2 hours</span> during business hours · No obligation · No spam</p>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div>
+      <div class="trust-item-val">USDOT</div>
+      <div class="trust-item-label">Licensed &<br>Certified</div>
+    </div>
+    <div>
+      <div class="trust-item-val">$5M+</div>
+      <div class="trust-item-label">Commercial<br>Insurance</div>
+    </div>
+    <div>
+      <div class="trust-item-val">100%</div>
+      <div class="trust-item-label">Background<br>Checked Drivers</div>
+    </div>
+    <div>
+      <div class="trust-item-val">ADA</div>
+      <div class="trust-item-label">Fully Accessible<br>Fleet Options</div>
+    </div>
+    <div>
+      <div class="trust-item-val">GPS</div>
+      <div class="trust-item-label">Security Monitored<br>Vehicles</div>
+    </div>
+  </div>
+</div>
+
+<!-- MISSION STATEMENT -->
+<section class="section mission-section" id="mission">
+  <div class="section-inner">
+    <div class="section-label">Our Purpose</div>
+    <h2 class="section-title" style="max-width:780px;">Built on Three Pillars.<br><em>Driven by One Standard.</em></h2>
+    <p class="section-sub" style="max-width:600px;margin-bottom:3.5rem;">Brisbon Transportation Group LLC operates at the intersection of people, commerce, and community — delivering solutions that move North Carolina forward.</p>
+
+    <div class="mission-pillars">
+
+      <a href="brisbon-vehicle-finder.html" class="mission-pillar">
+        <div class="mp-number">01</div>
+        <div class="mp-word">Mobility</div>
+        <p class="mp-desc">Getting people where they need to go — safely, reliably, and with dignity. From ADA transport to motorcoach charters, we move individuals and groups with precision across North Carolina.</p>
+        <div class="mp-cta">Find Your Vehicle <span>→</span></div>
+      </a>
+
+      <a href="solutions.html" class="mission-pillar mission-pillar-center">
+        <div class="mp-number">02</div>
+        <div class="mp-word">Logistics</div>
+        <p class="mp-desc">Business development and strategic partnerships that build lasting infrastructure. We work alongside corporations, healthcare systems, and institutions to create transportation programs that scale.</p>
+        <div class="mp-cta">Explore Partnerships <span>→</span></div>
+      </a>
+
+      <a href="https://www.brisbonauto.com/" target="_blank" rel="noopener" class="mission-pillar">
+        <div class="mp-number">03</div>
+        <div class="mp-word">Service</div>
+        <p class="mp-desc">Brisbon Automotive — our on-site, full-service automotive division. From fleet maintenance to personal vehicle care, we extend the same standard of excellence beyond transportation.</p>
+        <div class="mp-cta">Visit Brisbon Automotive <span>→</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services-section" id="services">
+  <div class="section-inner">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title" style="color:var(--white);">Six Service Lines.<br><em>One Trusted Partner.</em></h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.45);">No competitor in the Triangle operates Brisbon Transportation Group LLC's full portfolio of specialized divisions under a single, accountable organization.</p>
+
+    <div class="services-grid">
+
+      <!-- 1: Triangle Corporate Coach -->
+      <a href="https://trianglecorporatecoach.com/" target="_blank" rel="noopener" class="service-card">
+        <div class="sc-header">
+          <div class="sc-header-logo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876764/Triangle_Corporate_Coach_yjkepl.png" alt="Triangle Corporate Coach logo">
+          </div>
+          <div class="sc-header-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772051962/509_Supercoach_ooyuzb.png" alt="Triangle Corporate Coach vehicle" loading="lazy">
+          </div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-name">Triangle Corporate Coach</div>
+          <p class="sc-desc">Executive and corporate ground transportation serving Research Triangle Park companies, C-suite clients, and recurring business travel programs across the Triangle.</p>
+          <div class="sc-link">Explore Division <span class="sc-arrow">→</span></div>
+        </div>
+      </a>
+
+      <!-- 2: Triangle Bus Charters -->
+      <a href="https://www.trianglebuscharters.com/" target="_blank" rel="noopener" class="service-card">
+        <div class="sc-header">
+          <div class="sc-header-logo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876763/Triangle_Bus_Charters_annyrt.png" alt="Triangle Bus Charters logo">
+          </div>
+          <div class="sc-header-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772738597/603_CX45_jmavtx.png" alt="Triangle Bus Charters motorcoach" loading="lazy">
+          </div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-name">Triangle Bus Charters</div>
+          <p class="sc-desc">Full-size motorcoach charter services for group travel, corporate retreats, athletic teams, university groups, and event transportation across NC and the Southeast.</p>
+          <div class="sc-link">Explore Division <span class="sc-arrow">→</span></div>
+        </div>
+      </a>
+
+      <!-- 3: Wisdom Care Transportation -->
+      <a href="https://www.wisdomcaretrans.com/" target="_blank" rel="noopener" class="service-card">
+        <div class="sc-header">
+          <div class="sc-header-logo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876765/Wisdom_Care_Transportation_nbmstg.png" alt="Wisdom Care Transportation logo">
+          </div>
+          <div class="sc-header-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772041842/411_Lot4_ClinicRain_aauqmv.png" alt="Wisdom Care Transportation vehicle" loading="lazy">
+          </div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-name">Wisdom Care Transportation</div>
+          <p class="sc-desc">Non-emergency medical transportation and ADA-accessible services for patients, seniors, and individuals with mobility needs. Medicaid-enrolled and compassion-driven.</p>
+          <div class="sc-link">Explore Division <span class="sc-arrow">→</span></div>
+        </div>
+      </a>
+
+      <!-- 4: Pinehurst Chauffeured Transportation -->
+      <a href="https://www.pinehurstchauffeured.com/" target="_blank" rel="noopener" class="service-card">
+        <div class="sc-header">
+          <div class="sc-header-logo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876763/Pinehurst_pej2c0.png" alt="Pinehurst Chauffeured Transportation logo">
+          </div>
+          <div class="sc-header-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772146574/310_Pinehurst_wno5ja.png" alt="Pinehurst Chauffeured vehicle" loading="lazy">
+          </div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-name">Pinehurst Chauffeured Transportation</div>
+          <p class="sc-desc">Premium chauffeured ground transportation for luxury travel, private events, airport transfers, and high-profile corporate clients demanding a refined experience.</p>
+          <div class="sc-link">Explore Division <span class="sc-arrow">→</span></div>
+        </div>
+      </a>
+
+      <!-- 5: Agility Transportation -->
+      <a href="https://agilitytransportusa.com/" target="_blank" rel="noopener" class="service-card">
+        <div class="sc-header">
+          <div class="sc-header-logo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876772/Agility_hkwx39.png" alt="Agility Transportation logo">
+          </div>
+          <div class="sc-header-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772136413/701_Ford_Box_Truck_pmhw3p.png" alt="Agility Transportation freight truck" loading="lazy">
+          </div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-name">Agility Transportation</div>
+          <p class="sc-desc">Flexible, on-demand logistics and freight LTL solutions for businesses across North Carolina. Scalable scheduling, contract freight programs, and last-mile delivery coordination.</p>
+          <div class="sc-link">Explore Division <span class="sc-arrow">→</span></div>
+        </div>
+      </a>
+
+      <!-- 6: Brisbon Automotive -->
+      <a href="https://www.brisbonauto.com/" target="_blank" rel="noopener" class="service-card service-card--dark-logo">
+        <div class="sc-header">
+          <div class="sc-header-logo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773082166/Brisbon_Automotive_Logo_HR_Wht_ihnvof.png" alt="Brisbon Automotive logo">
+          </div>
+          <div class="sc-header-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773258900/BA_SHOP12_ezxq1s.jpg" alt="Brisbon Automotive shop" loading="lazy">
+          </div>
+        </div>
+        <div class="sc-body">
+          <div class="sc-name">Brisbon Automotive</div>
+          <p class="sc-desc">Our on-site, full-service automotive division. Fleet maintenance, vehicle servicing, and personal vehicle care — the same standard of excellence that drives BTG's entire operation.</p>
+          <div class="sc-link">Visit Brisbon Automotive <span class="sc-arrow">→</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+<!-- SERVICE AREAS CAROUSEL -->
+<section class="areas-carousel-section">
+  <div class="areas-carousel-inner">
+    <div class="section-label">Service Areas</div>
+    <h2 class="section-title">Serving the<br><em>North Carolina Triangle</em></h2>
+    <p class="section-sub">We know these roads — and the organizations that run on them.</p>
+  </div>
+  <div class="areas-track-outer">
+    <div class="areas-track" id="areasTrack">
+      <!-- Set 1 -->
+      <div class="area-pill"><div class="area-pill-name">Raleigh, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Motorcoach &nbsp;·&nbsp; Corporate &nbsp;·&nbsp; NEMT &nbsp;·&nbsp; Events</div></div>
+      <div class="area-pill"><div class="area-pill-name">Durham, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Corporate &nbsp;·&nbsp; Medical &nbsp;·&nbsp; ADA &nbsp;·&nbsp; Airport</div></div>
+      <div class="area-pill"><div class="area-pill-name">Chapel Hill, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>University &nbsp;·&nbsp; Events &nbsp;·&nbsp; NEMT &nbsp;·&nbsp; Shuttle</div></div>
+      <div class="area-pill"><div class="area-pill-name">Research Triangle Park</div><div class="area-pill-services"><span class="area-pill-dot"></span>Corporate Shuttle &nbsp;·&nbsp; Employee Transport</div></div>
+      <div class="area-pill"><div class="area-pill-name">Cary, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Corporate &nbsp;·&nbsp; Events &nbsp;·&nbsp; Airport Transfer</div></div>
+      <div class="area-pill"><div class="area-pill-name">Pinehurst, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Chauffeured &nbsp;·&nbsp; Events &nbsp;·&nbsp; Motorcoach</div></div>
+      <div class="area-pill"><div class="area-pill-name">Apex, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Corporate &nbsp;·&nbsp; Medical &nbsp;·&nbsp; Shuttle</div></div>
+      <div class="area-pill"><div class="area-pill-name">RDU Airport</div><div class="area-pill-services"><span class="area-pill-dot"></span>Group Arrivals &nbsp;·&nbsp; Corporate Transfer</div></div>
+      <div class="area-pill"><div class="area-pill-name">Morrisville, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Corporate &nbsp;·&nbsp; Shuttle &nbsp;·&nbsp; Freight</div></div>
+      <div class="area-pill"><div class="area-pill-name">Wake Forest, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Medical &nbsp;·&nbsp; Corporate &nbsp;·&nbsp; Events</div></div>
+      <div class="area-pill"><div class="area-pill-name">Garner, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>NEMT &nbsp;·&nbsp; Shuttle &nbsp;·&nbsp; Freight LTL</div></div>
+      <div class="area-pill"><div class="area-pill-name">Sanford, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Motorcoach &nbsp;·&nbsp; Medical &nbsp;·&nbsp; Corporate</div></div>
+      <!-- Set 2 (duplicate for seamless loop) -->
+      <div class="area-pill"><div class="area-pill-name">Raleigh, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Motorcoach &nbsp;·&nbsp; Corporate &nbsp;·&nbsp; NEMT &nbsp;·&nbsp; Events</div></div>
+      <div class="area-pill"><div class="area-pill-name">Durham, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Corporate &nbsp;·&nbsp; Medical &nbsp;·&nbsp; ADA &nbsp;·&nbsp; Airport</div></div>
+      <div class="area-pill"><div class="area-pill-name">Chapel Hill, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>University &nbsp;·&nbsp; Events &nbsp;·&nbsp; NEMT &nbsp;·&nbsp; Shuttle</div></div>
+      <div class="area-pill"><div class="area-pill-name">Research Triangle Park</div><div class="area-pill-services"><span class="area-pill-dot"></span>Corporate Shuttle &nbsp;·&nbsp; Employee Transport</div></div>
+      <div class="area-pill"><div class="area-pill-name">Cary, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Corporate &nbsp;·&nbsp; Events &nbsp;·&nbsp; Airport Transfer</div></div>
+      <div class="area-pill"><div class="area-pill-name">Pinehurst, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Chauffeured &nbsp;·&nbsp; Events &nbsp;·&nbsp; Motorcoach</div></div>
+      <div class="area-pill"><div class="area-pill-name">Apex, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Corporate &nbsp;·&nbsp; Medical &nbsp;·&nbsp; Shuttle</div></div>
+      <div class="area-pill"><div class="area-pill-name">RDU Airport</div><div class="area-pill-services"><span class="area-pill-dot"></span>Group Arrivals &nbsp;·&nbsp; Corporate Transfer</div></div>
+      <div class="area-pill"><div class="area-pill-name">Morrisville, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Corporate &nbsp;·&nbsp; Shuttle &nbsp;·&nbsp; Freight</div></div>
+      <div class="area-pill"><div class="area-pill-name">Wake Forest, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Medical &nbsp;·&nbsp; Corporate &nbsp;·&nbsp; Events</div></div>
+      <div class="area-pill"><div class="area-pill-name">Garner, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>NEMT &nbsp;·&nbsp; Shuttle &nbsp;·&nbsp; Freight LTL</div></div>
+      <div class="area-pill"><div class="area-pill-name">Sanford, NC</div><div class="area-pill-services"><span class="area-pill-dot"></span>Motorcoach &nbsp;·&nbsp; Medical &nbsp;·&nbsp; Corporate</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-inner" style="max-width:1200px;margin:0 auto;">
+    <div class="section-label" style="color:var(--gold);">Client Testimonials</div>
+    <h2 class="section-title" style="color:var(--white);">What Our Clients<br><em>Are Saying</em></h2>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">Brisbon has managed our employee shuttle program for eight months. On-time performance has been exceptional — and their billing process is seamless for our procurement team.</p>
+        <div class="test-author">
+          <div class="test-avatar">R</div>
+          <div>
+            <div class="test-name">R. Matthews</div>
+            <div class="test-role">Facilities Director · RTP Technology Company</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">We used Brisbon for our hospital gala transportation and it was flawless. 14 coaches, 900 guests, zero complaints. They handled logistics we didn't even think to ask about.</p>
+        <div class="test-author">
+          <div class="test-avatar">T</div>
+          <div>
+            <div class="test-name">T. Henderson</div>
+            <div class="test-role">Event Coordinator · Triangle Healthcare System</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">As a discharge planner, I need transportation partners I can count on at short notice. Brisbon's medical transport team understands the urgency and treats every patient with dignity.</p>
+        <div class="test-author">
+          <div class="test-avatar">D</div>
+          <div>
+            <div class="test-name">D. Wilson</div>
+            <div class="test-role">Discharge Planner · Durham Regional Hospital</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT LOGO CAROUSEL -->
+<div class="client-carousel-wrap">
+  <div class="client-carousel-label-row">
+    <span class="client-carousel-label">Trusted By Organizations Across North Carolina</span>
+    <div class="client-carousel-rule"></div>
+  </div>
+  <div class="client-carousel-track-outer">
+    <div class="client-carousel-track">
+      <!-- Set 1 -->
+      <div class="client-carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773170433/PeakRehab_WHT_qcetpu.png" alt="Peak Rehab" loading="lazy"></div>
+      <div class="client-carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773170268/UNCHealth__WHT_fto2sg.png" alt="UNC Health" loading="lazy"></div>
+      <div class="client-carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773170256/dh_horz_white_pgsv9f.png" alt="Duke Health" loading="lazy"></div>
+      <div class="client-carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773170248/PruittHealth_WHT_v3ng76.png" alt="Pruitt Health" loading="lazy"></div>
+      <div class="client-carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773164813/MODV_BIG.D_zcofnu.png" alt="MOD V Big D" loading="lazy"></div>
+      <!-- Set 2 — duplicate for seamless loop -->
+      <div class="client-carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773170433/PeakRehab_WHT_qcetpu.png" alt="Peak Rehab" loading="lazy"></div>
+      <div class="client-carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773170268/UNCHealth__WHT_fto2sg.png" alt="UNC Health" loading="lazy"></div>
+      <div class="client-carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773170256/dh_horz_white_pgsv9f.png" alt="Duke Health" loading="lazy"></div>
+      <div class="client-carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773170248/PruittHealth_WHT_v3ng76.png" alt="Pruitt Health" loading="lazy"></div>
+      <div class="client-carousel-item"><img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773164813/MODV_BIG.D_zcofnu.png" alt="MOD V Big D" loading="lazy"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- CTA FOOTER -->
+<div class="cta-footer">
+  <h2>The Triangle's<br><em>Transportation Partner</em></h2>
+  <p>No competitor in Raleigh-Durham-Chapel Hill offers the full service range, compliance infrastructure, and corporate-ready operations of Brisbon Transportation Group LLC.</p>
+  <div class="cta-btns">
+    <a href="#quote" class="btn-primary">Request a Quote →</a>
+    <a href="tel:+19190000000" class="btn-secondary">📞 Call Now</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);letter-spacing:0.05em;">BRISBON</div>
+        <p class="footer-brand-tagline">Full-service transportation for corporations, healthcare systems, event planners, and individuals across North Carolina's Triangle region.</p>
+        <div style="margin-top:1.2rem;font-family:var(--font-mono);font-size:0.52rem;letter-spacing:0.1em;color:rgba(255,255,255,0.2);">
+          <span class="dot-number">USDOT #XXXXXXX</span> · Licensed · Insured
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <div class="footer-links">
+          <a href="#">Motorcoach Transportation</a>
+          <a href="#">Corporate Shuttle</a>
+          <a href="#">NEMT / Medical</a>
+          <a href="#">ADA Transportation</a>
+          <a href="#">Event Transportation</a>
+          <a href="#">Airport Transfers</a>
+          <a href="#">Freight LTL</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Industries</div>
+        <div class="footer-links">
+          <a href="#">Healthcare Systems</a>
+          <a href="#">Corporate & RTP</a>
+          <a href="#">Universities</a>
+          <a href="#">Weddings & Events</a>
+          <a href="#">Sports & Concerts</a>
+          <a href="#">Conferences</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact">
+          <p>Raleigh, NC<br>Serving the Triangle Region</p>
+          <p style="margin-top:0.8rem;"><a href="tel:+19190000000">(919) 000-0000</a></p>
+          <p><a href="/cdn-cgi/l/email-protection#1c75727a735c7e6e756f7e7372686e7d726f6c736e687d68757372327f7371"><span class="__cf_email__" data-cfemail="bdd4d3dbd2fddfcfd4cedfd2d3c9cfdcd3cecdd2cfc9dcc9d4d2d393ded2d0">[email&#160;protected]</span></a></p>
+          <p style="margin-top:0.8rem;font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);">Available 24/7 for Contract Clients</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Brisbon Transportation Group LLC. All rights reserved.</span>
+      <span>Privacy Policy · Terms of Service · Accessibility</span>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Header scroll effect
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+});
+
+// Service tab interaction
+document.querySelectorAll('.service-tab').forEach(tab => {
+  tab.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelectorAll('.service-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+
+// Smooth scroll for ancho
