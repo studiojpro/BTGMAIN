@@ -534,11 +534,17 @@ input#paxRange::-moz-range-thumb{width:28px;height:28px;background:var(--gold);b
   padding:26px 10px 8px;
   pointer-events:none;
   z-index:2;
+  display:flex;align-items:flex-end;justify-content:space-between;
 }
 .mc-pax-label{
   font-size:.64rem;letter-spacing:.1em;
   text-transform:uppercase;color:rgba(255,255,255,.85);
   font-weight:600;
+}
+.mc-wc-label{
+  font-size:.64rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--gold2);
+  font-weight:700;
 }
 
 /* ── INFO AREA: lower 1/3 ── */
@@ -1138,60 +1144,64 @@ footer{background:var(--ink);border-top:1px solid #1a1a1a;padding:18px 48px;text
 // ── DATA ─────────────────────────────────────────────
 const VEHICLES = [
   {unit:701,year:2019,make:"Ford",model:"Box Truck",passengers:0,category:"Box Truck",company:"Agility Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772136413/701_Ford_Box_Truck_pmhw3p.png",features:["LIFTGATE","GPS TRACKING"],cargo:true},
-  {unit:502,year:2015,make:"Ford",model:"Federal E-450",passengers:24,category:"Minibus",company:"Triangle Corporate Coach",photo:null,features:[]},
-  {unit:503,year:2019,make:"Freightliner",model:"M2 Minicoach",passengers:41,category:"Minicoach",company:"Triangle Corporate Coach",photo:null,features:[]},
-  {unit:504,year:2019,make:"Freightliner",model:"M2 Super Coach",passengers:48,category:"Super Coach",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051962/509_Supercoach_ooyuzb.png",features:[]},
-  {unit:505,year:2019,make:"Freightliner",model:"Gretch Minicoach",passengers:37,category:"Minicoach",company:"Triangle Corporate Coach",photo:null,features:[]},
-  {unit:506,year:2020,make:"Freightliner",model:"M2 Minicoach",passengers:39,category:"Minicoach",company:"Triangle Corporate Coach",photo:null,features:[]},
-  {unit:507,year:2020,make:"Freightliner",model:"M2 Motorcoach",passengers:50,category:"Motorcoach",company:"Triangle Corporate Coach",photo:null,features:[]},
-  {unit:509,year:2019,make:"Freightliner",model:"M2 Super Coach",passengers:40,category:"Super Coach",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051962/509_Supercoach_ooyuzb.png",features:["IN CABIN SCREENS"]},
-  {unit:511,year:2023,make:"Freightliner",model:"Grech Minibus",passengers:27,category:"Minibus",company:"Triangle Corporate Coach",photo:null,features:["IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","SMART TV"]},
-  {unit:512,year:2024,make:"Freightliner",model:"Grech Minibus",passengers:27,category:"Minibus",company:"Triangle Corporate Coach",photo:null,features:["IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","SMART TV"]},
-  {unit:601,year:2018,make:"VanHool",model:"TX45",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:null,features:["WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","TABLE","ADJUSTABLE FOOTREST","RESTROOM"]},
-  {unit:603,year:2017,make:"Van Hool",model:"CX-45",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772738597/603_CX45_jmavtx.png",features:["WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM"]},
-  {unit:604,year:2012,make:"Van Hool",model:"T2145",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:null,features:["WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM"]},
-  {unit:605,year:2015,make:"Van Hool",model:"TX45",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772214948/605_VsnHool_TX45_fs89vz.png",features:["WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","TABLE","ADJUSTABLE FOOTREST","RESTROOM"]},
-  {unit:606,year:2025,make:"Van Hool",model:"CX-45",passengers:56,category:"Motorcoach ADA",company:"Triangle Bus Charters",photo:null,features:["WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM","ADA LIFT","ADA RAMP"]},
-  {unit:607,year:2025,make:"Van Hool",model:"CX-45",passengers:56,category:"Motorcoach ADA",company:"Triangle Bus Charters",photo:null,features:["WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM","ADA LIFT","ADA RAMP"]},
-  {unit:107,year:2019,make:"BMW",model:"760i",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1771525368/107_BMW_760i_wlhqak.png",features:["PREMIUM AUDIO","LEATHER SEATS"]},
-  {unit:108,year:2020,make:"Mercedes",model:"S540",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1771525368/108_MERC_S540_mlxd0b.png",features:["PREMIUM AUDIO","LEATHER SEATS"]},
-  {unit:109,year:2019,make:"Lincoln",model:"Continental",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772736868/109_LINCOLN_CONT_pnd7so.png",features:[]},
-  {unit:112,year:2022,make:"Tesla",model:"Model S",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772140054/TESLA_S_vcrjm0.png",features:[]},
-  {unit:114,year:2024,make:"Mercedes",model:"E450",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772046363/MERC_E450_oqlat4.png",features:[]},
-  {unit:115,year:2025,make:"Mercedes",model:"E450",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772046363/MERC_E450_oqlat4.png",features:[]},
-  {unit:110,year:2022,make:"Lincoln",model:"Aviator",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051982/110_LINC_AVIATOR_yygtor.png",features:[]},
-  {unit:111,year:2022,make:"Lincoln",model:"Aviator",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051982/110_LINC_AVIATOR_yygtor.png",features:[]},
-  {unit:113,year:2022,make:"Lincoln",model:"Aviator",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:null,features:[]},
-  {unit:204,year:2019,make:"Chevrolet",model:"Suburban",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051990/207_CHEVY_SUB_cbyazv.png",features:[]},
-  {unit:205,year:2020,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772214420/205_CADILLAC_ESCALADE_x5it8s.png",features:[]},
-  {unit:206,year:2023,make:"Chevrolet",model:"Suburban",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:null,features:[]},
-  {unit:207,year:2023,make:"Chevrolet",model:"Suburban",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051990/207_CHEVY_SUB_cbyazv.png",features:[]},
-  {unit:208,year:2024,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:null,features:[]},
-  {unit:209,year:2024,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:null,features:[]},
-  {unit:303,year:2020,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772219858/308_Sprinter_yetpr2.png",features:[]},
-  {unit:304,year:2019,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:[]},
-  {unit:308,year:2022,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:[]},
-  {unit:309,year:2023,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:[]},
-  {unit:311,year:2024,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:[]},
-  {unit:312,year:2024,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:[]},
-  {unit:313,year:2024,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:["IN CABIN SCREENS","ADJUSTABLE SEATS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING"]},
-  {unit:314,year:2024,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:["IN CABIN SCREENS","ADJUSTABLE SEATS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","LEATHER SEATS"]},
-  {unit:203,year:2019,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Pinehurst Chauffeured Transportation",photo:null,features:[]},
-  {unit:210,year:2024,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Pinehurst Chauffeured Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772214410/210_CADILLAC_ESCALADE_ltoitz.png",features:[]},
-  {unit:310,year:2019,make:"Ford",model:"Transit Van",passengers:12,category:"Sprinter Van",company:"Pinehurst Chauffeured Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772146574/310_Pinehurst_wno5ja.png",features:[]},
-  {unit:105,year:2023,make:"GMC",model:"Acadia",passengers:6,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772038218/105_Lot3_gq3fz1.png",features:["ADA LIFT"]},
-  {unit:405,year:2017,make:"Dodge",model:"Caravan",passengers:2,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772736911/407_ADAEXP_obkusv.png",features:["ADA RAMP"]},
-  {unit:406,year:2019,make:"Dodge",model:"Caravan",passengers:2,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["ADA RAMP"]},
-  {unit:407,year:2019,make:"Dodge",model:"Caravan",passengers:2,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["ADA RAMP"]},
-  {unit:408,year:2019,make:"Ford",model:"Transit 150",passengers:3,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["ADA LIFT"]},
-  {unit:409,year:2019,make:"Ford",model:"Transit 350",passengers:3,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772038218/410_Lot1_jux1ua.png",features:["ADA LIFT"]},
-  {unit:410,year:2019,make:"Ford",model:"Transit 350",passengers:3,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772038218/410_Lot1_jux1ua.png",features:["ADA LIFT"]},
-  {unit:411,year:2026,make:"Ford",model:"E-450",passengers:12,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772041842/411_Lot4_ClinicRain_aauqmv.png",features:["ADA LIFT"]},
-  {unit:412,year:2026,make:"Ford",model:"E-450",passengers:12,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["ADA LIFT"]},
-  {unit:413,year:2024,make:"Ford",model:"E-450",passengers:12,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["ADA LIFT"]},
-  {unit:414,year:2024,make:"Ford",model:"E-450",passengers:12,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["ADA LIFT"]},
-  {unit:415,year:2024,make:"Ford",model:"E-450",passengers:12,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["ADA LIFT","SMART TV"]},
-  {unit:416,year:2024,make:"Ford",model:"E-450",passengers:12,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772038217/411_Lot1_Rehab_iqttme.png",features:["ADA LIFT","SMART TV"]}
+  {unit:502,year:2015,make:"Ford",model:"Federal E-450",passengers:24,category:"Minibus",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"]},
+  {unit:503,year:2019,make:"Freightliner",model:"M2",passengers:41,category:"Mini-Coach",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"]},
+  {unit:504,year:2019,make:"Freightliner",model:"M2 Super Coach",passengers:48,category:"Mini-Coach",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051962/509_Supercoach_ooyuzb.png",features:["GPS TRACKING"]},
+  {unit:505,year:2019,make:"Freightliner",model:"Gretch",passengers:37,category:"Mini-Coach",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"]},
+  {unit:506,year:2020,make:"Freightliner",model:"M2",passengers:39,category:"Mini-Coach",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"]},
+  {unit:507,year:2020,make:"Freightliner",model:"M2 Motorcoach",passengers:50,category:"Motorcoach",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"]},
+  {unit:509,year:2019,make:"Freightliner",model:"M2 Super Coach",passengers:40,category:"Motorcoach",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051962/509_Supercoach_ooyuzb.png",features:["GPS TRACKING","IN CABIN SCREENS"]},
+  {unit:511,year:2023,make:"Freightliner",model:"Grech Minibus",passengers:27,category:"Mini-Coach",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","SMART TV"]},
+  {unit:512,year:2024,make:"Freightliner",model:"Grech Minibus",passengers:27,category:"Mini-Coach",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","SMART TV"]},
+  {unit:513,year:2025,make:"Chevrolet",model:"Silverado 6500HD",passengers:35,category:"Mini-Coach",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1773691718/514_Minicoach_uz44mf.png",features:["GPS TRACKING"]},
+  {unit:514,year:2025,make:"Chevrolet",model:"Silverado 6500HD",passengers:35,category:"Mini-Coach",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1773691718/514_Minicoach_uz44mf.png",features:["GPS TRACKING"]},
+  {unit:515,year:2025,make:"Chevrolet",model:"Silverado 6500HD",passengers:35,category:"Mini-Coach",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1773691718/514_Minicoach_uz44mf.png",features:["GPS TRACKING"]},
+  {unit:516,year:2025,make:"Ford",model:"F-600 Super Duty",passengers:27,category:"Mini-Coach",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"],baggage:"Up to 27 Bags"},
+  {unit:601,year:2018,make:"VanHool",model:"TX45",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1773691999/601_Motorcoach_TX45_jjmyso.png",features:["GPS TRACKING","WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","TABLE","ADJUSTABLE FOOTREST","RESTROOM"]},
+  {unit:603,year:2017,make:"Van Hool",model:"CX-45",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772738597/603_CX45_jmavtx.png",features:["GPS TRACKING","WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM"]},
+  {unit:604,year:2012,make:"Van Hool",model:"T2145",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1773692000/604_Motorcoach_TX45_vjg8lt.png",features:["GPS TRACKING","WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM"]},
+  {unit:605,year:2015,make:"Van Hool",model:"TX45",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772214948/605_VsnHool_TX45_fs89vz.png",features:["GPS TRACKING","WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","TABLE","ADJUSTABLE FOOTREST","RESTROOM"]},
+  {unit:606,year:2025,make:"Van Hool",model:"CX-45",passengers:56,wc:2,category:"Motorcoach ADA",company:"Triangle Bus Charters",photo:null,features:["GPS TRACKING","WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM","ADA LIFT"]},
+  {unit:607,year:2025,make:"Van Hool",model:"CX-45",passengers:56,wc:2,category:"Motorcoach ADA",company:"Triangle Bus Charters",photo:null,features:["GPS TRACKING","WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM","ADA LIFT"]},
+  {unit:107,year:2019,make:"BMW",model:"760i",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1771525368/107_BMW_760i_wlhqak.png",features:["GPS TRACKING","PREMIUM AUDIO","LEATHER SEATS"]},
+  {unit:108,year:2020,make:"Mercedes",model:"S540",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1771525368/108_MERC_S540_mlxd0b.png",features:["GPS TRACKING","PREMIUM AUDIO","LEATHER SEATS"]},
+  {unit:109,year:2019,make:"Lincoln",model:"Continental",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772736868/109_LINCOLN_CONT_pnd7so.png",features:["GPS TRACKING"]},
+  {unit:112,year:2022,make:"Tesla",model:"Model S",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772140054/TESLA_S_vcrjm0.png",features:["GPS TRACKING"]},
+  {unit:114,year:2024,make:"Mercedes",model:"E450",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772046363/MERC_E450_oqlat4.png",features:["GPS TRACKING"]},
+  {unit:115,year:2025,make:"Mercedes",model:"E450",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772046363/MERC_E450_oqlat4.png",features:["GPS TRACKING"]},
+  {unit:110,year:2022,make:"Lincoln",model:"Aviator",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051982/110_LINC_AVIATOR_yygtor.png",features:["GPS TRACKING"]},
+  {unit:111,year:2022,make:"Lincoln",model:"Aviator",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051982/110_LINC_AVIATOR_yygtor.png",features:["GPS TRACKING"]},
+  {unit:113,year:2022,make:"Lincoln",model:"Aviator",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"]},
+  {unit:204,year:2019,make:"Chevrolet",model:"Suburban",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051990/207_CHEVY_SUB_cbyazv.png",features:["GPS TRACKING"]},
+  {unit:205,year:2020,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772214420/205_CADILLAC_ESCALADE_x5it8s.png",features:["GPS TRACKING"]},
+  {unit:206,year:2023,make:"Chevrolet",model:"Suburban",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"]},
+  {unit:207,year:2023,make:"Chevrolet",model:"Suburban",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772051990/207_CHEVY_SUB_cbyazv.png",features:["GPS TRACKING"]},
+  {unit:208,year:2024,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"]},
+  {unit:209,year:2024,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"]},
+  {unit:303,year:2020,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772219858/308_Sprinter_yetpr2.png",features:["GPS TRACKING"]},
+  {unit:304,year:2019,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"]},
+  {unit:308,year:2022,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"]},
+  {unit:309,year:2023,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"]},
+  {unit:311,year:2024,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"]},
+  {unit:312,year:2024,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING"]},
+  {unit:313,year:2024,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING","IN CABIN SCREENS","ADJUSTABLE SEATS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING"]},
+  {unit:314,year:2024,make:"Mercedes",model:"Sprinter",passengers:12,category:"Sprinter Van",company:"Triangle Corporate Coach",photo:null,features:["GPS TRACKING","IN CABIN SCREENS","ADJUSTABLE SEATS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","LEATHER SEATS"]},
+  {unit:203,year:2019,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Pinehurst Chauffeured Transportation",photo:null,features:["GPS TRACKING"]},
+  {unit:210,year:2024,make:"Cadillac",model:"Escalade",passengers:7,category:"SUV",company:"Pinehurst Chauffeured Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772214410/210_CADILLAC_ESCALADE_ltoitz.png",features:["GPS TRACKING"]},
+  {unit:310,year:2019,make:"Ford",model:"Transit Van",passengers:12,category:"Sprinter Van",company:"Pinehurst Chauffeured Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772146574/310_Pinehurst_wno5ja.png",features:["GPS TRACKING"]},
+  {unit:105,year:2023,make:"GMC",model:"Acadia",passengers:6,wc:null,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772038218/105_Lot3_gq3fz1.png",features:["GPS TRACKING","ADA LIFT"]},
+  {unit:405,year:2017,make:"Dodge",model:"Caravan",passengers:2,wc:1,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772736911/407_ADAEXP_obkusv.png",features:["GPS TRACKING","ADA RAMP"]},
+  {unit:406,year:2019,make:"Dodge",model:"Caravan",passengers:2,wc:1,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["GPS TRACKING","ADA RAMP"]},
+  {unit:407,year:2019,make:"Dodge",model:"Caravan",passengers:2,wc:1,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["GPS TRACKING","ADA RAMP"]},
+  {unit:408,year:2019,make:"Ford",model:"Transit 150",passengers:3,wc:1,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["GPS TRACKING","ADA LIFT"]},
+  {unit:409,year:2019,make:"Ford",model:"Transit 350",passengers:3,wc:1,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772038218/410_Lot1_jux1ua.png",features:["GPS TRACKING","ADA LIFT"]},
+  {unit:410,year:2019,make:"Ford",model:"Transit 350",passengers:3,wc:1,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772038218/410_Lot1_jux1ua.png",features:["GPS TRACKING","ADA LIFT"]},
+  {unit:411,year:2026,make:"Ford",model:"E-450",passengers:12,wc:2,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772041842/411_Lot4_ClinicRain_aauqmv.png",features:["GPS TRACKING","ADA LIFT"]},
+  {unit:412,year:2026,make:"Ford",model:"E-450",passengers:12,wc:2,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["GPS TRACKING","ADA LIFT"]},
+  {unit:413,year:2024,make:"Ford",model:"E-450",passengers:12,wc:2,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["GPS TRACKING","ADA LIFT"]},
+  {unit:414,year:2024,make:"Ford",model:"E-450",passengers:12,wc:2,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["GPS TRACKING","ADA LIFT"]},
+  {unit:415,year:2024,make:"Ford",model:"E-450",passengers:12,wc:2,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:null,features:["GPS TRACKING","ADA LIFT","SMART TV"]},
+  {unit:416,year:2024,make:"Ford",model:"E-450",passengers:12,category:"ADA Vehicle",company:"Wisdom Care Transportation",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772038217/411_Lot1_Rehab_iqttme.png",features:["GPS TRACKING","ADA LIFT","SMART TV"]}
 ];
 
 const DIVISIONS = [
@@ -1203,9 +1213,9 @@ const DIVISIONS = [
 ];
 
 const TICKS = [1,3,5,6,7,8,12,18,24,27,37,39,40,41,48,50,56];
-const CATS  = ['Sedan','SUV','Sprinter Van','Minibus','Minicoach','Super Coach','Motorcoach','Motorcoach ADA','ADA Vehicle','Box Truck'];
-const CAT_ICON  = {Sedan:'🚗',SUV:'🚙','Sprinter Van':'🚐',Minibus:'🚌',Minicoach:'🚌','Super Coach':'🚌',Motorcoach:'🚎','Motorcoach ADA':'♿🚎','ADA Vehicle':'♿','Box Truck':'🚛'};
-const CAT_LABEL = {Sedan:'Luxury Sedan',SUV:'SUV','Sprinter Van':'Sprinter Van',Minibus:'Minibus',Minicoach:'Minicoach','Super Coach':'Super Coach',Motorcoach:'Motorcoach','Motorcoach ADA':'Motorcoach ADA','ADA Vehicle':'ADA Accessible','Box Truck':'Box Truck'};
+const CATS  = ['Sedan','SUV','Sprinter Van','Minibus','Mini-Coach','Motorcoach','Motorcoach ADA','ADA Vehicle','Box Truck'];
+const CAT_ICON  = {Sedan:'🚗',SUV:'🚙','Sprinter Van':'🚐',Minibus:'🚌','Mini-Coach':'🚌',Motorcoach:'🚎','Motorcoach ADA':'♿🚎','ADA Vehicle':'♿','Box Truck':'🚛'};
+const CAT_LABEL = {Sedan:'Luxury Sedan',SUV:'SUV','Sprinter Van':'Sprinter Van',Minibus:'Minibus','Mini-Coach':'Mini-Coach',Motorcoach:'Motorcoach','Motorcoach ADA':'Motorcoach ADA','ADA Vehicle':'ADA Accessible','Box Truck':'Box Truck'};
 const FEAT_ICON = {WIFI:'📶','IN CABIN SCREENS':'📺','ADJUSTABLE SEATS':'💺','POWER OUTLETS':'🔌','INDIVIDUAL CLIMATE CONTROL':'❄️','WOOD FLOORING':'🪵','PREMIUM AUDIO':'🔊',TABLE:'🪑','LEATHER SEATS':'🛋️','SMART TV':'📡','ADJUSTABLE FOOTREST':'🦶',RESTROOM:'🚻','ADA LIFT':'♿','ADA RAMP':'♿',LIFTGATE:'🔼','GPS TRACKING':'📍'};
 
 // All amenity names in display order (2 columns top-to-bottom)
@@ -1280,9 +1290,10 @@ const BAGGAGE = {
   'Sedan':       'Up to 3 Bags',
   'SUV':         'Up to 5 Bags',
   'Sprinter Van':'Up to 14 Bags',
+  'Mini-Coach':   'Up to 40 Bags',
   'Motorcoach':  'Up to 100 Bags',
 };
-const CAT_ORDER = ['Sedan','SUV','Sprinter Van','Minibus','Minicoach','Super Coach','Motorcoach','Motorcoach ADA','ADA Vehicle','Box Truck'];
+const CAT_ORDER = ['Sedan','SUV','Sprinter Van','Minibus','Mini-Coach','Motorcoach','Motorcoach ADA','ADA Vehicle','Box Truck'];
 
 // Photo overrides removed — photos come directly from vehicle data
 
@@ -1568,16 +1579,16 @@ function render(){
         const maxPax = mg.units[0].cargo ? 0 : Math.max(...nonCargo.map(u=>u.passengers));
         const minPax = mg.units[0].cargo ? 0 : Math.min(...nonCargo.map(u=>u.passengers));
         const paxLabel = mg.units[0].cargo ? 'Cargo' : (minPax===maxPax ? `Up to ${maxPax}` : `${minPax}–${maxPax} pax`);
+        // WC label for ADA vehicles
+        const wcVals = mg.units.map(u=>u.wc).filter(w=>w!=null&&w!==undefined);
+        const maxWC = wcVals.length ? Math.max(...wcVals) : null;
+        const wcLabel = ((mg.category==='ADA Vehicle'||mg.category==='Motorcoach ADA') && maxWC!=null) ? `WC+${maxWC}` : '';
 
         // Shared features across all units in this model
         const allFeats = mg.units.map(u=>u.features);
         const sharedFeats = allFeats.length ? allFeats.reduce((acc,f)=>acc.filter(x=>f.includes(x))) : [];
         const featIcons = sharedFeats.slice(0,4).map(f=>FEAT_ICON[f]||'').filter(Boolean).join('');
 
-        // Year range
-        const years = mg.units.map(u=>u.year);
-        const minYr = Math.min(...years), maxYr = Math.max(...years);
-        const yearLabel = minYr===maxYr ? String(minYr) : `${minYr}–${maxYr}`;
 
         const photoHtml = photo
           ? `<img src="${photo}" alt="${mg.make} ${mg.model}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
@@ -1595,11 +1606,12 @@ function render(){
             <div class="mc-sel-badge">✓</div>
             <div class="mc-photo-footer">
               <div class="mc-pax-label">${paxLabel}</div>
+              ${wcLabel?`<div class="mc-wc-label">${wcLabel}</div>`:''}
             </div>
           </div>
           <div class="mc-info">
             <div>
-              <div class="mc-category">${yearLabel}</div>
+              <div class="mc-category">${mg.category}</div>
               <div class="mc-make-model">${mg.make} ${mg.model}</div>
             </div>
             <div class="mc-bottom">
@@ -1622,8 +1634,8 @@ function render(){
 // Select a whole model group — picks the first/currently-active unit and opens showcase
 // Also populates unit pills for switching
 function selectModel(mgInfo){
-  // Find the model group units
-  const divVehicles = VEHICLES.filter(v=>v.company===mgInfo.company && v.make===mgInfo.make && v.model===mgInfo.model);
+  // Find the model group units — filter by category to avoid cross-category contamination
+  const divVehicles = VEHICLES.filter(v=>v.company===mgInfo.company && v.make===mgInfo.make && v.model===mgInfo.model && v.category===mgInfo.category);
   if(!divVehicles.length) return;
 
   // If currently selected unit is in this group, keep it; else pick first
@@ -1669,16 +1681,17 @@ function selectV(v, modelUnits){
   const badge=document.getElementById('scDivBadge');
   badge.innerHTML=`<span class="sc-div-name">${div.name}</span>`;
 
-  document.getElementById('scName').textContent=v.year+' '+v.make+' '+v.model;
+  document.getElementById('scName').textContent=v.make+' '+v.model;
   document.getElementById('scSub').textContent='Unit #'+v.unit+(v.cargo?' · Cargo Vehicle':' · '+v.category+' · Up to '+v.passengers+' passengers');
 
-  const baggageLabel = BAGGAGE[v.category] || null;
+  const baggageLabel = v.baggage || BAGGAGE[v.category] || null;
   document.getElementById('scGrid').innerHTML=`
     <div class="sc-stat"><div class="lbl">Unit #</div><div class="val">${v.unit}</div></div>
-    <div class="sc-stat"><div class="lbl">Year</div><div class="val">${v.year}</div></div>
     <div class="sc-stat"><div class="lbl">Vehicle Type</div><div class="val-sm">${v.category}</div></div>
     <div class="sc-stat"><div class="lbl">${v.cargo?'Capacity':'Passengers'}</div><div class="val">${v.cargo?'Cargo':'Up to '+v.passengers}</div></div>
     ${baggageLabel?`<div class="sc-stat"><div class="lbl">Baggage</div><div class="val-sm">${baggageLabel}</div></div>`:''}
+    ${((v.category==='ADA Vehicle'||v.category==='Motorcoach ADA') && v.wc!=null)?`<div class="sc-stat"><div class="lbl">Wheelchair Capacity</div><div class="val">WC+${v.wc}</div></div>`:''}
+    ${((v.category==='ADA Vehicle'||v.category==='Motorcoach ADA') && (v.wc===null||v.wc===undefined)&&v.hasOwnProperty('wc'))?`<div class="sc-stat"><div class="lbl">Wheelchair Capacity</div><div class="val-sm">N/A</div></div>`:''}
   `;
 
   document.getElementById('scFeats').innerHTML=v.features.length
@@ -1686,7 +1699,7 @@ function selectV(v, modelUnits){
     : `<span class="sc-no-feat">Standard configuration — no premium amenities listed</span>`;
 
   // Unit selector pills — resolve modelUnits if not passed
-  const units = modelUnits || VEHICLES.filter(u=>u.company===v.company&&u.make===v.make&&u.model===v.model);
+  const units = modelUnits || VEHICLES.filter(u=>u.company===v.company&&u.make===v.make&&u.model===v.model&&u.category===v.category);
   const selectorEl = document.getElementById('scUnitSelector');
   const pillsEl = document.getElementById('scUnitPills');
   const currentPax = TICKS[selIdx];
@@ -1697,7 +1710,7 @@ function selectV(v, modelUnits){
       const uJson = JSON.stringify({unit:u.unit,year:u.year,make:u.make,model:u.model,passengers:u.passengers,category:u.category,company:u.company,features:u.features,cargo:u.cargo||false,photo:u.photo||null}).replace(/"/g,'&quot;');
       const classes = ['sc-unit-pill', u.unit===v.unit?'active':'', tooSmall?'disabled':''].filter(Boolean).join(' ');
       return `<button class="${classes}"${tooSmall?'':` onclick="selectV(${uJson})"`} title="${tooSmall?'Insufficient capacity for '+currentPax+' passengers':'Unit #'+u.unit}">
-        Unit #${u.unit} · ${u.year}${tooSmall?' ✕':''}
+        Unit #${u.unit}${tooSmall?' ✕':''}
       </button>`;
     }).join('');
   } else {
@@ -1717,7 +1730,7 @@ function closeShowcase(){ selVehicle=null; document.getElementById('showcase').c
 
 function bookInquiry(){
   if(!selVehicle) return;
-  alert('Thank you for your interest!\n\nVehicle: '+selVehicle.year+' '+selVehicle.make+' '+selVehicle.model+'\nUnit #'+selVehicle.unit+'\n\nPlease contact Brisbon Transportation Group to complete your reservation.');
+  alert('Thank you for your interest!\n\nVehicle: '+selVehicle.make+' '+selVehicle.model+'\nUnit #'+selVehicle.unit+'\n\nPlease contact Brisbon Transportation Group to complete your reservation.');
 }
 
 function resetAll(){
