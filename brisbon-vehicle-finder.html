@@ -1832,16 +1832,17 @@ function selectV(v, modelUnits){
   updateAmenities(v);
 
   document.getElementById('showcase').classList.add('on');
-  // On mobile scroll to the results/showcase section; on desktop stay put
-  if(window.innerWidth <= 800){
-    const target = document.getElementById('resultsSection');
-    if(target){
-      const headerH = document.getElementById('site-header')?.offsetHeight || 72;
-      const y = target.getBoundingClientRect().top + window.pageYOffset - headerH - 8;
-      window.scrollTo({top: y, behavior:'smooth'});
-    }
-  }
   render();
+  // After render, scroll to the showcase element itself so it's fully in view
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>{
+      const showcase = document.getElementById('showcase');
+      if(!showcase) return;
+      const headerH = document.getElementById('site-header')?.offsetHeight || 72;
+      const y = showcase.getBoundingClientRect().top + window.pageYOffset - headerH - 12;
+      window.scrollTo({top: y, behavior:'smooth'});
+    });
+  });
 }
 
 function closeShowcase(){ selVehicle=null; document.getElementById('showcase').classList.remove('on'); updateAmenities(null); render(); }
