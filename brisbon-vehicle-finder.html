@@ -1832,7 +1832,15 @@ function selectV(v, modelUnits){
   updateAmenities(v);
 
   document.getElementById('showcase').classList.add('on');
-  window.scrollTo({top:80, behavior:'smooth'});
+  // On mobile scroll to the results/showcase section; on desktop stay put
+  if(window.innerWidth <= 800){
+    const target = document.getElementById('resultsSection');
+    if(target){
+      const headerH = document.getElementById('site-header')?.offsetHeight || 72;
+      const y = target.getBoundingClientRect().top + window.pageYOffset - headerH - 8;
+      window.scrollTo({top: y, behavior:'smooth'});
+    }
+  }
   render();
 }
 
