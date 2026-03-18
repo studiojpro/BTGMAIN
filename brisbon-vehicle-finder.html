@@ -446,49 +446,53 @@ input#paxRange::-moz-range-thumb{width:28px;height:28px;background:var(--gold);b
   box-shadow:0 2px 12px rgba(0,0,0,.18);
 }
 .division-logo-col{
-  display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+  /* single source of truth — both logo & button derive height from this */
+  --div-logo-h: clamp(32px, 4.5vw, 48px);
+  display:flex;flex-direction:row;align-items:center;gap:clamp(10px,1.4vw,18px);
   flex-shrink:0;
 }
 .division-header-info{flex:1;min-width:0;}
 .division-logo{
-  height:38px;width:auto;max-width:160px;
+  height:var(--div-logo-h);
+  width:auto;max-width:clamp(100px,14vw,180px);
   object-fit:contain;object-position:left center;
   flex-shrink:0;
   filter:drop-shadow(0 1px 4px rgba(0,0,0,.4));
   display:block;
 }
-.division-logo-ph{height:38px;display:flex;align-items:center}
+.division-logo-ph{height:var(--div-logo-h);display:flex;align-items:center}
 .division-name{
   font-family:'Cormorant Garamond',serif;font-weight:600;
-  font-size:1.5rem;letter-spacing:.08em;text-transform:uppercase;
+  font-size:clamp(1.05rem,2.2vw,1.55rem);letter-spacing:.08em;text-transform:uppercase;
   color:var(--gold2);line-height:1.15;
   overflow:hidden;text-overflow:ellipsis;
 }
-.division-count{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#888;margin-top:5px}
+.division-count{font-size:clamp(.52rem,.8vw,.68rem);letter-spacing:.14em;text-transform:uppercase;color:#888;margin-top:5px}
 .division-website{
-  display:inline-block;
-  padding:6px 14px;
+  /* match logo height exactly — padding + font scale together */
+  display:inline-flex;align-items:center;justify-content:center;
+  height:var(--div-logo-h);
+  box-sizing:border-box;
+  padding:0 clamp(10px,1.4vw,18px);
   border:1px solid var(--gold3);
   color:var(--gold);
   background:transparent;
   font-family:'Outfit',sans-serif;
-  font-size:.46rem;font-weight:600;
-  letter-spacing:.14em;text-transform:uppercase;
+  font-size:clamp(.42rem,.7vw,.52rem);font-weight:600;
+  letter-spacing:.13em;text-transform:uppercase;
   text-decoration:none;
   border-radius:2px;
   transition:all .2s;
   white-space:nowrap;
   cursor:pointer;
-  align-self:flex-start;
+  flex-shrink:0;
 }
 .division-website:hover{background:var(--gold);color:#fff;border-color:var(--gold);box-shadow:0 3px 12px rgba(201,168,76,.3)}
 @media(max-width:600px){
-  .division-header{flex-direction:column;align-items:flex-start;gap:14px;padding:16px;}
-  .division-logo-col{gap:10px;width:100%;}
-  .division-logo{height:30px;max-width:130px;}
-  .division-name{font-size:1.05rem;letter-spacing:.05em;}
-  .division-count{font-size:.56rem;}
-  .division-website{font-size:.46rem;padding:7px 14px;}
+  .division-header{flex-direction:column;align-items:flex-start;gap:12px;padding:14px 16px;}
+  .division-logo-col{--div-logo-h:clamp(28px,8vw,38px);gap:clamp(8px,2.5vw,14px);width:100%;}
+  .division-name{font-size:clamp(.9rem,4vw,1.1rem);letter-spacing:.05em;}
+  .division-count{font-size:clamp(.5rem,2.2vw,.58rem);}
 }
 
 /* ══════════════════════════════════════════
