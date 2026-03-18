@@ -108,11 +108,75 @@ header {
 .btn-quote-nav:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
 .h-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
 .h-hamburger span { width: 22px; height: 1.5px; background: #fff; transition: all 0.3s; }
+.h-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.h-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.h-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* MOBILE NAV DRAWER */
+#mobile-nav {
+  display: none;
+  position: fixed;
+  top: 72px; left: 0; right: 0;
+  background: rgba(10,10,10,0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 2px solid var(--gold3);
+  z-index: 199;
+  flex-direction: column;
+  padding: 0.5rem 0 1rem;
+  transform: translateY(-12px);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  pointer-events: none;
+}
+#mobile-nav.open {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+#mobile-nav a {
+  display: block;
+  padding: 0.9rem 6%;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: all 0.18s ease;
+}
+#mobile-nav a:hover,
+#mobile-nav a.active { color: var(--gold2); border-left-color: var(--gold); background: rgba(201,168,76,0.06); }
+#mobile-nav .mob-divider { height: 1px; background: #1e1e1e; margin: 0.4rem 0; }
+#mobile-nav .mob-quote {
+  margin: 0.6rem 6% 0;
+  padding: 0.8rem 1rem;
+  text-align: center;
+  background: transparent;
+  border: 1px solid var(--gold3);
+  border-radius: 2px;
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: block;
+  transition: all 0.2s ease;
+}
+#mobile-nav .mob-quote:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+
 @media(max-width:900px){
   .h-nav .h-nav-link, .h-nav .h-nav-dropdown { display: none; }
   .btn-quote-nav { display: none; }
   .h-hamburger { display: flex; }
   .h-cta { display: none; }
+}
+@media(min-width:901px){
+  #mobile-nav { display: none !important; }
 }
 
 /* ═══════════════════════════════════════
@@ -971,10 +1035,21 @@ footer{background:var(--ink);border-top:1px solid #1a1a1a;padding:18px 48px;text
     <a class="h-nav-link" href="#">About</a>
     <a href="index.html#quote" class="btn-quote-nav">Get a Quote →</a>
   </nav>
-  <div class="h-hamburger">
+  <div class="h-hamburger" id="hamburgerBtn">
     <span></span><span></span><span></span>
   </div>
 </header>
+
+<!-- MOBILE NAV DRAWER -->
+<nav id="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="brisbon-vehicle-finder.html" class="active">Fleet</a>
+  <a href="index.html#services">Services</a>
+  <a href="solutions.html">Solutions</a>
+  <a href="#">About</a>
+  <div class="mob-divider"></div>
+  <a href="index.html#quote" class="mob-quote">Get a Quote →</a>
+</nav>
 
 <div class="page-layout">
 
@@ -1166,7 +1241,7 @@ const VEHICLES = [
   {unit:603,year:2017,make:"Van Hool",model:"CX-45",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772738597/603_CX45_jmavtx.png",features:["GPS TRACKING","WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM"]},
   {unit:604,year:2012,make:"Van Hool",model:"T2145",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1773692000/604_Motorcoach_TX45_vjg8lt.png",features:["GPS TRACKING","WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM"]},
   {unit:605,year:2015,make:"Van Hool",model:"TX45",passengers:56,category:"Motorcoach",company:"Triangle Bus Charters",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1772214948/605_VsnHool_TX45_fs89vz.png",features:["GPS TRACKING","WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","TABLE","ADJUSTABLE FOOTREST","RESTROOM"]},
-  {unit:606,year:2025,make:"Van Hool",model:"CX-45",passengers:56,wc:2,category:"Motorcoach ADA",company:"Triangle Bus Charters",photo:null,features:["GPS TRACKING","WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM","ADA LIFT"]},
+  {unit:606,year:2025,make:"Van Hool",model:"CX-45",passengers:56,wc:2,category:"Motorcoach ADA",company:"Triangle Bus Charters",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1773862276/606_Motorcoach_ADA_1_y2saie.png",features:["GPS TRACKING","WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM","ADA LIFT"]},
   {unit:607,year:2025,make:"Van Hool",model:"CX-45",passengers:56,wc:2,category:"Motorcoach ADA",company:"Triangle Bus Charters",photo:null,features:["GPS TRACKING","WIFI","IN CABIN SCREENS","ADJUSTABLE SEATS","POWER OUTLETS","INDIVIDUAL CLIMATE CONTROL","WOOD FLOORING","TABLE","SMART TV","ADJUSTABLE FOOTREST","RESTROOM","ADA LIFT"]},
   {unit:107,year:2019,make:"BMW",model:"760i",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1771525368/107_BMW_760i_wlhqak.png",features:["GPS TRACKING","PREMIUM AUDIO","LEATHER SEATS"]},
   {unit:108,year:2020,make:"Mercedes",model:"S540",passengers:3,category:"Sedan",company:"Triangle Corporate Coach",photo:"https://res.cloudinary.com/datqt0gei/image/upload/v1771525368/108_MERC_S540_mlxd0b.png",features:["GPS TRACKING","PREMIUM AUDIO","LEATHER SEATS"]},
@@ -1761,7 +1836,53 @@ function resetAll(){
 }
 
 // Keyboard handler
-document.addEventListener('keydown',e=>{ if(e.key==='Escape' && selVehicle) closeShowcase(); });
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    if(selVehicle) closeShowcase();
+    closeMobileNav();
+  }
+});
+
+// ── MOBILE NAV HAMBURGER ──────────────────────────────
+(function(){
+  const btn = document.getElementById('hamburgerBtn');
+  const nav = document.getElementById('mobile-nav');
+  if(!btn || !nav) return;
+
+  function openMobileNav(){
+    nav.style.display = 'flex';
+    // Force reflow so transition fires
+    nav.offsetHeight;
+    nav.classList.add('open');
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+  }
+
+  window.closeMobileNav = function(){
+    nav.classList.remove('open');
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded','false');
+    nav.addEventListener('transitionend', function handler(){
+      if(!nav.classList.contains('open')) nav.style.display = 'none';
+      nav.removeEventListener('transitionend', handler);
+    });
+  };
+
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    nav.classList.contains('open') ? closeMobileNav() : openMobileNav();
+  });
+
+  // Close when a nav link is clicked
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileNav));
+
+  // Close on outside tap
+  document.addEventListener('click', function(e){
+    if(nav.classList.contains('open') && !nav.contains(e.target) && e.target !== btn && !btn.contains(e.target)){
+      closeMobileNav();
+    }
+  });
+})();
 
 // INIT
 buildAmenitiesGrid();
