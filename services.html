@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Brisbon Transportation Group LLC — Raleigh, NC</title>
+<meta name="description" content="Explore all BTG transportation services — motorcoach charter, corporate shuttle, NEMT, event transport, airport transfers, LTL freight, and vehicle service. Raleigh-Durham-Chapel Hill, NC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0d0d0d;
+  --off-black: #111010;
+  --deep: #1e1e1e;
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+  --gold-dark: #7A5C1E;
+  --gold-pale: #FBF5E6;
+  --gold-ultra: #F5EFE0;
+  --white: #FFFFFF;
+  --cream: #ddd8ca;
+  --muted: #7a7268;
+  --rule: #D4C9B0;
+  --rule-dark: rgba(255,255,255,0.07);
+  --text: #111010;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background-color:#ddd8ca;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E"),
+    linear-gradient(160deg,#ebe5d8 0%,#d9d2c2 40%,#cfc8b8 100%);
+  color:var(--text);line-height:1.6;overflow-x:hidden;
+}
+
+/* ── MOBILE STICKY CTA ── */
+.mobile-cta-bar{
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;
+  background:var(--black);border-top:1px solid rgba(201,168,76,0.3);
+  padding:0.8rem 1rem;gap:0.6rem;
+}
+@media(max-width:768px){.mobile-cta-bar{display:flex}}
+.mobile-cta-bar a{
+  flex:1;text-align:center;padding:0.7rem 0.5rem;
+  font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;
+  text-decoration:none;font-weight:500;border-radius:2px;
+}
+.mobile-cta-bar .mcall{background:var(--gold);color:var(--black)}
+.mobile-cta-bar .mquote{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+
+/* ── LOGO BADGE ── */
+.logo-badge{
+  position:fixed;top:0;left:0;z-index:200;
+  background:rgba(0,0,0,0.92);
+  border-right:1px solid rgba(201,168,76,0.35);
+  border-bottom:1px solid rgba(201,168,76,0.35);
+  padding:10px 18px 10px 16px;
+  display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(10px);
+  border-radius:0 0 4px 0;
+  box-shadow:2px 2px 20px rgba(0,0,0,0.5);
+}
+.logo-badge img{height:116px;width:auto;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.4))}
+@media(max-width:768px){
+  .logo-badge img{height:80px}
+  .logo-badge{padding:8px 14px 8px 12px}
+}
+
+/* ── HEADER ── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,10,10,0.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--rule-dark);
+  padding:0 5% 0 210px;
+  display:flex;align-items:center;justify-content:flex-end;
+  height:80px;transition:all 0.3s ease;
+}
+header.scrolled{background:rgba(10,10,10,0.99);box-shadow:0 1px 20px rgba(0,0,0,0.5)}
+nav{display:flex;align-items:center;gap:0}
+.nav-link{
+  font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.72);text-decoration:none;
+  padding:0 1.1rem;height:80px;display:flex;align-items:center;
+  border-bottom:2px solid transparent;transition:all 0.2s ease;white-space:nowrap;
+}
+.nav-link:hover{color:var(--gold-light);border-bottom-color:var(--gold)}
+.nav-link.active{color:var(--gold);border-bottom-color:var(--gold)}
+.btn-quote-nav{
+  background:transparent;color:var(--gold);
+  font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;
+  padding:0.65rem 1.4rem;text-decoration:none;margin-left:1rem;
+  border:1px solid var(--gold-dark);border-radius:2px;
+  transition:all 0.22s ease;white-space:nowrap;
+}
+.btn-quote-nav:hover{background:var(--gold);color:var(--white);border-color:var(--gold)}
+
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;z-index:310;position:relative}
+.hamburger span{width:22px;height:1.5px;background:var(--white);transition:all 0.35s cubic-bezier(0.4,0,0.2,1);transform-origin:center}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* Mobile drawer */
+.mobile-nav-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:290;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);opacity:0;transition:opacity 0.3s ease;pointer-events:none}
+.mobile-nav-overlay.open{opacity:1;pointer-events:all}
+.mobile-nav-drawer{display:none;position:fixed;top:80px;left:0;right:0;z-index:300;background:rgba(8,8,8,0.98);backdrop-filter:blur(16px);border-bottom:2px solid var(--gold);padding:0;transform:translateY(-12px);opacity:0;transition:transform 0.32s cubic-bezier(0.4,0,0.2,1),opacity 0.28s ease;pointer-events:none;max-height:calc(100vh - 80px);overflow-y:auto}
+.mobile-nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all}
+.mobile-nav-links{display:flex;flex-direction:column;padding:0.6rem 0 1rem}
+.mobile-nav-links a{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.6rem;font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.65);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.05);transition:all 0.18s ease}
+.mobile-nav-links a:hover,.mobile-nav-links a.active{color:var(--gold-light);background:rgba(201,168,76,0.06);padding-left:2rem}
+.mobile-nav-cta{padding:1rem 1.6rem 1.4rem;display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;border-top:1px solid rgba(201,168,76,0.2)}
+.mobile-nav-cta a{text-align:center;padding:0.9rem 1rem;font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:all 0.2s ease}
+.mobile-nav-cta .mn-call{background:var(--gold);color:var(--black)}
+.mobile-nav-cta .mn-quote{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+@media(max-width:900px){
+  nav .nav-link,nav .nav-dropdown{display:none}
+  .btn-quote-nav{display:none}
+  .hamburger{display:flex}
+  .mobile-nav-drawer,.mobile-nav-overlay{display:block}
+}
+
+/* ── PAGE HERO ── */
+.page-hero{
+  position:relative;overflow:hidden;
+  padding:calc(80px + 5rem) 5% 5rem;
+  padding-left:calc(210px + 5%);
+  border-bottom:1px solid #1e1e1e;
+  min-height:340px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+}
+/* Background image layer */
+.page-hero-img{
+  position:absolute;inset:0;z-index:0;
+  background:url('https://res.cloudinary.com/datqt0gei/image/upload/v1773937883/FLEET_HEADER_h0mnom.png')
+    center center / cover no-repeat;
+}
+/* Dark veil for text contrast */
+.page-hero-veil{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(
+    160deg,
+    rgba(5,5,5,0.62) 0%,
+    rgba(10,10,10,0.45) 45%,
+    rgba(10,10,10,0.30) 100%
+  );
+}
+/* Bottom anchor shadow */
+.page-hero-ground{
+  position:absolute;inset:0;z-index:2;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,0.75) 0%,
+    rgba(0,0,0,0.25) 35%,
+    transparent 65%
+  );
+}
+/* Subtle gold grid */
+.page-hero-grid{
+  position:absolute;inset:0;z-index:3;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,168,76,0.03) 1px,transparent 1px);
+  background-size:80px 80px;
+}
+/* All text above layers */
+.page-hero-content{
+  position:relative;z-index:10;
+  display:flex;flex-direction:column;
+}
+/* Watermark */
+.page-hero::after{
+  content:'SERVICES';
+  position:absolute;right:-20px;top:50%;transform:translateY(-50%);
+  font-family:var(--font-display);font-size:12rem;color:rgba(201,168,76,0.05);
+  font-weight:300;letter-spacing:0.1em;pointer-events:none;white-space:nowrap;line-height:1;
+  z-index:5;
+}
+.page-hero-label{
+  font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.24em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1rem;opacity:0.9;
+  text-shadow:0 1px 8px rgba(0,0,0,0.8);
+}
+.page-hero h1{
+  font-family:var(--font-display);font-weight:300;
+  font-size:clamp(2.5rem,5vw,4.5rem);color:var(--white);
+  line-height:1.05;letter-spacing:-0.01em;margin-bottom:1rem;
+  text-shadow:0 2px 24px rgba(0,0,0,0.7),0 1px 4px rgba(0,0,0,0.9);
+}
+.page-hero h1 em{font-style:italic;color:var(--gold-light)}
+.page-hero p{
+  font-size:0.92rem;color:rgba(255,255,255,0.88);
+  max-width:540px;line-height:1.8;font-weight:300;
+  text-shadow:0 1px 12px rgba(0,0,0,0.9);
+}
+@media(max-width:768px){
+  .page-hero{padding-left:5%;padding-top:calc(80px + 3rem);min-height:280px;}
+}
+
+/* ── SECTION WRAPPER ── */
+.section-inner{max-width:1200px;margin:0 auto;padding:0 5%}
+.section{padding:5rem 0}
+.section-label{
+  font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold-dark);margin-bottom:0.8rem;
+}
+.section-title{
+  font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);
+  font-weight:300;line-height:1.1;margin-bottom:0.8rem;
+}
+.section-title em{font-style:italic;color:var(--gold)}
+.gold-rule{width:40px;height:1px;background:var(--gold);margin:1.2rem 0}
+
+/* ══════════════════════════════════════════
+   SERVICE SELECTOR
+   ══════════════════════════════════════════ */
+.services-selector-section{
+  background:var(--black);
+  padding:3rem 0 0;
+  border-bottom:2px solid var(--gold-dark);
+}
+.selector-inner{max-width:1200px;margin:0 auto;padding:0 5%}
+.selector-label{
+  font-family:var(--font-mono);font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(255,255,255,0.52);margin-bottom:1.6rem;
+}
+
+/* Tab rail */
+.service-tabs{
+  display:flex;flex-wrap:wrap;gap:0;
+  border-top:1px solid #1e1e1e;
+}
+.svc-tab{
+  display:flex;align-items:center;gap:0.6rem;
+  padding:1.1rem 1.5rem;
+  font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.62);
+  background:transparent;border:none;cursor:pointer;
+  border-top:3px solid transparent;
+  border-right:1px solid #1a1a1a;
+  transition:all 0.22s ease;
+  position:relative;white-space:nowrap;
+}
+.svc-tab:last-child{border-right:none}
+.svc-tab:hover{color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.02)}
+.svc-tab.active{
+  color:var(--gold-light);
+  border-top-color:var(--gold);
+  background:rgba(201,168,76,0.06);
+}
+.svc-tab-icon{font-size:1rem;line-height:1;flex-shrink:0;opacity:0.6;transition:opacity 0.2s}
+.svc-tab.active .svc-tab-icon{opacity:1}
+@media(max-width:900px){
+  .service-tabs{border-top:none;gap:6px;padding-bottom:1rem}
+  .svc-tab{
+    border:1px solid #252525;border-radius:3px;border-top:3px solid transparent;
+    flex:1 1 calc(50% - 3px);min-width:140px;justify-content:center;
+    padding:0.9rem 0.8rem;font-size:0.52rem;
+  }
+  .svc-tab.active{border-color:var(--gold-dark);border-top-color:var(--gold)}
+}
+@media(max-width:480px){
+  .svc-tab{flex:1 1 calc(100% - 0px);max-width:100%;justify-content:flex-start;padding:0.85rem 1rem}
+}
+
+/* ══════════════════════════════════════════
+   SHOWCASE PANEL
+   ══════════════════════════════════════════ */
+.showcase-panel{
+  background:transparent;
+  padding:3rem 0 5rem;
+  min-height:540px;
+}
+.showcase-inner{max-width:1200px;margin:0 auto;padding:0 5%}
+
+/* Animated entry */
+.svc-showcase{
+  display:none;
+  animation:showcaseIn 0.38s cubic-bezier(0.16,1,0.3,1) both;
+}
+.svc-showcase.active{display:block}
+@keyframes showcaseIn{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Showcase header */
+.showcase-header{
+  display:flex;align-items:flex-start;gap:2rem;
+  padding:2rem 2.2rem;
+  background:var(--black);
+  border:1px solid #1e1e1e;
+  border-top:3px solid var(--gold);
+  border-radius:4px;
+  margin-bottom:2.2rem;
+  position:relative;overflow:hidden;
+}
+.showcase-header::after{
+  content:'';position:absolute;top:0;right:0;bottom:0;
+  width:30%;
+  background:radial-gradient(ellipse 80% 100% at 100% 50%,rgba(201,168,76,0.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+.showcase-icon{
+  font-size:2.8rem;line-height:1;flex-shrink:0;
+  width:64px;height:64px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(201,168,76,0.1);
+  border:1px solid rgba(201,168,76,0.2);
+  border-radius:4px;
+}
+.showcase-meta{flex:1;min-width:0}
+.showcase-kicker{
+  font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:0.5rem;opacity:0.8;
+}
+.showcase-title{
+  font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.4rem);
+  color:var(--white);font-weight:400;line-height:1.1;margin-bottom:1rem;
+}
+.showcase-desc{
+  font-size:0.88rem;color:rgba(255,255,255,0.78);
+  line-height:1.85;font-weight:300;max-width:680px;
+}
+.showcase-cta-group{
+  flex-shrink:0;
+  align-self:flex-start;
+  display:flex;flex-direction:column;gap:0.55rem;
+  min-width:160px;
+}
+.showcase-cta-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;
+  padding:0.75rem 1.5rem;
+  font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;
+  text-decoration:none;border-radius:2px;
+  transition:all 0.22s ease;white-space:nowrap;width:100%;
+}
+.showcase-cta-btn.btn-call{
+  background:var(--gold);color:var(--black);
+  border:1px solid var(--gold);
+}
+.showcase-cta-btn.btn-call:hover{background:var(--gold-light);border-color:var(--gold-light)}
+.showcase-cta-btn.btn-quote{
+  background:transparent;color:var(--gold);
+  border:1px solid var(--gold-dark);
+}
+.showcase-cta-btn.btn-quote:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
+@media(max-width:768px){
+  .showcase-header{flex-direction:column;gap:1.2rem;padding:1.4rem}
+  .showcase-icon{width:52px;height:52px;font-size:2.2rem}
+  .showcase-cta-group{align-self:stretch;min-width:0;flex-direction:row;}
+  .showcase-cta-btn{flex:1}
+}
+@media(max-width:440px){
+  .showcase-cta-group{flex-direction:column;}
+}
+/* ── ALL-SERVICES ACCORDION MODE ─────────────────────────── */
+.showcase-inner.show-all .svc-showcase{
+  display:block;
+  margin-bottom:0.5rem;
+}
+/* In all-services mode header becomes a clickable accordion banner */
+.showcase-inner.show-all .showcase-header{
+  cursor:pointer;
+  margin-bottom:0;
+  border-radius:4px;
+  user-select:none;
+  transition:background 0.2s ease, border-color 0.2s ease;
+}
+.showcase-inner.show-all .showcase-header:hover{
+  background:#161616;
+  border-color:rgba(201,168,76,0.3);
+}
+/* Hide description + CTAs in collapsed banner */
+.showcase-inner.show-all .showcase-desc{ display:none; }
+.showcase-inner.show-all .showcase-cta-group{ display:none; }
+/* Show chevron only in all-services mode */
+.showcase-chevron{
+  display:none;
+  flex-shrink:0;
+  align-self:center;
+  width:28px;height:28px;
+  border:1px solid rgba(201,168,76,0.25);
+  border-radius:50%;
+  align-items:center;justify-content:center;
+  color:var(--gold);
+  font-size:1rem;line-height:1;
+  transition:transform 0.3s ease, border-color 0.2s ease, background 0.2s ease;
+  margin-left:auto;
+}
+.showcase-inner.show-all .showcase-chevron{ display:flex; }
+/* Expanded state — banner + chevron rotate */
+.showcase-inner.show-all .svc-showcase.expanded .showcase-header{
+  border-radius:4px 4px 0 0;
+  border-bottom-color:transparent;
+  background:#0a0a0a;
+}
+.showcase-inner.show-all .svc-showcase.expanded .showcase-chevron{
+  transform:rotate(180deg);
+  background:rgba(201,168,76,0.1);
+  border-color:var(--gold);
+}
+/* Reveal desc + cta when expanded */
+.showcase-inner.show-all .svc-showcase.expanded .showcase-desc{ display:block; }
+.showcase-inner.show-all .svc-showcase.expanded .showcase-cta-group{ display:flex; }
+/* Showcase body — collapses in show-all, open when expanded */
+.showcase-body{
+  /* Normal (single-service) mode: just visible */
+}
+.showcase-inner.show-all .showcase-body{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.42s cubic-bezier(0.4,0,0.2,1),
+             padding 0.3s ease;
+  border:1px solid #1e1e1e;
+  border-top:none;
+  border-radius:0 0 4px 4px;
+  padding:0;
+}
+.showcase-inner.show-all .svc-showcase.expanded .showcase-body{
+  max-height:3000px;
+  padding:2rem 2.2rem 2.2rem;
+}
+@media(max-width:768px){
+  .showcase-inner.show-all .svc-showcase.expanded .showcase-body{
+    padding:1.4rem;
+  }
+}
+
+/* "Provided by" label */
+.divisions-label{
+  font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--gold-dark);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.divisions-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+
+/* Division cards — full-width horizontal stack */
+.divisions-grid{
+  display:flex;
+  flex-direction:column;
+  gap:0.75rem;
+}
+
+/* ── DIVISION CARD — horizontal layout ── */
+.div-card{
+  background:var(--white);
+  border:1px solid var(--rule);
+  border-radius:4px;overflow:hidden;
+  display:flex;flex-direction:row;
+  text-decoration:none;color:var(--text);
+  box-shadow:0 2px 12px rgba(0,0,0,0.07);
+  position:relative;
+  height:200px;
+  transition:box-shadow 0.28s ease, transform 0.28s ease;
+}
+.div-card::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--gold-dark),var(--gold),var(--gold-light));
+  transform:scaleY(0);transition:transform 0.28s ease;
+  border-radius:4px 0 0 4px;z-index:3;
+}
+.div-card:hover{
+  box-shadow:0 0 0 1px var(--gold),0 8px 28px rgba(201,168,76,0.18);
+  transform:translateX(2px);
+}
+.div-card:hover::before{transform:scaleY(1)}
+.div-card:hover .div-card-arrow{transform:translateX(4px)}
+
+/* Photo — fixed width left column, fills card height */
+.div-card-photo{
+  position:relative;
+  width:220px;
+  flex-shrink:0;
+  overflow:hidden;
+  background:#e8e4dc;
+}
+.div-card-photo img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  object-position:center center;
+  transition:transform 0.5s ease;
+}
+.div-card:hover .div-card-photo img{transform:scale(1.05)}
+
+/* Logo badge — white pill at the bottom of the photo */
+.div-card-logo-badge{
+  position:absolute;bottom:10px;left:10px;right:10px;z-index:4;
+  background:rgba(255,255,255,0.96);
+  border:1px solid rgba(0,0,0,0.08);
+  border-radius:3px;
+  padding:6px 12px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.18);
+  transition:box-shadow 0.25s ease;
+}
+.div-card-logo-badge img{
+  height:26px;width:auto;max-width:140px;
+  object-fit:contain;display:block;
+  filter:none;
+  opacity:1;
+}
+.div-card:hover .div-card-logo-badge{
+  box-shadow:0 4px 14px rgba(0,0,0,0.22);
+}
+
+/* Dark-logo override — slightly darker badge bg for white logos */
+.div-card--dark-logo .div-card-logo-badge{
+  background:rgba(15,15,15,0.92);
+  border-color:rgba(255,255,255,0.12);
+}
+.div-card--dark-logo .div-card-logo-badge img{
+  filter:none;
+  opacity:0.92;
+}
+
+/* Body — flexible middle column */
+.div-card-body{
+  padding:1.2rem 1.4rem;
+  display:flex;flex-direction:column;justify-content:center;
+  flex:1;min-width:0;
+  border-right:1px solid var(--rule);
+}
+.div-card-name{
+  font-family:var(--font-display);font-size:1.35rem;font-weight:700;
+  margin-bottom:0.45rem;line-height:1.15;color:#111;letter-spacing:-0.01em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.div-card-desc{
+  font-size:0.88rem;color:#3a3a3a;line-height:1.7;
+  font-weight:400;
+  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;
+  margin-bottom:0.6rem;
+}
+.div-card-link{
+  font-family:var(--font-mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--gold-dark);display:flex;align-items:center;gap:0.4rem;margin-top:auto;
+  flex-shrink:0;
+}
+.div-card:hover .div-card-link{color:var(--gold)}
+.div-card-arrow{transition:transform 0.2s ease}
+
+/* CTA column — right side, stacked buttons filling full height */
+.div-card-cta{
+  display:flex;flex-direction:column;
+  flex-shrink:0;
+  width:144px;
+}
+.div-card-cta-btn{
+  flex:1;
+  display:flex;align-items:center;justify-content:center;gap:0.4rem;
+  font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.12em;
+  text-transform:uppercase;font-weight:600;
+  text-decoration:none;
+  transition:background 0.2s ease, color 0.2s ease;
+  white-space:nowrap;
+  cursor:pointer;
+  user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}
+/* Stop the outer card-link from firing when CTA is clicked */
+.div-card-cta-btn{ pointer-events:all; }
+.div-card-cta-btn.cta-call{
+  background:var(--gold);color:var(--black);
+  border-bottom:1px solid rgba(0,0,0,0.12);
+}
+.div-card-cta-btn.cta-call:hover{ background:var(--gold-light); }
+.div-card-cta-btn.cta-quote{
+  background:var(--black);color:rgba(255,255,255,0.85);
+}
+.div-card-cta-btn.cta-quote:hover{ background:#1c1c1c;color:var(--gold-light); }
+
+/* Mobile ≤ 640px: photo on top, CTA row at bottom */
+@media(max-width:640px){
+  .div-card{ flex-direction:column; height:auto; }
+  .div-card::before{
+    left:0;top:0;right:0;bottom:auto;width:100%;height:3px;
+    background:linear-gradient(90deg,var(--gold-dark),var(--gold),var(--gold-light));
+    transform:scaleX(0);
+  }
+  .div-card:hover::before{transform:scaleX(1)}
+  .div-card:hover{transform:translateY(-2px)}
+  .div-card-photo{ width:100%;height:140px; }
+  .div-card-body{ border-right:none;border-bottom:1px solid var(--rule); }
+  .div-card-cta{ flex-direction:row;width:100%;height:48px; }
+  .div-card-cta-btn.cta-call{ border-bottom:none;border-right:1px solid rgba(0,0,0,0.12); }
+}
+
+/* Empty state */
+.no-selection{
+  text-align:center;padding:5rem 2rem;
+  display:flex;flex-direction:column;align-items:center;gap:1.2rem;
+}
+.no-selection-icon{font-size:3rem;opacity:0.15}
+.no-selection-text{
+  font-family:var(--font-display);font-size:1.6rem;font-weight:300;
+  color:var(--muted);font-style:italic;
+}
+.no-selection-sub{
+  font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:rgba(0,0,0,0.2);
+}
+
+/* ── MORE OPTIONS TAB ACCENT ── */
+.svc-tab--more{
+  border-left:1px solid rgba(201,168,76,0.18);
+  margin-left:auto;
+}
+.svc-tab--more .svc-tab-icon{ color:var(--gold); }
+.svc-tab--more.active{ background:rgba(201,168,76,0.1); }
+
+/* Showcase header variant — warmer gold top border */
+.showcase-header--more{
+  border-top-color:var(--gold-light);
+}
+.showcase-header--more::after{
+  background:radial-gradient(ellipse 80% 100% at 100% 50%,rgba(201,168,76,0.1) 0%,transparent 70%);
+}
+
+/* Example pills grid */
+.more-examples-grid{
+  display:flex;flex-wrap:wrap;gap:0.65rem;
+  padding-top:0.6rem;
+}
+.more-example-pill{
+  display:inline-flex;align-items:center;gap:0.55rem;
+  padding:0.65rem 1.2rem;
+  background:var(--black);
+  border:1px solid var(--gold-dark);
+  border-radius:2px;
+  font-family:var(--font-body);font-size:0.8rem;font-weight:500;
+  color:rgba(255,255,255,0.88);
+  letter-spacing:0.01em;
+  box-shadow:0 2px 8px rgba(0,0,0,0.18);
+  transition:all 0.2s ease;
+}
+.more-example-pill:hover{
+  background:#1a1506;
+  border-color:var(--gold);
+  color:var(--gold-light);
+  box-shadow:0 0 0 1px var(--gold),0 4px 14px rgba(201,168,76,0.2);
+  transform:translateY(-1px);
+}
+/* Last pill — "Many More" open-ended indicator */
+.more-example-pill:last-child{
+  background:transparent;
+  border-style:dashed;
+  border-color:rgba(0,0,0,0.28);
+  color:var(--muted);
+  font-style:italic;
+  box-shadow:none;
+}
+.more-example-pill:last-child:hover{
+  border-color:var(--gold-dark);
+  color:var(--gold-dark);
+  background:transparent;
+  box-shadow:none;
+  transform:none;
+}
+
+/* ── CTA FOOTER ── */
+.cta-footer{
+  background:var(--black);padding:5rem 5%;
+  text-align:center;position:relative;overflow:hidden;
+  border-top:1px solid #1a1a1a;
+}
+.cta-footer::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:1px;height:60px;background:linear-gradient(to bottom,var(--gold),transparent);
+}
+.cta-footer h2{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);color:var(--white);font-weight:300;margin-bottom:1rem;margin-top:1rem}
+.cta-footer h2 em{font-style:italic;color:var(--gold-light)}
+.cta-footer p{font-size:0.88rem;color:rgba(255,255,255,0.62);max-width:440px;margin:0 auto 2.2rem;font-weight:300;line-height:1.8}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{
+  background:var(--gold);color:var(--black);
+  font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:600;
+  padding:1rem 2rem;text-decoration:none;
+  transition:all 0.25s ease;display:inline-flex;align-items:center;gap:0.6rem;
+}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
+.btn-secondary{
+  background:rgba(0,0,0,0.4);color:rgba(255,255,255,0.85);
+  font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;
+  padding:1rem 2rem;text-decoration:none;border:1px solid rgba(255,255,255,0.3);
+  transition:all 0.25s ease;display:inline-flex;align-items:center;gap:0.6rem;backdrop-filter:blur(6px);
+}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── FOOTER ── */
+footer{background:#050505;border-top:1px solid var(--rule-dark);padding:3rem 5% 2rem}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid var(--rule-dark)}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr 1fr;gap:2rem}}
+.footer-brand-tagline{font-size:0.78rem;color:rgba(255,255,255,0.58);margin-top:0.8rem;font-weight:300;line-height:1.7;max-width:220px}
+.footer-col-title{font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.footer-links{display:flex;flex-direction:column;gap:0.5rem}
+.footer-links a{font-size:0.78rem;color:rgba(255,255,255,0.62);text-decoration:none;transition:color 0.15s ease}
+.footer-links a:hover{color:var(--gold)}
+.footer-contact{font-size:0.82rem;color:rgba(255,255,255,0.75);line-height:1.8}
+.footer-contact a{color:var(--gold);text-decoration:none}
+.footer-bottom{padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;font-family:var(--font-mono);font-size:0.52rem;letter-spacing:0.08em;color:rgba(255,255,255,0.42)}
+.dot-number{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta-bar">
+  <a href="tel:+19190000000" class="mcall">📞 Call Now</a>
+  <a href="index.html#quote" class="mquote">Get a Quote</a>
+</div>
+
+<!-- LOGO BADGE -->
+<div class="logo-badge">
+  <a href="index.html">
+    <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773180329/BTG_1_mnzs4n.png" alt="Brisbon Transportation Group LLC">
+  </a>
+</div>
+
+<!-- HEADER -->
+<header id="site-header">
+  <nav>
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="brisbon-vehicle-finder.html">Fleet</a>
+    <a class="nav-link active" href="services.html">Services</a>
+    <a class="nav-link" href="solutions.html">Solutions</a>
+    <a class="nav-link" href="#">About</a>
+    <a href="index.html#quote" class="btn-quote-nav">Get a Quote →</a>
+  </nav>
+  <div class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true">
+  <div class="mobile-nav-links">
+    <a href="index.html">Home</a>
+    <a href="brisbon-vehicle-finder.html">Fleet</a>
+    <a href="services.html" class="active">Services</a>
+    <a href="solutions.html">Solutions</a>
+    <a href="#">About</a>
+  </div>
+  <div class="mobile-nav-cta">
+    <a href="tel:+19190000000" class="mn-call">📞 Call Now</a>
+    <a href="index.html#quote" class="mn-quote">Get a Quote</a>
+  </div>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <!-- Background layers -->
+  <div class="page-hero-img"></div>
+  <div class="page-hero-veil"></div>
+  <div class="page-hero-ground"></div>
+  <div class="page-hero-grid"></div>
+  <!-- Content -->
+  <div class="page-hero-content">
+    <div class="page-hero-label">Brisbon Transportation Group LLC · Service Portfolio</div>
+    <h1>What We<br><em>Do Best.</em></h1>
+    <div class="gold-rule" style="margin:1.2rem 0 1rem"></div>
+    <p>Select a service type below to explore which BTG division provides it, what's included, and how to request a quote.</p>
+  </div>
+</div>
+
+<!-- SERVICE SELECTOR + SHOWCASE -->
+<div class="services-selector-section">
+  <div class="selector-inner">
+    <div class="selector-label">Filter by Service</div>
+    <div class="service-tabs" role="tablist">
+      <button class="svc-tab active" role="tab" data-svc="all" aria-selected="true">
+        <span class="svc-tab-icon">⊞</span> All Services
+      </button>
+      <button class="svc-tab" role="tab" data-svc="motorcoach" aria-selected="false">
+        <span class="svc-tab-icon">🚌</span> Motorcoach Charter
+      </button>
+      <button class="svc-tab" role="tab" data-svc="corporate" aria-selected="false">
+        <span class="svc-tab-icon">🏢</span> Corporate Shuttle
+      </button>
+      <button class="svc-tab" role="tab" data-svc="nemt" aria-selected="false">
+        <span class="svc-tab-icon">🏥</span> NEMT Medical
+      </button>
+      <button class="svc-tab" role="tab" data-svc="event" aria-selected="false">
+        <span class="svc-tab-icon">🎉</span> Event / Sports / Wedding
+      </button>
+      <button class="svc-tab" role="tab" data-svc="airport" aria-selected="false">
+        <span class="svc-tab-icon">✈️</span> Airport Transfer
+      </button>
+      <button class="svc-tab" role="tab" data-svc="freight" aria-selected="false">
+        <span class="svc-tab-icon">📦</span> LTL Freight
+      </button>
+      <button class="svc-tab" role="tab" data-svc="shop" aria-selected="false">
+        <span class="svc-tab-icon">🔧</span> Vehicle Service Shop
+      </button>
+      <button class="svc-tab svc-tab--more" role="tab" data-svc="more" aria-selected="false">
+        <span class="svc-tab-icon">✦</span> More Options
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SHOWCASE PANEL -->
+<div class="showcase-panel">
+  <div class="showcase-inner">
+
+    <!-- ── MOTORCOACH CHARTER ── -->
+    <div class="svc-showcase" id="svc-motorcoach">
+      <div class="showcase-header">
+        <div class="showcase-icon">🚌</div>
+        <div class="showcase-meta">
+          <div class="showcase-kicker">Service Type</div>
+          <div class="showcase-title">Motorcoach Charter</div>
+          <p class="showcase-desc">Full-size motorcoach transportation for groups of any size — from corporate retreats and university field trips to athletic team travel and multi-day tours. Our motorcoach fleet features luxury amenities including WiFi, power outlets, individual climate control, restrooms, and HD cabin screens. DOT-certified drivers. Available statewide and across the Southeast.</p>
+        </div>
+      </div>
+      <div class="showcase-body">
+      <div class="divisions-label">Provided By</div>
+      <div class="divisions-grid">
+        <a href="https://www.trianglebuscharters.com/" target="_blank" rel="noopener" class="div-card">
+          <div class="div-card-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772738597/603_CX45_jmavtx.png" alt="Triangle Bus Charters motorcoach" loading="lazy">
+            <div class="div-card-logo-badge">
+              <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876763/Triangle_Bus_Charters_annyrt.png" alt="Triangle Bus Charters logo">
+            </div>
+          </div>
+          <div class="div-card-body">
+            <div class="div-card-name">Triangle Bus Charters</div>
+            <p class="div-card-desc">BTG's primary motorcoach division. Full-size luxury coaches seating 40–56 passengers, with a premium fleet of Van Hool and Freightliner vehicles equipped for long-distance and event travel across NC and the Southeast.</p>
+            <div class="div-card-link">Explore Division <span class="div-card-arrow">→</span></div>
+          </div>
+          <div class="div-card-cta">
+            <div class="div-card-cta-btn cta-call" onclick="event.stopPropagation();event.preventDefault();window.location.href='tel:+19190000000'">📞 Call Now</div>
+            <div class="div-card-cta-btn cta-quote" onclick="event.stopPropagation();event.preventDefault();window.location.href='index.html#quote'">Get a Quote →</div>
+          </div>
+        </a>
+      </div>
+      </div>
+    </div>
+
+    <!-- ── CORPORATE SHUTTLE ── -->
+    <div class="svc-showcase" id="svc-corporate">
+      <div class="showcase-header">
+        <div class="showcase-icon">🏢</div>
+        <div class="showcase-meta">
+          <div class="showcase-kicker">Service Type</div>
+          <div class="showcase-title">Corporate Shuttle</div>
+          <p class="showcase-desc">Scheduled and on-demand ground transportation programs for businesses, corporations, RTP campuses, and professional organizations. From daily employee shuttle routes to executive airport pickups and conference transfers — we build recurring programs around your operational calendar. Contract accounts welcome.</p>
+        </div>
+      </div>
+      <div class="showcase-body">
+      <div class="divisions-label">Provided By</div>
+      <div class="divisions-grid">
+        <a href="https://trianglecorporatecoach.com/" target="_blank" rel="noopener" class="div-card">
+          <div class="div-card-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772051962/509_Supercoach_ooyuzb.png" alt="Triangle Corporate Coach vehicle" loading="lazy">
+            <div class="div-card-logo-badge">
+              <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876764/Triangle_Corporate_Coach_yjkepl.png" alt="Triangle Corporate Coach logo">
+            </div>
+          </div>
+          <div class="div-card-body">
+            <div class="div-card-name">Triangle Corporate Coach</div>
+            <p class="div-card-desc">Executive and corporate ground transportation specializing in RTP campus shuttles, C-suite travel, and recurring business programs. Sedans, SUVs, sprinters, and mini-coaches available.</p>
+            <div class="div-card-link">Explore Division <span class="div-card-arrow">→</span></div>
+          </div>
+          <div class="div-card-cta">
+            <div class="div-card-cta-btn cta-call" onclick="event.stopPropagation();event.preventDefault();window.location.href='tel:+19190000000'">📞 Call Now</div>
+            <div class="div-card-cta-btn cta-quote" onclick="event.stopPropagation();event.preventDefault();window.location.href='index.html#quote'">Get a Quote →</div>
+          </div>
+        </a>
+        <a href="https://www.trianglebuscharters.com/" target="_blank" rel="noopener" class="div-card">
+          <div class="div-card-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772738597/603_CX45_jmavtx.png" alt="Triangle Bus Charters motorcoach" loading="lazy">
+            <div class="div-card-logo-badge">
+              <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876763/Triangle_Bus_Charters_annyrt.png" alt="Triangle Bus Charters logo">
+            </div>
+          </div>
+          <div class="div-card-body">
+            <div class="div-card-name">Triangle Bus Charters</div>
+            <p class="div-card-desc">Large-group corporate shuttle operations — conferences, all-hands events, and multi-site campus shuttle routes requiring full-size motorcoach capacity.</p>
+            <div class="div-card-link">Explore Division <span class="div-card-arrow">→</span></div>
+          </div>
+          <div class="div-card-cta">
+            <div class="div-card-cta-btn cta-call" onclick="event.stopPropagation();event.preventDefault();window.location.href='tel:+19190000000'">📞 Call Now</div>
+            <div class="div-card-cta-btn cta-quote" onclick="event.stopPropagation();event.preventDefault();window.location.href='index.html#quote'">Get a Quote →</div>
+          </div>
+        </a>
+        <a href="https://www.pinehurstchauffeured.com/" target="_blank" rel="noopener" class="div-card">
+          <div class="div-card-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772146574/310_Pinehurst_wno5ja.png" alt="Pinehurst Chauffeured Transportation" loading="lazy">
+            <div class="div-card-logo-badge">
+              <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876763/Pinehurst_pej2c0.png" alt="Pinehurst Chauffeured Transportation logo">
+            </div>
+          </div>
+          <div class="div-card-body">
+            <div class="div-card-name">Pinehurst Chauffeured Transportation</div>
+            <p class="div-card-desc">White-glove executive transport for C-suite clients and VIP corporate guests. Premium vehicles, professional chauffeurs, and discretion as standard.</p>
+            <div class="div-card-link">Explore Division <span class="div-card-arrow">→</span></div>
+          </div>
+          <div class="div-card-cta">
+            <div class="div-card-cta-btn cta-call" onclick="event.stopPropagation();event.preventDefault();window.location.href='tel:+19190000000'">📞 Call Now</div>
+            <div class="div-card-cta-btn cta-quote" onclick="event.stopPropagation();event.preventDefault();window.location.href='index.html#quote'">Get a Quote →</div>
+          </div>
+        </a>
+        <a href="https://www.wisdomcaretrans.com/" target="_blank" rel="noopener" class="div-card">
+          <div class="div-card-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772041842/411_Lot4_ClinicRain_aauqmv.png" alt="Wisdom Care Transportation" loading="lazy">
+            <div class="div-card-logo-badge">
+              <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876765/Wisdom_Care_Transportation_nbmstg.png" alt="Wisdom Care Transportation logo">
+            </div>
+          </div>
+          <div class="div-card-body">
+            <div class="div-card-name">Wisdom Care Transportation</div>
+            <p class="div-card-desc">ADA-accessible shuttle and transport for corporate clients requiring accessible vehicle options for employees, clients, or attendees with mobility needs.</p>
+            <div class="div-card-link">Explore Division <span class="div-card-arrow">→</span></div>
+          </div>
+          <div class="div-card-cta">
+            <div class="div-card-cta-btn cta-call" onclick="event.stopPropagation();event.preventDefault();window.location.href='tel:+19190000000'">📞 Call Now</div>
+            <div class="div-card-cta-btn cta-quote" onclick="event.stopPropagation();event.preventDefault();window.location.href='index.html#quote'">Get a Quote →</div>
+          </div>
+        </a>
+      </div>
+      </div>
+    </div>
+
+    <!-- ── NEMT MEDICAL ── -->
+    <div class="svc-showcase" id="svc-nemt">
+      <div class="showcase-header">
+        <div class="showcase-icon">🏥</div>
+        <div class="showcase-meta">
+          <div class="showcase-kicker">Service Type</div>
+          <div class="showcase-title">NEMT Medical Transportation</div>
+          <p class="showcase-desc">Non-emergency medical transportation (NEMT) for patients, seniors, and individuals with mobility needs traveling to and from medical appointments, dialysis centers, rehabilitation facilities, and discharge locations. Medicaid-enrolled. ADA-compliant vehicles with trained drivers who understand the medical environment — compassion, compliance, and punctuality on every trip.</p>
+        </div>
+      </div>
+      <div class="showcase-body">
+      <div class="divisions-label">Provided By</div>
+      <div class="divisions-grid">
+        <a href="https://www.wisdomcaretrans.com/" target="_blank" rel="noopener" class="div-card">
+          <div class="div-card-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772041842/411_Lot4_ClinicRain_aauqmv.png" alt="Wisdom Care Transportation" loading="lazy">
+            <div class="div-card-logo-badge">
+              <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876765/Wisdom_Care_Transportation_nbmstg.png" alt="Wisdom Care Transportation logo">
+            </div>
+          </div>
+          <div class="div-card-body">
+            <div class="div-card-name">Wisdom Care Transportation</div>
+            <p class="div-card-desc">BTG's dedicated NEMT and ADA transportation division. Medicaid-enrolled, compassion-driven, and equipped with accessible vehicles including wheelchair ramps and lifts. Trusted by hospitals, dialysis centers, and healthcare systems across the Triangle.</p>
+            <div class="div-card-link">Explore Division <span class="div-card-arrow">→</span></div>
+          </div>
+          <div class="div-card-cta">
+            <div class="div-card-cta-btn cta-call" onclick="event.stopPropagation();event.preventDefault();window.location.href='tel:+19190000000'">📞 Call Now</div>
+            <div class="div-card-cta-btn cta-quote" onclick="event.stopPropagation();event.preventDefault();window.location.href='index.html#quote'">Get a Quote →</div>
+          </div>
+        </a>
+      </div>
+      </div>
+    </div>
+
+    <!-- ── EVENT / SPORTS / WEDDING ── -->
+    <div class="svc-showcase" id="svc-event">
+      <div class="showcase-header">
+        <div class="showcase-icon">🎉</div>
+        <div class="showcase-meta">
+          <div class="showcase-kicker">Service Type</div>
+          <div class="showcase-title">Event, Sports &amp; Wedding Transportation</div>
+          <p class="showcase-desc">Group transportation logistics for weddings, galas, concerts, sporting events, university functions, and large-scale productions. We coordinate multi-vehicle deployments, venue loops, guest shuttle programs, and athlete team transport — so your event runs on schedule without a single logistical gap. From 10 guests to 1,000+.</p>
+        </div>
+      </div>
+      <div class="showcase-body">
+      <div class="divisions-label">Provided By</div>
+      <div class="divisions-grid">
+        <a href="https://www.trianglebuscharters.com/" target="_blank" rel="noopener" class="div-card">
+          <div class="div-card-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772738597/603_CX45_jmavtx.png" alt="Triangle Bus Charters motorcoach" loading="lazy">
+            <div class="div-card-logo-badge">
+              <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876763/Triangle_Bus_Charters_annyrt.png" alt="Triangle Bus Charters logo">
+            </div>
+          </div>
+          <div class="div-card-body">
+            <div class="div-card-name">Triangle Bus Charters</div>
+            <p class="div-card-desc">Large-group event transportation with full-size motorcoaches. Ideal for weddings with multiple venues, athletic team travel, concert shuttles, and conference group moves requiring 40–56 passenger vehicles.</p>
+            <div class="div-card-link">Explore Division <span class="div-card-arrow">→</span></div>
+          </div>
+          <div class="div-card-cta">
+            <div class="div-card-cta-btn cta-call" onclick="event.stopPropagation();event.preventDefault();window.location.href='tel:+19190000000'">📞 Call Now</div>
+            <div class="div-card-cta-btn cta-quote" onclick="event.stopPropagation();event.preventDefault();window.location.href='index.html#quote'">Get a Quote →</div>
+          </div>
+        </a>
+        <a href="https://trianglecorporatecoach.com/" target="_blank" rel="noopener" class="div-card">
+          <div class="div-card-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772051962/509_Supercoach_ooyuzb.png" alt="Triangle Corporate Coach" loading="lazy">
+            <div class="div-card-logo-badge">
+              <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876764/Triangle_Corporate_Coach_yjkepl.png" alt="Triangle Corporate Coach logo">
+            </div>
+          </div>
+          <div class="div-card-body">
+            <div class="div-card-name">Triangle Corporate Coach</div>
+            <p class="div-card-desc">Smaller-group event and VIP transportation — sprinters, mini-coaches, sedans, and SUVs for wedding parties, speaker green-room transfers, and premium event guest shuttles.</p>
+            <div class="div-card-link">Explore Division <span class="div-card-arrow">→</span></div>
+          </div>
+          <div class="div-card-cta">
+            <div class="div-card-cta-btn cta-call" onclick="event.stopPropagation();event.preventDefault();window.location.href='tel:+19190000000'">📞 Call Now</div>
+            <div class="div-card-cta-btn cta-quote" onclick="event.stopPropagation();event.preventDefault();window.location.href='index.html#quote'">Get a Quote →</div>
+          </div>
+        </a>
+        <a href="https://www.wisdomcaretrans.com/" target="_blank" rel="noopener" class="div-card">
+          <div class="div-card-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772041842/411_Lot4_ClinicRain_aauqmv.png" alt="Wisdom Care Transportation" loading="lazy">
+            <div class="div-card-logo-badge">
+              <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876765/Wisdom_Care_Transportation_nbmstg.png" alt="Wisdom Care Transportation logo">
+            </div>
+          </div>
+          <div class="div-card-body">
+            <div class="div-card-name">Wisdom Care Transportation</div>
+            <p class="div-card-desc">ADA-accessible event transport ensuring every guest — regardless of mobility needs — arrives safely and comfortably. Wheelchair-lift equipped vehicles available for weddings, galas, and accessible events.</p>
+            <div class="div-card-link">Explore Division <span class="div-card-arrow">→</span></div>
+          </div>
+          <div class="div-card-cta">
+            <div class="div-card-cta-btn cta-call" onclick="event.stopPropagation();event.preventDefault();window.location.href='tel:+19190000000'">📞 Call Now</div>
+            <div class="div-card-cta-btn cta-quote" onclick="event.stopPropagation();event.preventDefault();window.location.href='index.html#quote'">Get a Quote →</div>
+          </div>
+        </a>
+      </div>
+      </div>
+    </div>
+
+    <!-- ── AIRPORT TRANSFER ── -->
+    <div class="svc-showcase" id="svc-airport">
+      <div class="showcase-header">
+        <div class="showcase-icon">✈️</div>
+        <div class="showcase-meta">
+          <div class="showcase-kicker">Service Type</div>
+          <div class="showcase-title">Airport Transfer</div>
+          <p class="showcase-desc">Reliable, on-time ground transportation to and from RDU, GSO, CLT, and other regional airports. Individual executive pickups in premium sedans and SUVs, group arrivals in sprinters and mini-coaches, or full motorcoach airport shuttles for conferences and corporate events. Flight-monitoring included for contract accounts.</p>
+        </div>
+      </div>
+      <div class="showcase-body">
+      <div class="divisions-label">Provided By</div>
+      <div class="divisions-grid">
+        <a href="https://trianglecorporatecoach.com/" target="_blank" rel="noopener" class="div-card">
+          <div class="div-card-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772051962/509_Supercoach_ooyuzb.png" alt="Triangle Corporate Coach" loading="lazy">
+            <div class="div-card-logo-badge">
+              <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876764/Triangle_Corporate_Coach_yjkepl.png" alt="Triangle Corporate Coach logo">
+            </div>
+          </div>
+          <div class="div-card-body">
+            <div class="div-card-name">Triangle Corporate Coach</div>
+            <p class="div-card-desc">Executive airport transfers to RDU and beyond — sedans, SUVs, sprinters, and mini-coaches for individuals and groups. Recurring corporate account management available with billing integration.</p>
+            <div class="div-card-link">Explore Division <span class="div-card-arrow">→</span></div>
+          </div>
+          <div class="div-card-cta">
+            <div class="div-card-cta-btn cta-call" onclick="event.stopPropagation();event.preventDefault();window.location.href='tel:+19190000000'">📞 Call Now</div>
+            <div class="div-card-cta-btn cta-quote" onclick="event.stopPropagation();event.preventDefault();window.location.href='index.html#quote'">Get a Quote →</div>
+          </div>
+        </a>
+        <a href="https://www.wisdomcaretrans.com/" target="_blank" rel="noopener" class="div-card">
+          <div class="div-card-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772041842/411_Lot4_ClinicRain_aauqmv.png" alt="Wisdom Care Transportation" loading="lazy">
+            <div class="div-card-logo-badge">
+              <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876765/Wisdom_Care_Transportation_nbmstg.png" alt="Wisdom Care Transportation logo">
+            </div>
+          </div>
+          <div class="div-card-body">
+            <div class="div-card-name">Wisdom Care Transportation</div>
+            <p class="div-card-desc">ADA-accessible airport transfers for passengers with mobility needs, wheelchair requirements, or medical equipment. Trained drivers and lift-equipped vehicles ensure a seamless travel experience.</p>
+            <div class="div-card-link">Explore Division <span class="div-card-arrow">→</span></div>
+          </div>
+          <div class="div-card-cta">
+            <div class="div-card-cta-btn cta-call" onclick="event.stopPropagation();event.preventDefault();window.location.href='tel:+19190000000'">📞 Call Now</div>
+            <div class="div-card-cta-btn cta-quote" onclick="event.stopPropagation();event.preventDefault();window.location.href='index.html#quote'">Get a Quote →</div>
+          </div>
+        </a>
+      </div>
+      </div>
+    </div>
+
+    <!-- ── LTL FREIGHT ── -->
+    <div class="svc-showcase" id="svc-freight">
+      <div class="showcase-header">
+        <div class="showcase-icon">📦</div>
+        <div class="showcase-meta">
+          <div class="showcase-kicker">Service Type</div>
+          <div class="showcase-title">LTL Freight</div>
+          <p class="showcase-desc">Less-than-truckload freight logistics for businesses that need flexible, reliable shipping without committing to a full truck. On-demand and scheduled pickups, liftgate service, GPS-tracked vehicles, and contract freight programs for consistent shippers. Serving North Carolina businesses with scalable logistics solutions.</p>
+        </div>
+      </div>
+      <div class="showcase-body">
+      <div class="divisions-label">Provided By</div>
+      <div class="divisions-grid">
+        <a href="https://agilitytransportusa.com/" target="_blank" rel="noopener" class="div-card">
+          <div class="div-card-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772136413/701_Ford_Box_Truck_pmhw3p.png" alt="Agility Transportation freight truck" loading="lazy">
+            <div class="div-card-logo-badge">
+              <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876772/Agility_hkwx39.png" alt="Agility Transportation logo">
+            </div>
+          </div>
+          <div class="div-card-body">
+            <div class="div-card-name">Agility Transportation</div>
+            <p class="div-card-desc">BTG's dedicated freight and logistics division. Flexible LTL shipping, liftgate-equipped box trucks, GPS tracking, and contract freight programs for businesses across North Carolina. Scalable to your shipping volume.</p>
+            <div class="div-card-link">Explore Division <span class="div-card-arrow">→</span></div>
+          </div>
+          <div class="div-card-cta">
+            <div class="div-card-cta-btn cta-call" onclick="event.stopPropagation();event.preventDefault();window.location.href='tel:+19190000000'">📞 Call Now</div>
+            <div class="div-card-cta-btn cta-quote" onclick="event.stopPropagation();event.preventDefault();window.location.href='index.html#quote'">Get a Quote →</div>
+          </div>
+        </a>
+      </div>
+      </div>
+    </div>
+
+    <!-- ── VEHICLE SERVICE SHOP ── -->
+    <div class="svc-showcase" id="svc-shop">
+      <div class="showcase-header">
+        <div class="showcase-icon">🔧</div>
+        <div class="showcase-meta">
+          <div class="showcase-kicker">Service Type</div>
+          <div class="showcase-title">Vehicle Service Shop</div>
+          <p class="showcase-desc">BTG's on-site, full-service automotive division — delivering the same standard of excellence that drives our transportation operations. Fleet maintenance contracts for commercial operators, personal vehicle servicing, diagnostics, and repairs. A trusted shop backed by the Brisbon Transportation Group LLC's commitment to quality and reliability.</p>
+        </div>
+      </div>
+      <div class="showcase-body">
+      <div class="divisions-label">Provided By</div>
+      <div class="divisions-grid">
+        <a href="https://www.brisbonauto.com/" target="_blank" rel="noopener" class="div-card div-card--dark-logo">
+          <div class="div-card-photo">
+            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773258900/BA_SHOP12_ezxq1s.jpg" alt="Brisbon Automotive shop" loading="lazy">
+            <div class="div-card-logo-badge">
+              <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773082166/Brisbon_Automotive_Logo_HR_Wht_ihnvof.png" alt="Brisbon Automotive logo">
+            </div>
+          </div>
+          <div class="div-card-body">
+            <div class="div-card-name">Brisbon Automotive</div>
+            <p class="div-card-desc">Full-service automotive shop and fleet maintenance division. Diagnostics, repairs, preventive maintenance, and fleet service contracts — on-site, professional, and built to the same standard as the BTG transportation fleet.</p>
+            <div class="div-card-link">Visit Brisbon Automotive <span class="div-card-arrow">→</span></div>
+          </div>
+          <div class="div-card-cta">
+            <div class="div-card-cta-btn cta-call" onclick="event.stopPropagation();event.preventDefault();window.location.href='tel:+19190000000'">📞 Call Now</div>
+            <div class="div-card-cta-btn cta-quote" onclick="event.stopPropagation();event.preventDefault();window.location.href='index.html#quote'">Get a Quote →</div>
+          </div>
+        </a>
+      </div>
+      </div>
+    </div>
+
+    <!-- ── MORE OPTIONS ── -->
+    <div class="svc-showcase" id="svc-more">
+      <div class="showcase-header showcase-header--more">
+        <div class="showcase-icon">✦</div>
+        <div class="showcase-meta">
+          <div class="showcase-kicker">Don't See What You Need?</div>
+          <div class="showcase-title">More Options</div>
+          <p class="showcase-desc">If you don't see your particular transportation need listed here, don't worry — we service many types of requests not even covered above. From Life Beyond Medical ADA transportation to parks, functions, and casinos, to University grocery shuttles and Holiday break transportation, our divisions have the flexibility to coordinate and execute almost any movement of people or freight. Contact us and we'll help you figure out exactly what you need.</p>
+        </div>
+        <div class="showcase-cta-group">
+          <a href="tel:+19190000000" class="showcase-cta-btn btn-call">📞 Call Now</a>
+          <a href="index.html#quote" class="showcase-cta-btn btn-quote">Contact Us →</a>
+        </div>
+      </div>
+      <div class="showcase-body">
+        <div class="more-examples-grid">
+          <div class="more-example-pill">🏥 Life Beyond Medical ADA</div>
+          <div class="more-example-pill">🎰 Casino Runs</div>
+          <div class="more-example-pill">🌳 Park &amp; Outdoor Events</div>
+          <div class="more-example-pill">🎪 Community Functions</div>
+          <div class="more-example-pill">🛒 University Grocery Shuttles</div>
+          <div class="more-example-pill">🎄 Holiday Break Transportation</div>
+          <div class="more-example-pill">🏟️ Sports Venue Shuttles</div>
+          <div class="more-example-pill">🎓 Campus &amp; Field Trips</div>
+          <div class="more-example-pill">🏨 Hotel &amp; Resort Transfers</div>
+          <div class="more-example-pill">🎶 Concert &amp; Festival Runs</div>
+          <div class="more-example-pill">✝️ Faith Community Transport</div>
+          <div class="more-example-pill">+ Many More</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA FOOTER -->
+<div class="cta-footer">
+  <h2>Ready to Move<br><em>With Confidence?</em></h2>
+  <p>Tell us what you need — we'll match you with the right division and get you a quote within 2 hours.</p>
+  <div class="cta-btns">
+    <a href="index.html#quote" class="btn-primary">Request a Quote →</a>
+    <a href="tel:+19190000000" class="btn-secondary">📞 Call Now</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--white);letter-spacing:0.05em;">BRISBON</div>
+        <p class="footer-brand-tagline">Full-service transportation for corporations, healthcare systems, event planners, and individuals across North Carolina's Triangle region.</p>
+        <div style="margin-top:1.2rem;font-family:var(--font-mono);font-size:0.52rem;letter-spacing:0.1em;color:rgba(255,255,255,0.42);">
+          <span class="dot-number">USDOT #XXXXXXX</span> · Licensed · Insured
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <div class="footer-links">
+          <a href="services.html">Motorcoach Charter</a>
+          <a href="services.html">Corporate Shuttle</a>
+          <a href="services.html">NEMT / Medical</a>
+          <a href="services.html">Event Transportation</a>
+          <a href="services.html">Airport Transfers</a>
+          <a href="services.html">Freight LTL</a>
+          <a href="services.html">Vehicle Service Shop</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Our Divisions</div>
+        <div class="footer-links">
+          <a href="https://trianglecorporatecoach.com/" target="_blank">Triangle Corporate Coach</a>
+          <a href="https://www.trianglebuscharters.com/" target="_blank">Triangle Bus Charters</a>
+          <a href="https://www.wisdomcaretrans.com/" target="_blank">Wisdom Care Transportation</a>
+          <a href="https://www.pinehurstchauffeured.com/" target="_blank">Pinehurst Chauffeured</a>
+          <a href="https://agilitytransportusa.com/" target="_blank">Agility Transportation</a>
+          <a href="https://www.brisbonauto.com/" target="_blank">Brisbon Automotive</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-contact">
+          <p>Raleigh, NC<br>Serving the Triangle Region</p>
+          <p style="margin-top:0.8rem;"><a href="tel:+19190000000">(919) 000-0000</a></p>
+          <p style="margin-top:0.8rem;font-family:var(--font-mono);font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.48);">Available 24/7 for Contract Clients</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Brisbon Transportation Group LLC. All rights reserved.</span>
+      <span>Privacy Policy · Terms of Service · Accessibility</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── HEADER SCROLL EFFECT ──
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── MOBILE HAMBURGER ──
+const hamburgerBtn  = document.getElementById('hamburger-btn');
+const mobileDrawer  = document.getElementById('mobile-nav-drawer');
+const mobileOverlay = document.getElementById('mobile-nav-overlay');
+
+function openMobileMenu(){
+  hamburgerBtn.classList.add('open');
+  mobileDrawer.classList.add('open');
+  mobileOverlay.classList.add('open');
+  hamburgerBtn.setAttribute('aria-expanded','true');
+  mobileDrawer.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeMobileMenu(){
+  hamburgerBtn.classList.remove('open');
+  mobileDrawer.classList.remove('open');
+  mobileOverlay.classList.remove('open');
+  hamburgerBtn.setAttribute('aria-expanded','false');
+  mobileDrawer.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+hamburgerBtn.addEventListener('click',()=>hamburgerBtn.classList.contains('open')?closeMobileMenu():openMobileMenu());
+hamburgerBtn.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();hamburgerBtn.click()}});
+mobileOverlay.addEventListener('click',closeMobileMenu);
+window.addEventListener('resize',()=>{if(window.innerWidth>900)closeMobileMenu()});
+
+// ── SERVICE TAB LOGIC ──
+const tabs      = document.querySelectorAll('.svc-tab');
+const showcases = document.querySelectorAll('.svc-showcase');
+const showInner = document.querySelector('.showcase-inner');
+
+// Inject one chevron per showcase-header (done once, shown/hidden via CSS)
+showcases.forEach(sc => {
+  const hdr = sc.querySelector('.showcase-header');
+  if(hdr && !hdr.querySelector('.showcase-chevron')){
+    const chev = document.createElement('div');
+    chev.className = 'showcase-chevron';
+    chev.textContent = '▾';
+    hdr.appendChild(chev);
+  }
+});
+
+// Accordion toggle for a single showcase (all-services mode)
+function toggleAccordion(sc) {
+  const isOpen = sc.classList.contains('expanded');
+  sc.classList.toggle('expanded', !isOpen);
+}
+
+// Attach / detach accordion click handlers
+let accordionHandlers = new Map();
+
+function attachAccordion() {
+  showcases.forEach(sc => {
+    const hdr = sc.querySelector('.showcase-header');
+    if(!hdr) return;
+    const handler = () => toggleAccordion(sc);
+    accordionHandlers.set(sc, handler);
+    hdr.addEventListener('click', handler);
+  });
+}
+
+function detachAccordion() {
+  showcases.forEach(sc => {
+    const hdr = sc.querySelector('.showcase-header');
+    if(!hdr) return;
+    const handler = accordionHandlers.get(sc);
+    if(handler) hdr.removeEventListener('click', handler);
+  });
+  accordionHandlers.clear();
+}
+
+function activateTab(svc) {
+  // Update tab states
+  tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+  const activeTab = document.querySelector('.svc-tab[data-svc="' + svc + '"]');
+  if(activeTab){ activeTab.classList.add('active'); activeTab.setAttribute('aria-selected','true'); }
+
+  if(svc === 'all') {
+    // All-services accordion mode
+    showInner.classList.add('show-all');
+    showcases.forEach(s => { s.classList.remove('active'); s.classList.remove('expanded'); });
+    detachAccordion();
+    attachAccordion();
+  } else {
+    // Single-service mode — tear down accordion
+    showInner.classList.remove('show-all');
+    detachAccordion();
+    showcases.forEach(s => { s.classList.remove('active'); s.classList.remove('expanded'); });
+
+    const target = document.getElementById('svc-' + svc);
+    if(target){
+      target.classList.remove('active');
+      void target.offsetWidth;
+      target.classList.add('active');
+
+      if(window.innerWidth <= 900){
+        requestAnimationFrame(()=>{
+          const headerH = header?.offsetHeight || 80;
+          const y = target.getBoundingClientRect().top + window.pageYOffset - headerH - 16;
+          window.scrollTo({top:y, behavior:'smooth'});
+        });
+      }
+    }
+  }
+}
+
+tabs.forEach(tab => tab.addEventListener('click', () => activateTab(tab.dataset.svc)));
+
+// Deep-link via URL hash
+const initHash = window.location.hash.replace('#','');
+const initSvc  = (initHash && document.querySelector('.svc-tab[data-svc="' + initHash + '"]')) ? initHash : 'all';
+activateTab(initSvc);
+</script>
+</body>
+</html>
