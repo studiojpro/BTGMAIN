@@ -166,111 +166,12 @@ nav { display: flex; align-items: center; gap: 0; }
 }
 .btn-quote-nav:hover { background: var(--gold); color: var(--white); border-color: var(--gold); }
 
-.hamburger {
-  display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px;
-  z-index: 310; position: relative;
-}
-.hamburger span {
-  width: 22px; height: 1.5px; background: var(--white);
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-origin: center;
-}
-/* Animated X state */
-.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-/* ── MOBILE NAV OVERLAY ── */
-.mobile-nav-overlay {
-  display: none;
-  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 290;
-  background: rgba(0,0,0,0.55);
-  backdrop-filter: blur(4px);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-.mobile-nav-overlay.open {
-  opacity: 1;
-  pointer-events: all;
-}
-
-/* ── MOBILE DRAWER ── */
-.mobile-nav-drawer {
-  display: none;
-  position: fixed; top: 80px; left: 0; right: 0;
-  z-index: 300;
-  background: rgba(8,8,8,0.98);
-  backdrop-filter: blur(16px);
-  border-bottom: 2px solid var(--gold);
-  padding: 0;
-  transform: translateY(-12px);
-  opacity: 0;
-  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.28s ease;
-  pointer-events: none;
-  max-height: calc(100vh - 80px);
-  overflow-y: auto;
-}
-.mobile-nav-drawer.open {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: all;
-}
-
-.mobile-nav-links {
-  display: flex; flex-direction: column;
-  padding: 0.6rem 0 1rem;
-}
-.mobile-nav-links a {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1rem 1.6rem;
-  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
-  color: rgba(255,255,255,0.65); text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  transition: all 0.18s ease;
-}
-.mobile-nav-links a:last-child { border-bottom: none; }
-.mobile-nav-links a:hover, .mobile-nav-links a.active {
-  color: var(--gold-light);
-  background: rgba(201,168,76,0.06);
-  padding-left: 2rem;
-}
-.mobile-nav-links a::after {
-  content: '→';
-  font-size: 0.6rem; color: var(--gold); opacity: 0;
-  transition: opacity 0.18s ease;
-}
-.mobile-nav-links a:hover::after { opacity: 1; }
-
-.mobile-nav-cta {
-  padding: 1rem 1.6rem 1.4rem;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem;
-  border-top: 1px solid rgba(201,168,76,0.2);
-}
-.mobile-nav-cta a {
-  text-align: center; padding: 0.9rem 1rem;
-  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
-  text-decoration: none; font-weight: 600;
-  transition: all 0.2s ease;
-}
-.mobile-nav-cta .mn-call {
-  background: var(--gold); color: var(--black);
-}
-.mobile-nav-cta .mn-call:hover { background: var(--gold-light); }
-.mobile-nav-cta .mn-quote {
-  background: transparent; color: var(--gold);
-  border: 1px solid var(--gold);
-}
-.mobile-nav-cta .mn-quote:hover { background: var(--gold); color: var(--black); }
-
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+.hamburger span { width: 22px; height: 1.5px; background: var(--white); transition: all 0.3s; }
 @media(max-width:900px){
   nav .nav-link, nav .nav-dropdown { display: none; }
   .btn-quote-nav { display: none; }
   .hamburger { display: flex; }
-  .mobile-nav-drawer { display: block; }
-  .mobile-nav-overlay { display: block; }
 }
 
 /* ── HERO ── */
@@ -494,14 +395,47 @@ nav { display: flex; align-items: center; gap: 0; }
 .section-title em { font-style: italic; color: var(--gold); }
 .section-sub { color: var(--muted); max-width: 560px; font-size: 0.92rem; line-height: 1.8; font-weight: 300; }
 
-/* ── SERVICES GRID ── */
+/* ── SERVICES SECTION ── */
 .services-section { background: var(--black); }
-.services-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-  background: transparent; margin-top: 3rem;
+
+/* Fleet graphic — edge-to-edge, no horizontal padding */
+.services-fleet-graphic {
+  width: 100%;
+  margin-top: 3.5rem;
+  line-height: 0;
 }
-@media(max-width:768px){ .services-grid { grid-template-columns: 1fr 1fr; } }
-@media(max-width:450px){ .services-grid { grid-template-columns: 1fr; } }
+.services-fleet-graphic img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* CTA button row */
+.services-cta-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 5% 0;
+}
+.btn-services-select {
+  display: inline-flex; align-items: center; gap: 0.7rem;
+  background: var(--gold); color: var(--black);
+  font-family: var(--font-mono); font-size: 0.68rem;
+  letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+  padding: 1.1rem 2.6rem; text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.25);
+}
+.btn-services-select:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(201,168,76,0.38);
+}
+
+/* Legacy grid stubs — keep so nothing else breaks */
+.services-grid { display: none; }
+@media(max-width:768px){ .services-grid { display: none; } }
+@media(max-width:450px){ .services-grid { display: none; } }
 .service-card {
   background: var(--white);
   position: relative; overflow: visible;
@@ -593,6 +527,12 @@ nav { display: flex; align-items: center; gap: 0; }
   padding: 2.5rem 5%;
   border-top: 1px solid #252525;
   border-bottom: 1px solid #252525;
+}
+/* When nested inside the dark services section */
+.trust-bar--inset {
+  margin-top: 3rem;
+  border-bottom: none;
+  border-top-color: rgba(201,168,76,0.15);
 }
 .trust-inner {
   max-width: 1200px; margin: 0 auto;
@@ -1025,28 +965,10 @@ header.scrolled { background: rgba(10,10,10,0.99); box-shadow: 0 1px 20px rgba(0
     <a class="nav-link" href="#">About</a>
     <a href="#quote" class="btn-quote-nav">Get a Quote →</a>
   </nav>
-  <div class="hamburger" id="hamburger-btn" aria-label="Toggle menu" aria-expanded="false" role="button" tabindex="0">
+  <div class="hamburger" onclick="this.classList.toggle('open')">
     <span></span><span></span><span></span>
   </div>
 </header>
-
-<!-- MOBILE NAV OVERLAY (click to close) -->
-<div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
-
-<!-- MOBILE NAV DRAWER -->
-<div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true">
-  <div class="mobile-nav-links">
-    <a href="index.html" class="active">Home</a>
-    <a href="brisbon-vehicle-finder.html">Fleet</a>
-    <a href="#services" class="mobile-nav-close-trigger">Services</a>
-    <a href="solutions.html">Solutions</a>
-    <a href="#">About</a>
-  </div>
-  <div class="mobile-nav-cta">
-    <a href="tel:+19190000000" class="mn-call">📞 Call Now</a>
-    <a href="#quote" class="mn-quote mobile-nav-close-trigger">Get a Quote</a>
-  </div>
-</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1135,68 +1057,50 @@ header.scrolled { background: rgba(10,10,10,0.99); box-shadow: 0 1px 20px rgba(0
   </div>
 </div>
 
-<!-- QUOTE FORM -->
-<div class="quote-strip" id="quote">
-  <div class="quote-strip-inner">
-    <div class="quote-strip-label">Instant Quote Request</div>
-    <h2>Tell Us About Your <em>Transportation Need</em></h2>
-    <div class="quote-form">
-      <div class="form-group">
-        <label>Service Type</label>
-        <select>
-          <option>Select a service…</option>
-          <option>Motorcoach Charter</option>
-          <option>Corporate Shuttle</option>
-          <option>NEMT / Medical</option>
-          <option>ADA Transportation</option>
-          <option>Event / Wedding</option>
-          <option>Airport Transfer</option>
-          <option>Freight LTL</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Passengers / Load</label>
-        <input type="text" placeholder="e.g. 45 passengers">
-      </div>
-      <div class="form-group">
-        <label>Trip Date</label>
-        <input type="text" placeholder="MM / DD / YYYY">
-      </div>
-      <div class="form-group">
-        <label>Phone or Email</label>
-        <input type="text" placeholder="Best way to reach you">
-      </div>
-      <button class="btn-quote-submit">Get My Quote →</button>
-    </div>
-    <p class="quote-note">Response within <span>2 hours</span> during business hours · No obligation · No spam</p>
+<!-- SERVICES (What We Do) — moved up, replaces quote form -->
+<section class="section services-section" id="services">
+  <div class="section-inner">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title" style="color:var(--white);">Six Service Lines.<br><em>One Trusted Partner.</em></h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.45);">No competitor in the Triangle operates Brisbon Transportation Group LLC's full portfolio of specialized divisions under a single, accountable organization.</p>
   </div>
-</div>
 
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-inner">
-    <div>
-      <div class="trust-item-val">USDOT</div>
-      <div class="trust-item-label">Licensed &<br>Certified</div>
-    </div>
-    <div>
-      <div class="trust-item-val">$5M+</div>
-      <div class="trust-item-label">Commercial<br>Insurance</div>
-    </div>
-    <div>
-      <div class="trust-item-val">100%</div>
-      <div class="trust-item-label">Background<br>Checked Drivers</div>
-    </div>
-    <div>
-      <div class="trust-item-val">ADA</div>
-      <div class="trust-item-label">Fully Accessible<br>Fleet Options</div>
-    </div>
-    <div>
-      <div class="trust-item-val">GPS</div>
-      <div class="trust-item-label">Security Monitored<br>Vehicles</div>
+  <!-- Full-bleed fleet graphic -->
+  <div class="services-fleet-graphic">
+    <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773937883/FLEET_HEADER_h0mnom.png" alt="BTG Full Fleet — Motorcoach, Corporate, Medical, Freight" loading="lazy">
+  </div>
+
+  <!-- CTA -->
+  <div class="services-cta-wrap">
+    <a href="services.html" class="btn-services-select">Select a Service for You →</a>
+  </div>
+
+  <!-- Trust Bar — pulled from below quote form -->
+  <div class="trust-bar trust-bar--inset">
+    <div class="trust-inner">
+      <div>
+        <div class="trust-item-val">USDOT</div>
+        <div class="trust-item-label">Licensed &<br>Certified</div>
+      </div>
+      <div>
+        <div class="trust-item-val">$5M+</div>
+        <div class="trust-item-label">Commercial<br>Insurance</div>
+      </div>
+      <div>
+        <div class="trust-item-val">100%</div>
+        <div class="trust-item-label">Background<br>Checked Drivers</div>
+      </div>
+      <div>
+        <div class="trust-item-val">ADA</div>
+        <div class="trust-item-label">Fully Accessible<br>Fleet Options</div>
+      </div>
+      <div>
+        <div class="trust-item-val">GPS</div>
+        <div class="trust-item-label">Security Monitored<br>Vehicles</div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- MISSION STATEMENT -->
 <section class="section mission-section" id="mission">
@@ -1232,120 +1136,6 @@ header.scrolled { background: rgba(10,10,10,0.99); box-shadow: 0 1px 20px rgba(0
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="section services-section" id="services">
-  <div class="section-inner">
-    <div class="section-label">What We Do</div>
-    <h2 class="section-title" style="color:var(--white);">Six Service Lines.<br><em>One Trusted Partner.</em></h2>
-    <p class="section-sub" style="color:rgba(255,255,255,0.45);">No competitor in the Triangle operates Brisbon Transportation Group LLC's full portfolio of specialized divisions under a single, accountable organization.</p>
-
-    <div class="services-grid">
-
-      <!-- 1: Triangle Corporate Coach -->
-      <a href="https://trianglecorporatecoach.com/" target="_blank" rel="noopener" class="service-card">
-        <div class="sc-header">
-          <div class="sc-header-logo">
-            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876764/Triangle_Corporate_Coach_yjkepl.png" alt="Triangle Corporate Coach logo">
-          </div>
-          <div class="sc-header-photo">
-            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772051962/509_Supercoach_ooyuzb.png" alt="Triangle Corporate Coach vehicle" loading="lazy">
-          </div>
-        </div>
-        <div class="sc-body">
-          <div class="sc-name">Triangle Corporate Coach</div>
-          <p class="sc-desc">Executive and corporate ground transportation serving Research Triangle Park companies, C-suite clients, and recurring business travel programs across the Triangle.</p>
-          <div class="sc-link">Explore Division <span class="sc-arrow">→</span></div>
-        </div>
-      </a>
-
-      <!-- 2: Triangle Bus Charters -->
-      <a href="https://www.trianglebuscharters.com/" target="_blank" rel="noopener" class="service-card">
-        <div class="sc-header">
-          <div class="sc-header-logo">
-            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876763/Triangle_Bus_Charters_annyrt.png" alt="Triangle Bus Charters logo">
-          </div>
-          <div class="sc-header-photo">
-            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772738597/603_CX45_jmavtx.png" alt="Triangle Bus Charters motorcoach" loading="lazy">
-          </div>
-        </div>
-        <div class="sc-body">
-          <div class="sc-name">Triangle Bus Charters</div>
-          <p class="sc-desc">Full-size motorcoach charter services for group travel, corporate retreats, athletic teams, university groups, and event transportation across NC and the Southeast.</p>
-          <div class="sc-link">Explore Division <span class="sc-arrow">→</span></div>
-        </div>
-      </a>
-
-      <!-- 3: Wisdom Care Transportation -->
-      <a href="https://www.wisdomcaretrans.com/" target="_blank" rel="noopener" class="service-card">
-        <div class="sc-header">
-          <div class="sc-header-logo">
-            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876765/Wisdom_Care_Transportation_nbmstg.png" alt="Wisdom Care Transportation logo">
-          </div>
-          <div class="sc-header-photo">
-            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772041842/411_Lot4_ClinicRain_aauqmv.png" alt="Wisdom Care Transportation vehicle" loading="lazy">
-          </div>
-        </div>
-        <div class="sc-body">
-          <div class="sc-name">Wisdom Care Transportation</div>
-          <p class="sc-desc">Non-emergency medical transportation and ADA-accessible services for patients, seniors, and individuals with mobility needs. Medicaid-enrolled and compassion-driven.</p>
-          <div class="sc-link">Explore Division <span class="sc-arrow">→</span></div>
-        </div>
-      </a>
-
-      <!-- 4: Pinehurst Chauffeured Transportation -->
-      <a href="https://www.pinehurstchauffeured.com/" target="_blank" rel="noopener" class="service-card">
-        <div class="sc-header">
-          <div class="sc-header-logo">
-            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876763/Pinehurst_pej2c0.png" alt="Pinehurst Chauffeured Transportation logo">
-          </div>
-          <div class="sc-header-photo">
-            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772146574/310_Pinehurst_wno5ja.png" alt="Pinehurst Chauffeured vehicle" loading="lazy">
-          </div>
-        </div>
-        <div class="sc-body">
-          <div class="sc-name">Pinehurst Chauffeured Transportation</div>
-          <p class="sc-desc">Premium chauffeured ground transportation for luxury travel, private events, airport transfers, and high-profile corporate clients demanding a refined experience.</p>
-          <div class="sc-link">Explore Division <span class="sc-arrow">→</span></div>
-        </div>
-      </a>
-
-      <!-- 5: Agility Transportation -->
-      <a href="https://agilitytransportusa.com/" target="_blank" rel="noopener" class="service-card">
-        <div class="sc-header">
-          <div class="sc-header-logo">
-            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1771876772/Agility_hkwx39.png" alt="Agility Transportation logo">
-          </div>
-          <div class="sc-header-photo">
-            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1772136413/701_Ford_Box_Truck_pmhw3p.png" alt="Agility Transportation freight truck" loading="lazy">
-          </div>
-        </div>
-        <div class="sc-body">
-          <div class="sc-name">Agility Transportation</div>
-          <p class="sc-desc">Flexible, on-demand logistics and freight LTL solutions for businesses across North Carolina. Scalable scheduling, contract freight programs, and last-mile delivery coordination.</p>
-          <div class="sc-link">Explore Division <span class="sc-arrow">→</span></div>
-        </div>
-      </a>
-
-      <!-- 6: Brisbon Automotive -->
-      <a href="https://www.brisbonauto.com/" target="_blank" rel="noopener" class="service-card service-card--dark-logo">
-        <div class="sc-header">
-          <div class="sc-header-logo">
-            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773082166/Brisbon_Automotive_Logo_HR_Wht_ihnvof.png" alt="Brisbon Automotive logo">
-          </div>
-          <div class="sc-header-photo">
-            <img src="https://res.cloudinary.com/datqt0gei/image/upload/v1773258900/BA_SHOP12_ezxq1s.jpg" alt="Brisbon Automotive shop" loading="lazy">
-          </div>
-        </div>
-        <div class="sc-body">
-          <div class="sc-name">Brisbon Automotive</div>
-          <p class="sc-desc">Our on-site, full-service automotive division. Fleet maintenance, vehicle servicing, and personal vehicle care — the same standard of excellence that drives BTG's entire operation.</p>
-          <div class="sc-link">Visit Brisbon Automotive <span class="sc-arrow">→</span></div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</section>
 <!-- SERVICE AREAS CAROUSEL -->
 <section class="areas-carousel-section">
   <div class="areas-carousel-inner">
@@ -1516,66 +1306,14 @@ header.scrolled { background: rgba(10,10,10,0.99); box-shadow: 0 1px 20px rgba(0
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// ── HEADER SCROLL EFFECT ──
+// Header scroll effect
 const header = document.getElementById('site-header');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 60) header.classList.add('scrolled');
   else header.classList.remove('scrolled');
 });
 
-// ── MOBILE HAMBURGER MENU ──
-const hamburgerBtn   = document.getElementById('hamburger-btn');
-const mobileDrawer   = document.getElementById('mobile-nav-drawer');
-const mobileOverlay  = document.getElementById('mobile-nav-overlay');
-
-function openMobileMenu() {
-  hamburgerBtn.classList.add('open');
-  mobileDrawer.classList.add('open');
-  mobileOverlay.classList.add('open');
-  hamburgerBtn.setAttribute('aria-expanded', 'true');
-  mobileDrawer.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden'; // prevent background scroll
-}
-
-function closeMobileMenu() {
-  hamburgerBtn.classList.remove('open');
-  mobileDrawer.classList.remove('open');
-  mobileOverlay.classList.remove('open');
-  hamburgerBtn.setAttribute('aria-expanded', 'false');
-  mobileDrawer.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-}
-
-hamburgerBtn.addEventListener('click', () => {
-  if (hamburgerBtn.classList.contains('open')) {
-    closeMobileMenu();
-  } else {
-    openMobileMenu();
-  }
-});
-
-// Keyboard support (Enter / Space)
-hamburgerBtn.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') {
-    e.preventDefault();
-    hamburgerBtn.click();
-  }
-});
-
-// Close on overlay click
-mobileOverlay.addEventListener('click', closeMobileMenu);
-
-// Close when a nav link with anchor is tapped (Services, Quote)
-document.querySelectorAll('.mobile-nav-close-trigger').forEach(link => {
-  link.addEventListener('click', closeMobileMenu);
-});
-
-// Close menu if window is resized to desktop width
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 900) closeMobileMenu();
-});
-
-// ── SERVICE TAB INTERACTION ──
+// Service tab interaction
 document.querySelectorAll('.service-tab').forEach(tab => {
   tab.addEventListener('click', e => {
     e.preventDefault();
@@ -1584,16 +1322,4 @@ document.querySelectorAll('.service-tab').forEach(tab => {
   });
 });
 
-// ── SMOOTH SCROLL FOR ANCHOR LINKS ──
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      const offset = 80; // header height
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  });
-});
-</script>
+// Smooth scroll for ancho
